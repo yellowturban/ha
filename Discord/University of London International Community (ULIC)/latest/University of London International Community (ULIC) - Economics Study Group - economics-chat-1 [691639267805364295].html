@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>University of London International Community (ULIC) - economics-chat-1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/6c6374bad0b0b6d204d8d6dc4a18d820.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/e8acd7d9bf6207f99350ca9f9e23b168.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/3bdef1251a424500c1b3a78dea9b7e57.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/be0060dafb7a0e31d2a1ca17c0708636.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/8e12fb4f14d9c4592eb8ec9f22337b04.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/666980917436481555/1ef178605e8ea345733ec9ebc1bf64da.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">University of London International Community (ULIC)</div>
+        <div class="preamble__entry">Economics Study Group / economics-chat-1</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+    <div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/9927cf30f7e4e7ea58df26e19933d00b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128"  style="color: rgb(248, 7, 7)" >Xzester</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-20 09:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="691640481913897029" id="message-691640481913897029">
+                <div class="chatlog__content">
+                    <div class="markdown">Welcome to the study group everyone.</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198"  style="color: rgb(241, 196, 15)" >ilsatariq</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-20 09:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="691643527784038400" id="message-691643527784038400">
+                <div class="chatlog__content">
+                    <div class="markdown">Hi everyone! When do you all want to carry out the economics group study?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="691643605856550953" id="message-691643605856550953">
+                <div class="chatlog__content">
+                    <div class="markdown">And what specific/problems topics does everyone have?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="691643717244682351" id="message-691643717244682351">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" style="color: rgb(0, 237, 255); background-color: rgba(0, 237, 255, 0.1);">@Economics Study Group</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/9927cf30f7e4e7ea58df26e19933d00b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128"  style="color: rgb(248, 7, 7)" >Xzester</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-20 09:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="691643948212682774" id="message-691643948212682774">
+                <div class="chatlog__content">
+                    <div class="markdown">Besides the group study session we should discuss more about what level we all are on. How much course have you all covered?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198"  style="color: rgb(241, 196, 15)" >ilsatariq</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-20 09:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="691644170921705552" id="message-691644170921705552">
+                <div class="chatlog__content">
+                    <div class="markdown">I have covered roughly one-third of the course</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690075827777699844/b40268624ce676dfce2c33fe6b17df33.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Trikkur#4558" data-user-id="690075827777699844"  style="color: rgb(0, 237, 255)" >Trikkur</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-20 09:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="691645065390456873" id="message-691645065390456873">
+                <div class="chatlog__content">
+                    <div class="markdown">what year is everyone</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198"  style="color: rgb(241, 196, 15)" >ilsatariq</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-20 09:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="691645188166254765" id="message-691645188166254765">
+                <div class="chatlog__content">
+                    <div class="markdown">Also, please note that this channel has been created specifically for this study group plan. It shall be removed afterwards and all relevant discussions related to economics will be carried out on the original channel under “study discussion”</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="691645266994003979" id="message-691645266994003979">
+                <div class="chatlog__content">
+                    <div class="markdown">I’m in first year. You?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/344276155588804619/53fd0431fb1e87f466626f7239b0e241.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="redvan#1121" data-user-id="344276155588804619"  style="color: rgb(0, 237, 255)" >redvan</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-20 09:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="691646872430837900" id="message-691646872430837900">
+                <div class="chatlog__content">
+                    <div class="markdown">1st year too</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/9927cf30f7e4e7ea58df26e19933d00b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128"  style="color: rgb(248, 7, 7)" >Xzester</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-20 10:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="691648080851894373" id="message-691648080851894373">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="ilsatariq#4796">@ilsatariq</span> I think we&#39;ll need a dedicated study group for economics in all the years so that&#39;s not a good idea. <span class="mention" title="Trikkur#4558">@Trikkur</span> Most of us are in the 1st year. (Subject-wise)</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198"  style="color: rgb(241, 196, 15)" >ilsatariq</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-20 10:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="691652214183297084" id="message-691652214183297084">
+                <div class="chatlog__content">
+                    <div class="markdown">Ok, agreed. So then the study group channel (this one) shall be used specifically to organize voice channel based group study discussions for set groups of people for a set group of topics. Where as the regular economics channel under “study discussion” will be used for individual query responses and non specific non pre organized study discussion between smaller numbers of individuals.</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/674270466663514142/0c2c136e4bbf517c63baf20e70c7b590.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="zuko#1348" data-user-id="674270466663514142"  style="color: rgb(0, 237, 255)" >zuko</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-20 10:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="691653031141441589" id="message-691653031141441589">
+                <div class="chatlog__content">
+                    <div class="markdown">i have a lot of questions to ask regarding to econs <img class="emoji " alt="😭" title="😭" src="https://twemoji.maxcdn.com/2/72x72/1f62d.png"><img class="emoji " alt="😭" title="😭" src="https://twemoji.maxcdn.com/2/72x72/1f62d.png"></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="691653110258466826" id="message-691653110258466826">
+                <div class="chatlog__content">
+                    <div class="markdown">but i’ll send later once i’m free! hopefully y’all are able to help me out <img class="emoji " alt="🥺" title="🥺" src="https://twemoji.maxcdn.com/2/72x72/1f97a.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/9927cf30f7e4e7ea58df26e19933d00b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128"  style="color: rgb(248, 7, 7)" >Xzester</span>
+
+
+        <span class="chatlog__timestamp">24-Mar-20 05:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="691945229158318081" id="message-691945229158318081">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention">@everyone</span>  At what time tomorrow will you be free for a small discussion gathering and study session? We estimate 2-3 hours of interaction. Please answer in Greenwich Standard Time, which is the time zone of London. (For 25th March ) Is 1pm GST suitable for everyone?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="RajaHamza#5522" data-user-id="689455055497330762"  style="color: rgb(0, 237, 255)" >RajaHamza</span>
+
+
+        <span class="chatlog__timestamp">24-Mar-20 05:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="691945907452903475" id="message-691945907452903475">
+                <div class="chatlog__content">
+                    <div class="markdown">Suitable for me</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198"  style="color: rgb(241, 196, 15)" >ilsatariq</span>
+
+
+        <span class="chatlog__timestamp">24-Mar-20 06:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="691961003537203200" id="message-691961003537203200">
+                <div class="chatlog__content">
+                    <div class="markdown">Suitable for me</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="blackmyst3ry#0574" data-user-id="529903238200426507"  style="color: rgb(0, 237, 255)" >blackmyst3ry</span>
+
+
+        <span class="chatlog__timestamp">24-Mar-20 07:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="691964902595887164" id="message-691964902595887164">
+                <div class="chatlog__content">
+                    <div class="markdown">Works</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/9927cf30f7e4e7ea58df26e19933d00b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128"  style="color: rgb(248, 7, 7)" >Xzester</span>
+
+
+        <span class="chatlog__timestamp">24-Mar-20 10:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="692019336390639626" id="message-692019336390639626">
+                <div class="chatlog__content">
+                    <div class="markdown">Okay then <span class="mention" style="color: rgb(0, 237, 255); background-color: rgba(0, 237, 255, 0.1);">@Economics Study Group</span>  Study session tomorrow at 1 pm GMT. Keep your books and notes ready.<span class="chatlog__edited-timestamp" title="25-Mar-20 02:51 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="rishimodi60#7290" data-user-id="674519829280981007"  style="color: rgb(0, 237, 255)" >rishimodi60</span>
+
+
+        <span class="chatlog__timestamp">24-Mar-20 10:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="692019920405528607" id="message-692019920405528607">
+                <div class="chatlog__content">
+                    <div class="markdown">Suitable for me too</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/9927cf30f7e4e7ea58df26e19933d00b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128"  style="color: rgb(248, 7, 7)" >Xzester</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-20 02:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="692083046949716020" id="message-692083046949716020">
+                <div class="chatlog__content">
+                    <div class="markdown">**   GMT not GST - 1 pm British time on 25th March.</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/665348125292101632/010ef344c1442dfbb162893a53a5dc32.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="pbwj55#2946" data-user-id="665348125292101632"  style="color: rgb(0, 237, 255)" >cass &#127480;&#127468;</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-20 09:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="692357878035775548" id="message-692357878035775548">
+                <div class="chatlog__content">
+                    <div class="markdown">Is it now?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/9927cf30f7e4e7ea58df26e19933d00b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128"  style="color: rgb(248, 7, 7)" >Xzester</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-20 09:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="692358157674217552" id="message-692358157674217552">
+                <div class="chatlog__content">
+                    <div class="markdown">Starting soon</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="blackmyst3ry#0574" data-user-id="529903238200426507"  style="color: rgb(0, 237, 255)" >blackmyst3ry</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-20 09:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="692360227621961809" id="message-692360227621961809">
+                <div class="chatlog__content">
+                    <div class="markdown">ok</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/9927cf30f7e4e7ea58df26e19933d00b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128"  style="color: rgb(248, 7, 7)" >Xzester</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-20 09:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="692360290263892028" id="message-692360290263892028">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" style="color: rgb(0, 237, 255); background-color: rgba(0, 237, 255, 0.1);">@Economics Study Group</span> Join Voice chat for the discussion</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="blackmyst3ry#0574" data-user-id="529903238200426507"  style="color: rgb(0, 237, 255)" >blackmyst3ry</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-20 10:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="692375704582619219" id="message-692375704582619219">
+                <div class="chatlog__content">
+                    <div class="markdown">my internet connection isn&#39;t great</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="692375739290615811" id="message-692375739290615811">
+                <div class="chatlog__content">
+                    <div class="markdown">keep dipping in and out</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198"  style="color: rgb(241, 196, 15)" >ilsatariq</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-20 11:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="692392214617391234" id="message-692392214617391234">
+                <div class="chatlog__content">
+                    <div class="markdown">Thanks for your help! <span class="mention" title="9thstreetdreamer#2097">@9thStreetDreamer &#127482;&#127474;</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/670721634109489155/50f3e563d18d23c82badcf36a2beee52.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="harismazhar3#0270" data-user-id="670721634109489155"  style="color: rgb(0, 237, 255)" >harismazhar3</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-20 11:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="692392357370527815" id="message-692392357370527815">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="9thstreetdreamer#2097">@9thStreetDreamer &#127482;&#127474;</span> thanks man</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692353525488943124/bccfe5fed337e83005d2d6d92845f664.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Eeshwetha &#127480;&#127468;#9940" data-user-id="692353525488943124"  style="color: rgb(0, 237, 255)" >Eeshwetha &#127480;&#127468;</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-20 11:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="692392580733861918" id="message-692392580733861918">
+                <div class="chatlog__content">
+                    <div class="markdown">Thank you for your help <img class="emoji " alt="😇" title="😇" src="https://twemoji.maxcdn.com/2/72x72/1f607.png"> <span class="mention" title="9thstreetdreamer#2097">@9thStreetDreamer &#127482;&#127474;</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/308831731967066112/df198d231478fc4547819615bc85407e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="9thstreetdreamer#2097" data-user-id="308831731967066112"  style="color: rgb(231, 76, 60)" >9thStreetDreamer &#127482;&#127474;</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-20 11:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="692397049597132890" id="message-692397049597132890">
+                <div class="chatlog__content">
+                    <div class="markdown">Anytime guys<img class="emoji " alt="👌" title="👌" src="https://twemoji.maxcdn.com/2/72x72/1f44c.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692353525488943124/bccfe5fed337e83005d2d6d92845f664.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Eeshwetha &#127480;&#127468;#9940" data-user-id="692353525488943124"  style="color: rgb(0, 237, 255)" >Eeshwetha &#127480;&#127468;</span>
+
+
+        <span class="chatlog__timestamp">26-Mar-20 12:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="692412233166094437" id="message-692412233166094437">
+                <div class="chatlog__content">
+                    <div class="markdown">Hi can someone add me into the accounting and finance study groups as well?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198"  style="color: rgb(241, 196, 15)" >ilsatariq</span>
+
+
+        <span class="chatlog__timestamp">26-Mar-20 01:37 AM</span>
+
+            <div class="chatlog__message " data-message-id="692426921027436745" id="message-692426921027436745">
+                <div class="chatlog__content">
+                    <div class="markdown">Haven’t made any yet</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="692426939834695761" id="message-692426939834695761">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Eeshwetha &#127480;&#127468;#9940">@Eeshwetha &#127480;&#127468;</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692353525488943124/bccfe5fed337e83005d2d6d92845f664.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Eeshwetha &#127480;&#127468;#9940" data-user-id="692353525488943124"  style="color: rgb(0, 237, 255)" >Eeshwetha &#127480;&#127468;</span>
+
+
+        <span class="chatlog__timestamp">26-Mar-20 01:47 AM</span>
+
+            <div class="chatlog__message " data-message-id="692429566844731512" id="message-692429566844731512">
+                <div class="chatlog__content">
+                    <div class="markdown">Alright do let me know if you guys do <img class="emoji " alt="😊" title="😊" src="https://twemoji.maxcdn.com/2/72x72/1f60a.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/510378590572118016/f00cec1e72718c0adbe59a60e4515ef5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="owl#0614" data-user-id="510378590572118016"  style="color: rgb(0, 237, 255)" >JY &#127480;&#127468;</span>
+
+
+        <span class="chatlog__timestamp">27-Mar-20 01:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="692964041043214346" id="message-692964041043214346">
+                <div class="chatlog__content">
+                    <div class="markdown">Let me know too</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="locknload#9628" data-user-id="649702931167182851"  style="color: rgb(0, 237, 255)" >locknload</span>
+
+
+        <span class="chatlog__timestamp">13-Apr-20 05:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="699183898424508466" id="message-699183898424508466">
+                <div class="chatlog__content">
+                    <div class="markdown">Do you guys use the McGraw-Hill Education Campus?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/9927cf30f7e4e7ea58df26e19933d00b.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128"  style="color: rgb(248, 7, 7)" >Xzester</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 05:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="707890786686992445" id="message-707890786686992445">
+                <div class="chatlog__content">
+                    <div class="markdown">How&#39;s everyone&#39;s study going?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/689353651772588033/14b7e3f48c57a1ee6937881b30fffe9e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Yukta#2684" data-user-id="689353651772588033" >Yukta</span>
+
+
+        <span class="chatlog__timestamp">10-May-20 03:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="708944543034376263" id="message-708944543034376263">
+                <div class="chatlog__content">
+                    <div class="markdown">Quite good</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708944817052319814" id="message-708944817052319814">
+                <div class="chatlog__content">
+                    <div class="markdown">Does anyone know if QE is used to lower interest rates, or to inject money into the economy directly via the repayments to bondholders?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/674394675905560627/91c46784fbe07813e1652860183f21a3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cookie Monster#3978" data-user-id="674394675905560627"  style="color: rgb(0, 237, 255)" >Cookie Monster</span>
+
+
+        <span class="chatlog__timestamp">10-May-20 10:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="709051069531029506" id="message-709051069531029506">
+                <div class="chatlog__content">
+                    <div class="markdown">The main aim of QE inject money into the system buy buying bonds and securities, what differentiates QE from regular open market operations is  the amount and the type of securities traded. During QE central banks buys non traditional securities in large amount. Interest rates are lowered before implementing any policy like QE as lower rates allows for easier borrowing.  QE is typically implemented when interest rates are approaching zero because, at this point, central banks have fewer tools to influence economic growth, Its like a last resort to boost aggregate demand.<span class="chatlog__edited-timestamp" title="10-May-20 10:36 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/689353651772588033/14b7e3f48c57a1ee6937881b30fffe9e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Yukta#2684" data-user-id="689353651772588033" >Yukta</span>
+
+
+        <span class="chatlog__timestamp">11-May-20 02:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="709293863457783809" id="message-709293863457783809">
+                <div class="chatlog__content">
+                    <div class="markdown">Great! So I suppose that the main goal is to inject money - the lowering of rates is a side effect.</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="709294366174216243" id="message-709294366174216243">
+                <div class="chatlog__content">
+                    <div class="markdown">Sometimes I hear it the other way around though, for instance:</div>
+                </div>
+
+                <div class="chatlog__attachment">
+                    
+                    <a href="https://cdn.discordapp.com/attachments/691639267805364295/709294366010900520/Capture14.PNG">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/691639267805364295/709294366010900520/Capture14.PNG" alt="Attachment">
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="709295182029520897" id="message-709295182029520897">
+                <div class="chatlog__content">
+                    <div class="markdown">It&#39;s in the second line. Though here itself the statement is contradictory - first they say it is to drive down interest rates to boost investment, and then they say rates were already too low.</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xeune#1157" data-user-id="209182676190625793"  style="color: rgb(0, 237, 255)" >Xeune</span>
+
+
+        <span class="chatlog__timestamp">11-May-20 03:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="709303923730808913" id="message-709303923730808913">
+                <div class="chatlog__content">
+                    <div class="markdown">From what i know, it is when lowering interest rate are not working enough. For example, in 2007 before the housing crisis, interest rate in the US was around 5 to 4%. As housing loan starts to defaulted more and more, the fed lowered interest rate more and more to 0% at 16/12/2008. As we know when interest fall, investment start to increase however during the housing crisis no one wanted to invest due to the increase risk at that point of time. That was when the fed decide to do quantitative easing, which was purchasing of risker asset therefore increasing money supply. Money supply increases then ur LM shift to the right further lowering ur interest rate and increasing output. Hopefully im not repeating what the others had said.</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="709304223749111848" id="message-709304223749111848">
+                <div class="chatlog__content">
+                    <div class="markdown">interest rate of the US
+<a href="https://countryeconomy.com/key-rates/usa">https://countryeconomy.com/key-rates/usa</a>
+what QE does for the IS-LM model
+<a href="https://www.quora.com/Can-the-IS-LM-model-help-describe-the-effects-of-Quantitative-Easing">https://www.quora.com/Can-the-IS-LM-model-help-describe-the-effects-of-Quantitative-Easing</a></div>
+                </div>
+
+
+            <div class="chatlog__embed">
+                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+                <div class="chatlog__embed-content-container">
+                    <div class="chatlog__embed-content">
+                        <div class="chatlog__embed-text">
+
+                            <div class="chatlog__embed-title">
+                                <a class="chatlog__embed-title-link" href="https://countryeconomy.com/key-rates/usa"><div class="markdown">US Federal Reserve Bank key rates 2020</div></a>
+                            </div>
+
+                            <div class="chatlog__embed-description"><div class="markdown">United States has lowered its interest rates by 1 percentage points, from 1% to an annual rate of 0%.The key rates a tool used by Central Banks to implement monetary policy.</div></div>
+
+                        </div>
+
+                        <div class="chatlog__embed-thumbnail-container">
+                            <a class="chatlog__embed-thumbnail-link" href="https://countryeconomy.com/img/flag/USg.png">
+                                <img class="chatlog__embed-thumbnail" src="https://countryeconomy.com/img/flag/USg.png" alt="Thumbnail">
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/689353651772588033/14b7e3f48c57a1ee6937881b30fffe9e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Yukta#2684" data-user-id="689353651772588033" >Yukta</span>
+
+
+        <span class="chatlog__timestamp">11-May-20 05:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="709339027182190603" id="message-709339027182190603">
+                <div class="chatlog__content">
+                    <div class="markdown">Thank you so much <span class="mention" title="Xeune#1157">@Xeune</span>. These facts are really helpful. So I think what you&#39;re trying to say is, QE firsts increases the money supply, which in turn lowers the interest rate, which stimulates investment. Correct?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="709339191108042794" id="message-709339191108042794">
+                <div class="chatlog__content">
+                    <div class="markdown">But, then why don&#39;t they just lower the interest rate as usual?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="709339315620020224" id="message-709339315620020224">
+                <div class="chatlog__content">
+                    <div class="markdown">I think I&#39;m missing something here <img class="emoji " alt="😅" title="😅" src="https://twemoji.maxcdn.com/2/72x72/1f605.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xeune#1157" data-user-id="209182676190625793"  style="color: rgb(0, 237, 255)" >Xeune</span>
+
+
+        <span class="chatlog__timestamp">11-May-20 05:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="709339491709747260" id="message-709339491709747260">
+                <div class="chatlog__content">
+                    <div class="markdown">It doesnt in turn lower interest. Normally the interest rate is already at a level where lowering it would no be possible such as zero interest</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/689353651772588033/14b7e3f48c57a1ee6937881b30fffe9e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Yukta#2684" data-user-id="689353651772588033" >Yukta</span>
+
+
+        <span class="chatlog__timestamp">11-May-20 05:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="709339607640178721" id="message-709339607640178721">
+                <div class="chatlog__content">
+                    <div class="markdown">Ah I see</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xeune#1157" data-user-id="209182676190625793"  style="color: rgb(0, 237, 255)" >Xeune</span>
+
+
+        <span class="chatlog__timestamp">11-May-20 05:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="709339670483304478" id="message-709339670483304478">
+                <div class="chatlog__content">
+                    <div class="markdown">At zero interest rate the central bank cannot lower it any further</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="709339738124845077" id="message-709339738124845077">
+                <div class="chatlog__content">
+                    <div class="markdown">Hence that is where QE comes in</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/689353651772588033/14b7e3f48c57a1ee6937881b30fffe9e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Yukta#2684" data-user-id="689353651772588033" >Yukta</span>
+
+
+        <span class="chatlog__timestamp">11-May-20 05:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="709339864968986737" id="message-709339864968986737">
+                <div class="chatlog__content">
+                    <div class="markdown">Exactly, that&#39;s what I think</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xeune#1157" data-user-id="209182676190625793"  style="color: rgb(0, 237, 255)" >Xeune</span>
+
+
+        <span class="chatlog__timestamp">11-May-20 05:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="709339891695222804" id="message-709339891695222804">
+                <div class="chatlog__content">
+                    <div class="markdown">There are cases of negative interest rate but it is still something very new</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/689353651772588033/14b7e3f48c57a1ee6937881b30fffe9e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Yukta#2684" data-user-id="689353651772588033" >Yukta</span>
+
+
+        <span class="chatlog__timestamp">11-May-20 05:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="709340142938095712" id="message-709340142938095712">
+                <div class="chatlog__content">
+                    <div class="markdown">I just got confused after I saw some articles saying otherwise, e, g, <a href="https://www.weforum.org/agenda/2015/06/how-does-qe-reduce-long-term-interest-rates/">https://www.weforum.org/agenda/2015/06/how-does-qe-reduce-long-term-interest-rates/</a><span class="chatlog__edited-timestamp" title="11-May-20 05:44 PM">(edited)</span></div>
+                </div>
+
+
+            <div class="chatlog__embed">
+                <div class="chatlog__embed-color-pill" style="background-color: rgba(3,91,156,255)"></div>
+                <div class="chatlog__embed-content-container">
+                    <div class="chatlog__embed-content">
+                        <div class="chatlog__embed-text">
+
+                            <div class="chatlog__embed-title">
+                                <a class="chatlog__embed-title-link" href="https://www.weforum.org/agenda/2015/06/how-does-qe-reduce-long-term-interest-rates/"><div class="markdown">How does QE reduce long-term interest rates?</div></a>
+                            </div>
+
+                            <div class="chatlog__embed-description"><div class="markdown">The World Economic Forum is an independent international organization committed to improving the state of the world by engaging business, political, academic and other leaders of society to shape global, regional and industry agendas. Incorporated as a not-for-profit foundatio...</div></div>
+
+                        </div>
+
+                        <div class="chatlog__embed-thumbnail-container">
+                            <a class="chatlog__embed-thumbnail-link" href="https://assets.weforum.org/article/image/responsive_medium_LTJTFEFM9GOfxIp0xmpCYaphY5R5xhLbO-02E0L0pyE.jpg">
+                                <img class="chatlog__embed-thumbnail" src="https://assets.weforum.org/article/image/responsive_medium_LTJTFEFM9GOfxIp0xmpCYaphY5R5xhLbO-02E0L0pyE.jpg" alt="Thumbnail">
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="709340176874340353" id="message-709340176874340353">
+                <div class="chatlog__content">
+                    <div class="markdown">Wow, that&#39;s something new</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/674394675905560627/91c46784fbe07813e1652860183f21a3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cookie Monster#3978" data-user-id="674394675905560627"  style="color: rgb(0, 237, 255)" >Cookie Monster</span>
+
+
+        <span class="chatlog__timestamp">12-May-20 03:17 AM</span>
+
+            <div class="chatlog__message " data-message-id="709484363145805874" id="message-709484363145805874">
+                <div class="chatlog__content">
+                    <div class="markdown">QE is used is a last resort, because if gov and central bank could get away with just lowering interest rates they would never go towards a policy like QE. They would first reduce interest rates, if that does not work then they will move towards something like QE to boost aggregate demand.<span class="chatlog__edited-timestamp" title="12-May-20 05:07 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/689353651772588033/14b7e3f48c57a1ee6937881b30fffe9e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Yukta#2684" data-user-id="689353651772588033" >Yukta</span>
+
+
+        <span class="chatlog__timestamp">12-May-20 03:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="709673293199704065" id="message-709673293199704065">
+                <div class="chatlog__content">
+                    <div class="markdown">I see. Thanks for the help guys!</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="locknload#9628" data-user-id="649702931167182851"  style="color: rgb(0, 237, 255)" >locknload</span>
+
+
+        <span class="chatlog__timestamp">30-May-20 11:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="716311118674395287" id="message-716311118674395287">
+                <div class="chatlog__content">
+                    <div class="markdown">btw I have sent an inquiry to UOL and they told me that they are very sorry but they couldn&#39;t find an online tutor for this year</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="716311130271645747" id="message-716311130271645747">
+                <div class="chatlog__content">
+                    <div class="markdown">just wow...</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/674394675905560627/91c46784fbe07813e1652860183f21a3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cookie Monster#3978" data-user-id="674394675905560627"  style="color: rgb(0, 237, 255)" >Cookie Monster</span>
+
+
+        <span class="chatlog__timestamp">30-May-20 11:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="716313760276676748" id="message-716313760276676748">
+                <div class="chatlog__content">
+                    <div class="markdown">online tutor for what exactly?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xeune#1157" data-user-id="209182676190625793"  style="color: rgb(0, 237, 255)" >Xeune</span>
+
+
+        <span class="chatlog__timestamp">30-May-20 11:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="716316776375517384" id="message-716316776375517384">
+                <div class="chatlog__content">
+                    <div class="markdown">i guess is the moderator for the discussion forum?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="locknload#9628" data-user-id="649702931167182851"  style="color: rgb(0, 237, 255)" >locknload</span>
+
+
+        <span class="chatlog__timestamp">31-May-20 06:00 AM</span>
+
+            <div class="chatlog__message " data-message-id="716410853410209845" id="message-716410853410209845">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">i guess is the moderator for the discussion forum?
+</div><span class="mention" title="Xeune#1157">@Xeune</span> yep</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(0, 237, 255)" >Remi</span>
+
+
+        <span class="chatlog__timestamp">10-Jun-20 02:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="719986747039154278" id="message-719986747039154278">
+                <div class="chatlog__content">
+                    <div class="markdown">Hey guys, is there anyone here on Intro to Econs whatsapp group? If there is any important info you comment on that group, please send it here too <img class="emoji " alt="🙏" title="🙏" src="https://twemoji.maxcdn.com/2/72x72/1f64f.png"><img class="emoji " alt="🏻" title="🏻" src="https://twemoji.maxcdn.com/2/72x72/1f3fb.png"></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="719986844686614548" id="message-719986844686614548">
+                <div class="chatlog__content">
+                    <div class="markdown">It’s full so I cannot join to the chat</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(0, 237, 255)" >Remi</span>
+
+
+        <span class="chatlog__timestamp">10-Jun-20 03:03 AM</span>
+
+            <div class="chatlog__message " data-message-id="719990000481206383" id="message-719990000481206383">
+                <div class="chatlog__content">
+                    <div class="markdown">Btw, does anyone know if we can go back and forward during mcq part of the exam?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="719990905876250708" id="message-719990905876250708">
+                <div class="chatlog__content">
+                    <div class="markdown">I mean, I know we’ll have 4hr to complete them during the 24hr frame, but will we be able to respond anyone without doing the previous one? Or do we have to respond one so that we can access to the next question?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="locknload#9628" data-user-id="649702931167182851"  style="color: rgb(0, 237, 255)" >locknload</span>
+
+
+        <span class="chatlog__timestamp">10-Jun-20 03:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="719996127554044075" id="message-719996127554044075">
+                <div class="chatlog__content">
+                    <div class="markdown">good question, but since you have 4 hours to complete the questions, I&#39;d recommend you to think twice before select an answer <img class="emoji " alt="😛" title="😛" src="https://twemoji.maxcdn.com/2/72x72/1f61b.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/674270466663514142/0c2c136e4bbf517c63baf20e70c7b590.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="zuko#1348" data-user-id="674270466663514142"  style="color: rgb(0, 237, 255)" >zuko</span>
+
+
+        <span class="chatlog__timestamp">10-Jun-20 10:49 AM</span>
+
+            <div class="chatlog__message " data-message-id="720107352346460160" id="message-720107352346460160">
+                <div class="chatlog__content">
+                    <div class="markdown">&gt; 
+<div class="quote">I mean, I know we’ll have 4hr to complete them during the 24hr frame, but will we be able to respond anyone without doing the previous one? Or do we have to respond one so that we can access to the next question?
+<span class="mention" title="Remi#3148">@Remi</span> if anyone is doing the mcq early, would y&#39;all mind updating us on this? thank you!!</div></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 70 message(s)</div>
+</div>
+
+</body>
+</html>
