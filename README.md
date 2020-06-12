@@ -11,6 +11,9 @@ For {channel name with other numbers}, individually access it through this repos
 ## Compare files
 You can load diff between dates, and commits (of same files across times).
 
+## Dealing with Name Change
+The most robust method is to identify an account with discord user id available on this repository with the HTML tag. Name can be changed (Username, the plaintext username you see on screenshots/images and Discord name can be easily changed for free as Discord offers)
+
 ## Periodic changes
 Upload only periodic changes, not realtime changes (I haven't and not able to do that yet unless someone has developed a software for this).
 
