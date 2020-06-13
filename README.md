@@ -2,11 +2,6 @@
 ## Read license before using!
 
 ## How to view rendered HTML?
-Use direct link using Github Pages
-
-[Accounting Long Questions](https://yellowturban.github.io/ha/Discord/study%20group%20a/latest/%20group%20a%20-%20Exam%20-%20accounting-long%20[711497611093344288].html)
-e.g. https://yellowturban.github.io/ha/Discord/study%20group%20a/latest/study%20group%20a%20-%20Exam%20-%20accounting-long%20[711497611093344288].html
-
 1.  https://htmlpreview.github.io/
 2. Use Github Pages 
 Navigate to https://yellowturban.github.io/ha/
