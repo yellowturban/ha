@@ -2,6 +2,10 @@
 ## Read license before using!
 
 ## How to view rendered HTML?
+Use direct link using Github Pages
+[https://yellowturban.github.io/ha/Discord/study%20group%20a/latest/study group a - Exam - accounting-mcq [720517352965537823].html](Accounting MCQs)
+[https://yellowturban.github.io/ha/Discord/study%20group%20a/latest/%20group%20a%20-%20Exam%20-%20accounting-long%20[711497611093344288].html](Accounting Long Questions)
+(e.g. https://yellowturban.github.io/ha/Discord/study%20group%20a/latest/study%20group%20a%20-%20Exam%20-%20accounting-long%20[711497611093344288].html)
 1.  https://htmlpreview.github.io/
 2. Use Github Pages 
 Navigate to https://yellowturban.github.io/ha/
