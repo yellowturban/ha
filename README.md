@@ -3,7 +3,7 @@
 
 ## How to view rendered HTML?
 1.  https://htmlpreview.github.io/
-2. Use Github Pages 
+2. Use Github Pages
 Navigate to https://yellowturban.github.io/ha/
 To access individual files, replace {...}, https://yellowturban.github.io/ha/Discord/{name}/{date formatted as yyyy-mm-dd}/{channel name with other numbers}
 For {channel name with other numbers}, individually access it through this repository.
@@ -19,6 +19,9 @@ Upload only periodic changes, not realtime changes (I haven't and not able to do
 
 ## What you can do to contribute
 1. Help to archive photos, media, and username (with 4 digit number tag after "#") and update this repository
+
+## Beta Test
+Under beta test, we attempt to download all available assets and media files. However, beta test does not represent the latest set of exported Discord chats.
 
 ## Privacy Concerns
 Users should not be met with privacy concerns, we only export things that can also be seen by the public, anonymously. Users who post expect that anyone with the public link can join and read what they send.

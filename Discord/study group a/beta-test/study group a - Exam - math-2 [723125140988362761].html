@@ -1,0 +1,2773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>study group a - math-2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discord.com/assets/6c6374bad0b0b6d204d8d6dc4a18d820.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discord.com/assets/e8acd7d9bf6207f99350ca9f9e23b168.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discord.com/assets/3bdef1251a424500c1b3a78dea9b7e57.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discord.com/assets/be0060dafb7a0e31d2a1ca17c0708636.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discord.com/assets/8e12fb4f14d9c4592eb8ec9f22337b04.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="study group a - Exam - math-2 [723125140988362761].html_Files\0-c85a1737.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">study group a</div>
+        <div class="preamble__entry">Exam / math-2</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+    <div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">28-Jun-20 09:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="726790836330823712" id="message-726790836330823712">
+                <div class="chatlog__content">
+                    <div class="markdown">Hey !! How many of you guys are sitting maths 2 tomorrow?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 12:55 AM</span>
+
+            <div class="chatlog__message " data-message-id="726843173229559920" id="message-726843173229559920">
+                <div class="chatlog__content">
+                    <div class="markdown">Meee</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 01:57 AM</span>
+
+            <div class="chatlog__message " data-message-id="726858933062336523" id="message-726858933062336523">
+                <div class="chatlog__content">
+                    <div class="markdown">Yeah</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 11:53 AM</span>
+
+            <div class="chatlog__message " data-message-id="727008865652178964" id="message-727008865652178964">
+                <div class="chatlog__content">
+                    <div class="markdown">Small team this time round</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="xoxo99#1513" data-user-id="719493717547024404"  style="color: rgb(52, 172, 247)" >xoxo seto kaiba</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 05:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="727093357544865803" id="message-727093357544865803">
+                <div class="chatlog__content">
+                    <div class="markdown">me!</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="727116516495196211" id="message-727116516495196211">
+                <div class="chatlog__content">
+                    <div class="markdown"></div>
+                </div>
+
+                <div class="chatlog__attachment">
+                    
+                    <a href="study group a - Exam - math-2 [723125140988362761].html_Files\MT105B_OTA_FINAL-557a0708.pdf">
+                        
+                            Attachment: MT105B_OTA_FINAL.pdf (217.93 KB)
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="727119029369831496" id="message-727119029369831496">
+                <div class="chatlog__content">
+                    <div class="markdown">How do you find the exam guys?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="727120140474384404" id="message-727120140474384404">
+                <div class="chatlog__content">
+                    <div class="markdown">Idk i think its quite similar to past year papers..</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="727120802662580224" id="message-727120802662580224">
+                <div class="chatlog__content">
+                    <div class="markdown">if you guys find the same question on past papers, pls send the reference over here <img class="emoji " alt="🙏" title="🙏" src="https://twemoji.maxcdn.com/2/72x72/1f64f.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="727121265416077393" id="message-727121265416077393">
+                <div class="chatlog__content">
+                    <div class="markdown">Number 1 is similar to 2013 zA q1</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="727122563498508308" id="message-727122563498508308">
+                <div class="chatlog__content">
+                    <div class="markdown">Also q5 is quite similar to 2013 zA q3</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="727125103778725898" id="message-727125103778725898">
+                <div class="chatlog__content">
+                    <div class="markdown">You guys got Eq Q= 2 and alpha=1 for q1?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="727125323665375232" id="message-727125323665375232">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Remi#3148">@gambit</span> yeah i got this</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="727127345919688794" id="message-727127345919688794">
+                <div class="chatlog__content">
+                    <div class="markdown">for CS you got 15*ln(5/3)-6?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="727128849091133450" id="message-727128849091133450">
+                <div class="chatlog__content">
+                    <div class="markdown">Yea</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 07:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="727129152976846930" id="message-727129152976846930">
+                <div class="chatlog__content">
+                    <div class="markdown">ok, tks</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 08:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="727132548387569726" id="message-727132548387569726">
+                <div class="chatlog__content">
+                    <div class="markdown">can anyone send the website for all past papers?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3e8bf3aa800156e3aaf07dd3eafa77f1-abbe8bae.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="itachi#7645" data-user-id="671760306271289345"  style="color: rgb(2, 2, 2)" >itachi</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 08:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="727132701525540874" id="message-727132701525540874">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="http://icef.xyz/2">http://icef.xyz/2</a></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 08:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="727132743393083413" id="message-727132743393083413">
+                <div class="chatlog__content">
+                    <div class="markdown">Thanks a lot!!</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3e8bf3aa800156e3aaf07dd3eafa77f1-abbe8bae.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="itachi#7645" data-user-id="671760306271289345"  style="color: rgb(2, 2, 2)" >itachi</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 08:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="727132760732598324" id="message-727132760732598324">
+                <div class="chatlog__content">
+                    <div class="markdown">npp</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 08:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="727144663068442665" id="message-727144663068442665">
+                <div class="chatlog__content">
+                    <div class="markdown">q8 is similar to 2014 zA q8</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 08:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="727145270906847264" id="message-727145270906847264">
+                <div class="chatlog__content">
+                    <div class="markdown">Guys how to do q2?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 09:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="727157088505299044" id="message-727157088505299044">
+                <div class="chatlog__content">
+                    <div class="markdown">good ol taylor series</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727157130842341417" id="message-727157130842341417">
+                <div class="chatlog__content">
+                    <div class="markdown">write your expansion of cosx first</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727157144717230101" id="message-727157144717230101">
+                <div class="chatlog__content">
+                    <div class="markdown">then 1-cosx</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727157160047280290" id="message-727157160047280290">
+                <div class="chatlog__content">
+                    <div class="markdown">then e^x</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727157200878960692" id="message-727157200878960692">
+                <div class="chatlog__content">
+                    <div class="markdown">slowly sub them in</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727157218398699521" id="message-727157218398699521">
+                <div class="chatlog__content">
+                    <div class="markdown">be careful</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727157245720264756" id="message-727157245720264756">
+                <div class="chatlog__content">
+                    <div class="markdown">how do yall do q5/6</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727157315001909259" id="message-727157315001909259">
+                <div class="chatlog__content">
+                    <div class="markdown">not confident about my solutions</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 09:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="727157711455649872" id="message-727157711455649872">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="yugi345#4783">@yugi345</span> ok thanks!</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727157796482842645" id="message-727157796482842645">
+                <div class="chatlog__content">
+                    <div class="markdown">For number 5 its a separable de</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727157933254770710" id="message-727157933254770710">
+                <div class="chatlog__content">
+                    <div class="markdown">So i moved the y to the left and moved the dx to the right</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727157972215529502" id="message-727157972215529502">
+                <div class="chatlog__content">
+                    <div class="markdown">Then integrate both sides to get y</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727158375229554790" id="message-727158375229554790">
+                <div class="chatlog__content">
+                    <div class="markdown">Thats just how i did it <img class="emoji " alt="😭" title="😭" src="https://twemoji.maxcdn.com/2/72x72/1f62d.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="727166132900986961" id="message-727166132900986961">
+                <div class="chatlog__content">
+                    <div class="markdown">did you get 2 y values or 2 c values ?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="727166549626191952" id="message-727166549626191952">
+                <div class="chatlog__content">
+                    <div class="markdown">Um... idk what u mean by that</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="727166628202152036" id="message-727166628202152036">
+                <div class="chatlog__content">
+                    <div class="markdown">square root y^2 ?<span class="chatlog__edited-timestamp" title="29-Jun-20 10:20 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="727167240209956955" id="message-727167240209956955">
+                <div class="chatlog__content">
+                    <div class="markdown">Ah yes</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727167595987468388" id="message-727167595987468388">
+                <div class="chatlog__content">
+                    <div class="markdown">I square root y^2</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="727170848011845683" id="message-727170848011845683">
+                <div class="chatlog__content">
+                    <div class="markdown">Hey guys</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727170918316507267" id="message-727170918316507267">
+                <div class="chatlog__content">
+                    <div class="markdown">Does anyone got this as answer for q8 Y(t)?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727171111011221514" id="message-727171111011221514">
+                <div class="chatlog__content">
+                    <div class="markdown"></div>
+                </div>
+
+                <div class="chatlog__attachment">
+                    
+                    <a href="study group a - Exam - math-2 [723125140988362761].html_Files\image0-eabd97b7.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="study group a - Exam - math-2 [723125140988362761].html_Files\image0-eabd97b7.jpg" alt="Attachment">
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727171343824453752" id="message-727171343824453752">
+                <div class="chatlog__content">
+                    <div class="markdown"></div>
+                </div>
+
+                <div class="chatlog__attachment">
+                    
+                    <a href="study group a - Exam - math-2 [723125140988362761].html_Files\image0-2e390bf3.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="study group a - Exam - math-2 [723125140988362761].html_Files\image0-2e390bf3.jpg" alt="Attachment">
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727171399210369054" id="message-727171399210369054">
+                <div class="chatlog__content">
+                    <div class="markdown">has anyone already done it?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="727171411860520980" id="message-727171411860520980">
+                <div class="chatlog__content">
+                    <div class="markdown">i&#39;m still at 7b</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="727171516525182996" id="message-727171516525182996">
+                <div class="chatlog__content">
+                    <div class="markdown">Ok, pls let me know your answer once youve done it!! <span class="mention" title="yugi345#4783">@yugi345</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727171539597787298" id="message-727171539597787298">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="😄" title="😄" src="https://twemoji.maxcdn.com/2/72x72/1f604.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="727175573020999750" id="message-727175573020999750">
+                <div class="chatlog__content">
+                    <div class="markdown">who has the chegg account again ?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="727175638880092162" id="message-727175638880092162">
+                <div class="chatlog__content">
+                    <div class="markdown">I dont have chegg account...</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727175687324041216" id="message-727175687324041216">
+                <div class="chatlog__content">
+                    <div class="markdown">Did you find any possible answer on it?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="xoxo99#1513" data-user-id="719493717547024404"  style="color: rgb(52, 172, 247)" >xoxo seto kaiba</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="727175754395287632" id="message-727175754395287632">
+                <div class="chatlog__content">
+                    <div class="markdown">has anyone done 7a</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="727175808757661737" id="message-727175808757661737">
+                <div class="chatlog__content">
+                    <div class="markdown">Yeah</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="xoxo99#1513" data-user-id="719493717547024404"  style="color: rgb(52, 172, 247)" >xoxo seto kaiba</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="727175874075426846" id="message-727175874075426846">
+                <div class="chatlog__content">
+                    <div class="markdown">could you share your working</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="727175922091950141" id="message-727175922091950141">
+                <div class="chatlog__content">
+                    <div class="markdown">It is quite similar to q6 2016 ZA</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727175969378664469" id="message-727175969378664469">
+                <div class="chatlog__content">
+                    <div class="markdown"></div>
+                </div>
+
+                <div class="chatlog__attachment">
+                    
+                    <a href="study group a - Exam - math-2 [723125140988362761].html_Files\MT105b_-_Mathematics_2_-_2016_Examiners_Commentaries-38f43bfb.pdf">
+                        
+                            Attachment: MT105b_-_Mathematics_2_-_2016_Examiners_Commentaries.pdf (305.56 KB)
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727176043848532028" id="message-727176043848532028">
+                <div class="chatlog__content">
+                    <div class="markdown">Let me know if you can figure it out with this</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="xoxo99#1513" data-user-id="719493717547024404"  style="color: rgb(52, 172, 247)" >xoxo seto kaiba</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 10:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="727176101310365888" id="message-727176101310365888">
+                <div class="chatlog__content">
+                    <div class="markdown">also number 4!</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 11:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="727176788396212225" id="message-727176788396212225">
+                <div class="chatlog__content">
+                    <div class="markdown">7b is there no solution for t ?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 11:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="727176937889333318" id="message-727176937889333318">
+                <div class="chatlog__content">
+                    <div class="markdown">Im doing 7b now</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="xoxo99#1513" data-user-id="719493717547024404"  style="color: rgb(52, 172, 247)" >xoxo seto kaiba</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 11:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="727178731453415434" id="message-727178731453415434">
+                <div class="chatlog__content">
+                    <div class="markdown">cant seem to do 7a</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727178756610850838" id="message-727178756610850838">
+                <div class="chatlog__content">
+                    <div class="markdown"><img class="emoji emoji--large" alt="😦" title="😦" src="https://twemoji.maxcdn.com/2/72x72/1f626.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 11:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="727178994470092812" id="message-727178994470092812">
+                <div class="chatlog__content">
+                    <div class="markdown">no solution for the matrix</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 11:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="727183955987791892" id="message-727183955987791892">
+                <div class="chatlog__content">
+                    <div class="markdown">For number 8, we need to write the auxiliary eqn then the complementary fn right</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727184130483290223" id="message-727184130483290223">
+                <div class="chatlog__content">
+                    <div class="markdown">What goes next? We need to make use of the C(0) and the I(0) right</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 11:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="727184356015079506" id="message-727184356015079506">
+                <div class="chatlog__content">
+                    <div class="markdown">yeah, after you got auxiliary equation, you will get  Y(t), depending on A &amp; B</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727184529986551928" id="message-727184529986551928">
+                <div class="chatlog__content">
+                    <div class="markdown">You get B easily, from Y(0), which is Y(0)=C(0)+I(0)=4</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727184598605496424" id="message-727184598605496424">
+                <div class="chatlog__content">
+                    <div class="markdown">then B i got 16/5 ***<span class="chatlog__edited-timestamp" title="29-Jun-20 11:34 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727184788103888966" id="message-727184788103888966">
+                <div class="chatlog__content">
+                    <div class="markdown">for A, you have to go to C(0)=1 - Y&#180;(t)=1/2</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 11:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="727184869028921374" id="message-727184869028921374">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Remi#3148">@gambit</span> i got this</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 11:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="727184903220756621" id="message-727184903220756621">
+                <div class="chatlog__content">
+                    <div class="markdown">great</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727184926545412146" id="message-727184926545412146">
+                <div class="chatlog__content">
+                    <div class="markdown">Pls, let me know your answer</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727184971688574996" id="message-727184971688574996">
+                <div class="chatlog__content">
+                    <div class="markdown">I sent it earlier but dont know if its correct or not</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">29-Jun-20 11:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="727185008590323712" id="message-727185008590323712">
+                <div class="chatlog__content">
+                    <div class="markdown">I’ll try doing it</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:09 AM</span>
+
+            <div class="chatlog__message " data-message-id="727194095478505502" id="message-727194095478505502">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Remi#3148">@gambit</span> did u find the particular fn? For number 8</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:12 AM</span>
+
+            <div class="chatlog__message " data-message-id="727194737840357397" id="message-727194737840357397">
+                <div class="chatlog__content">
+                    <div class="markdown">Yep, i got this</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727194790843777044" id="message-727194790843777044">
+                <div class="chatlog__content">
+                    <div class="markdown"><a href="https://discord.com/channels/711496082361942076/723125140988362761/727171343824453752" onclick="scrollToMessage(event, '727171343824453752')">https://discord.com/channels/711496082361942076/723125140988362761/727171343824453752</a></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:17 AM</span>
+
+            <div class="chatlog__message " data-message-id="727195967626936423" id="message-727195967626936423">
+                <div class="chatlog__content">
+                    <div class="markdown">i got b=-1</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="727197100152062042" id="message-727197100152062042">
+                <div class="chatlog__content">
+                    <div class="markdown">for which exercise? <span class="mention" title="yugi345#4783">@yugi345</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="xoxo99#1513" data-user-id="719493717547024404"  style="color: rgb(52, 172, 247)" >xoxo seto kaiba</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:22 AM</span>
+
+            <div class="chatlog__message " data-message-id="727197257417359420" id="message-727197257417359420">
+                <div class="chatlog__content">
+                    <div class="markdown">can someone shae working for number 2</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727197273003393046" id="message-727197273003393046">
+                <div class="chatlog__content">
+                    <div class="markdown">share</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:28 AM</span>
+
+            <div class="chatlog__message " data-message-id="727198712648171591" id="message-727198712648171591">
+                <div class="chatlog__content">
+                    <div class="markdown">q8</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727198734139523153" id="message-727198734139523153">
+                <div class="chatlog__content">
+                    <div class="markdown">my A=1.b=-1</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727198900015857675" id="message-727198900015857675">
+                <div class="chatlog__content">
+                    <div class="markdown">When i sub back in i got 5/4</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:29 AM</span>
+
+            <div class="chatlog__message " data-message-id="727198982673137737" id="message-727198982673137737">
+                <div class="chatlog__content">
+                    <div class="markdown">how did you get them?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727199137522647040" id="message-727199137522647040">
+                <div class="chatlog__content">
+                    <div class="markdown">alpha=5/4 for you too, right? <span class="mention" title="yugi345#4783">@yugi345</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:30 AM</span>
+
+            <div class="chatlog__message " data-message-id="727199295345917972" id="message-727199295345917972">
+                <div class="chatlog__content">
+                    <div class="markdown">I got Yp=5</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727199406230863902" id="message-727199406230863902">
+                <div class="chatlog__content">
+                    <div class="markdown">Then my Yt=(At+B)e^(-1/2t) +5</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="727200140955353129" id="message-727200140955353129">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="yugi345#4783">@yugi345</span> i got this too</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="727200522771234876" id="message-727200522771234876">
+                <div class="chatlog__content">
+                    <div class="markdown">you got m=1/2?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:36 AM</span>
+
+            <div class="chatlog__message " data-message-id="727200915123208302" id="message-727200915123208302">
+                <div class="chatlog__content">
+                    <div class="markdown">-1/2</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:36 AM</span>
+
+            <div class="chatlog__message " data-message-id="727200940804931705" id="message-727200940804931705">
+                <div class="chatlog__content">
+                    <div class="markdown">ok</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727201070098677781" id="message-727201070098677781">
+                <div class="chatlog__content">
+                    <div class="markdown">how did you get alpha?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727201168115368056" id="message-727201168115368056">
+                <div class="chatlog__content">
+                    <div class="markdown">0+0+1*alpha=5?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="727201511150583930" id="message-727201511150583930">
+                <div class="chatlog__content">
+                    <div class="markdown">m=-1/2</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727201545841803294" id="message-727201545841803294">
+                <div class="chatlog__content">
+                    <div class="markdown">alpha=5</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:40 AM</span>
+
+            <div class="chatlog__message " data-message-id="727201769763110922" id="message-727201769763110922">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="yugi345#4783">@yugi345</span> how did u get A?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:41 AM</span>
+
+            <div class="chatlog__message " data-message-id="727202105697370172" id="message-727202105697370172">
+                <div class="chatlog__content">
+                    <div class="markdown">You get A from C(0)=1/2</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727202294965338195" id="message-727202294965338195">
+                <div class="chatlog__content">
+                    <div class="markdown">Since C(t)=1-Y&#180;(t), then Y&#180;(0)=1/2<span class="chatlog__edited-timestamp" title="30-Jun-20 12:42 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727202370697560104" id="message-727202370697560104">
+                <div class="chatlog__content">
+                    <div class="markdown">Sorry Y&#180;(0) **</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:43 AM</span>
+
+            <div class="chatlog__message " data-message-id="727202491451572274" id="message-727202491451572274">
+                <div class="chatlog__content">
+                    <div class="markdown">So y’(0) is 1/2?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:43 AM</span>
+
+            <div class="chatlog__message " data-message-id="727202516244365322" id="message-727202516244365322">
+                <div class="chatlog__content">
+                    <div class="markdown">i got a=0,b=-1</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727202525236953112" id="message-727202525236953112">
+                <div class="chatlog__content">
+                    <div class="markdown">oops</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727202563891396669" id="message-727202563891396669">
+                <div class="chatlog__content">
+                    <div class="markdown">Multiplied wrongly</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:44 AM</span>
+
+            <div class="chatlog__message " data-message-id="727202790799179878" id="message-727202790799179878">
+                <div class="chatlog__content">
+                    <div class="markdown"></div>
+                </div>
+
+                <div class="chatlog__attachment">
+                    
+                    <a href="study group a - Exam - math-2 [723125140988362761].html_Files\image0-2ef9b850.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="study group a - Exam - math-2 [723125140988362761].html_Files\image0-2ef9b850.jpg" alt="Attachment">
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727202808297947196" id="message-727202808297947196">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="nezuko11#5290">@nezuko11</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727202979614294076" id="message-727202979614294076">
+                <div class="chatlog__content">
+                    <div class="markdown">bro, can you send working on how to get alpha? <span class="mention" title="yugi345#4783">@yugi345</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:45 AM</span>
+
+            <div class="chatlog__message " data-message-id="727203065836470372" id="message-727203065836470372">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Remi#3148">@gambit</span> thanks a lot man</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:46 AM</span>
+
+            <div class="chatlog__message " data-message-id="727203335177764948" id="message-727203335177764948">
+                <div class="chatlog__content">
+                    <div class="markdown">no prob <span class="mention" title="nezuko11#5290">@nezuko11</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:47 AM</span>
+
+            <div class="chatlog__message " data-message-id="727203599133966468" id="message-727203599133966468">
+                <div class="chatlog__content">
+                    <div class="markdown">So when i use y’(0) for y’(t) we cant find A right since theres a t there and its 0 so it becomes 0</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:48 AM</span>
+
+            <div class="chatlog__message " data-message-id="727203810778284054" id="message-727203810778284054">
+                <div class="chatlog__content">
+                    <div class="markdown"></div>
+                </div>
+
+                <div class="chatlog__attachment">
+                    
+                    <a href="study group a - Exam - math-2 [723125140988362761].html_Files\image0-089b4cdb.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="study group a - Exam - math-2 [723125140988362761].html_Files\image0-089b4cdb.jpg" alt="Attachment">
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727203818282156046" id="message-727203818282156046">
+                <div class="chatlog__content">
+                    <div class="markdown">is this correctly expressed for alpha?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727203873605025793" id="message-727203873605025793">
+                <div class="chatlog__content">
+                    <div class="markdown">Yes, right?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="727204239679553609" id="message-727204239679553609">
+                <div class="chatlog__content">
+                    <div class="markdown">Yeah</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="727204284957196438" id="message-727204284957196438">
+                <div class="chatlog__content">
+                    <div class="markdown">ok, tks!!</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:51 AM</span>
+
+            <div class="chatlog__message " data-message-id="727204604286337065" id="message-727204604286337065">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">So when i use y’(0) for y’(t) we cant find A right since theres a t there and its 0 so it becomes 0
+</div><span class="mention" title="nezuko11#5290">@nezuko11</span>  is this right</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:54 AM</span>
+
+            <div class="chatlog__message " data-message-id="727205256269660331" id="message-727205256269660331">
+                <div class="chatlog__content">
+                    <div class="markdown">yup <span class="mention" title="Remi#3148">@gambit</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:58 AM</span>
+
+            <div class="chatlog__message " data-message-id="727206428418506752" id="message-727206428418506752">
+                <div class="chatlog__content">
+                    <div class="markdown">For c(t) i got 1-1/2e^(1/2t) n for I(t)= 1/4(1-2e^(1/2t)+15)    Is it right?<span class="chatlog__edited-timestamp" title="30-Jun-20 01:02 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 12:59 AM</span>
+
+            <div class="chatlog__message " data-message-id="727206543291842561" id="message-727206543291842561">
+                <div class="chatlog__content">
+                    <div class="markdown">simplify I(t)</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 01:00 AM</span>
+
+            <div class="chatlog__message " data-message-id="727206812255912068" id="message-727206812255912068">
+                <div class="chatlog__content">
+                    <div class="markdown">So 1/4 - 1/2e^(-1/2t) +15 ?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 01:03 AM</span>
+
+            <div class="chatlog__message " data-message-id="727207713762967615" id="message-727207713762967615">
+                <div class="chatlog__content">
+                    <div class="markdown">4-1/2e^(-1/2t)</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 01:05 AM</span>
+
+            <div class="chatlog__message " data-message-id="727208180341538846" id="message-727208180341538846">
+                <div class="chatlog__content">
+                    <div class="markdown">Oh so there’s no 15? <img class="emoji " alt="😅" title="😅" src="https://twemoji.maxcdn.com/2/72x72/1f605.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 01:12 AM</span>
+
+            <div class="chatlog__message " data-message-id="727209962606166076" id="message-727209962606166076">
+                <div class="chatlog__content">
+                    <div class="markdown">1+15=16</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727209986412773516" id="message-727209986412773516">
+                <div class="chatlog__content">
+                    <div class="markdown">16*1/4=4</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\fe9ea93c2809b974a1d7bc759c87cd08-b8657ddd.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nezuko11#5290" data-user-id="720213517021741076" >nezuko11</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 01:19 AM</span>
+
+            <div class="chatlog__message " data-message-id="727211748192550962" id="message-727211748192550962">
+                <div class="chatlog__content">
+                    <div class="markdown">Thank u<img class="emoji " alt="🙏" title="🙏" src="https://twemoji.maxcdn.com/2/72x72/1f64f.png"><img class="emoji " alt="🏼" title="🏼" src="https://twemoji.maxcdn.com/2/72x72/1f3fc.png"><img class="emoji " alt="🙏" title="🙏" src="https://twemoji.maxcdn.com/2/72x72/1f64f.png"><img class="emoji " alt="🏼" title="🏼" src="https://twemoji.maxcdn.com/2/72x72/1f3fc.png"></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 03:11 AM</span>
+
+            <div class="chatlog__message " data-message-id="727239847453917215" id="message-727239847453917215">
+                <div class="chatlog__content">
+                    <div class="markdown">can anyone share solution for q2?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727239894853877880" id="message-727239894853877880">
+                <div class="chatlog__content">
+                    <div class="markdown">I mean, not the workings but the solution</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727239951397158930" id="message-727239951397158930">
+                <div class="chatlog__content">
+                    <div class="markdown">does it have to be a number?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727240442462208091" id="message-727240442462208091">
+                <div class="chatlog__content">
+                    <div class="markdown">btw guys for 7b ive just found it appears also the same on 2011 ZB q3</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 03:57 AM</span>
+
+            <div class="chatlog__message " data-message-id="727251358545215519" id="message-727251358545215519">
+                <div class="chatlog__content">
+                    <div class="markdown">hey guys</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727251393240629300" id="message-727251393240629300">
+                <div class="chatlog__content">
+                    <div class="markdown">I would like to double-check a few results</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727251569078173776" id="message-727251569078173776">
+                <div class="chatlog__content">
+                    <div class="markdown">on q1: q=2, alpha=1, CS=15ln(5/3) - 6<span class="chatlog__edited-timestamp" title="30-Jun-20 03:58 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727251785470967870" id="message-727251785470967870">
+                <div class="chatlog__content">
+                    <div class="markdown">q5:<span class="chatlog__edited-timestamp" title="30-Jun-20 03:59 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727251866580418590" id="message-727251866580418590">
+                <div class="chatlog__content">
+                    <div class="markdown"></div>
+                </div>
+
+                <div class="chatlog__attachment">
+                    
+                    <a href="study group a - Exam - math-2 [723125140988362761].html_Files\image0-87c20540.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="study group a - Exam - math-2 [723125140988362761].html_Files\image0-87c20540.jpg" alt="Attachment">
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727251998054809716" id="message-727251998054809716">
+                <div class="chatlog__content">
+                    <div class="markdown">q3: x= 5/49, y= 10/49, z= 15/49</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727252083996360744" id="message-727252083996360744">
+                <div class="chatlog__content">
+                    <div class="markdown">did you guys get the same results?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 05:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="727275621209866350" id="message-727275621209866350">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">For c(t) i got 1-1/2e^(1/2t) n for I(t)= 1/4(1-2e^(1/2t)+15)    Is it right?
+</div><span class="mention" title="nezuko11#5290">@nezuko11</span> I think it should be c(t)=1-1/2e^(-1/2t)</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 08:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="727320943017328720" id="message-727320943017328720">
+                <div class="chatlog__content">
+                    <div class="markdown">Yup for q3</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\3-ee201347.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Remi#3148" data-user-id="690587549898506321"  style="color: rgb(52, 172, 247)" >gambit</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 08:34 AM</span>
+
+            <div class="chatlog__message " data-message-id="727321069782040637" id="message-727321069782040637">
+                <div class="chatlog__content">
+                    <div class="markdown">What about q1 and q5?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727321083249950760" id="message-727321083249950760">
+                <div class="chatlog__content">
+                    <div class="markdown">Same too?</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="study group a - Exam - math-2 [723125140988362761].html_Files\f1ff0e2a4866eed0a61af8eec7d20203-ae37a0b6.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" >yugi345</span>
+
+
+        <span class="chatlog__timestamp">30-Jun-20 08:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="727321288535965748" id="message-727321288535965748">
+                <div class="chatlog__content">
+                    <div class="markdown">Q1 yup but you left out PS</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727321401962266666" id="message-727321401962266666">
+                <div class="chatlog__content">
+                    <div class="markdown">Q5 different</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727321527002857502" id="message-727321527002857502">
+                <div class="chatlog__content">
+                    <div class="markdown">Q2 leave your answer up to x^6 ?</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727321662822809610" id="message-727321662822809610">
+                <div class="chatlog__content">
+                    <div class="markdown">Imma check again later</div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="727321686923280814" id="message-727321686923280814">
+                <div class="chatlog__content">
+                    <div class="markdown">Leaving for coffee break</div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 145 message(s)</div>
+</div>
+
+</body>
+</html>
