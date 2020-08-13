@@ -2,8 +2,9 @@
 ## Read license before using!
 
 ## How to view rendered HTML?
-1.  https://htmlpreview.github.io/
-2. Use Github Pages
+1. DOWNLOAD THE PACKAGE, CLICK on individual HTML files to view the chats. Make sure to open the HTML files in a web browser (e.g. LATEST Chrome, Firefox, Internet Explorer, Safari, etc.)
+2.  https://htmlpreview.github.io/
+3. Use Github Pages
 Navigate to https://yellowturban.github.io/ha/
 To access individual files, replace {...}, https://yellowturban.github.io/ha/Discord/{name}/{date formatted as yyyy-mm-dd}/{channel name with other numbers}
 For {channel name with other numbers}, individually access it through this repository.
