@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -611,27 +620,33 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">28-Jan-20 10:47 PM</span>
 
             <div class="chatlog__message chatlog__message--pinned" data-message-id="671727970309636117" id="message-671727970309636117">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://drive.google.com/open?id=1iGXDTtT7VFnw8enRrKMKnJGEBTbTSpx3">https://drive.google.com/open?id=1iGXDTtT7VFnw8enRrKMKnJGEBTbTSpx3</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://drive.google.com/open?id=1iGXDTtT7VFnw8enRrKMKnJGEBTbTSpx3">https://drive.google.com/open?id=1iGXDTtT7VFnw8enRrKMKnJGEBTbTSpx3</a></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message chatlog__message--pinned" data-message-id="671728829529849857" id="message-671728829529849857">
-                <div class="chatlog__content">
-                    <div class="markdown">Hey everyone! Hope you all are doing fine. Do watch the video above made by <span class="mention" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Head Manager</span> 
-It’s a tutorial that explains how you can make the most out of ULIC here along with the usage of Discord. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey everyone! Hope you all are doing fine. Do watch the video above made by <span class="mention" style="color: rgb(31, 139, 76); background-color: rgba(31, 139, 76, 0.1);">@Head Manager</span> 
+It’s a tutorial that explains how you can make the most out of ULIC here along with the usage of Discord.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -642,18 +657,21 @@ It’s a tutorial that explains how you can make the most out of ULIC here along
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">05-Feb-20 12:07 AM</span>
 
             <div class="chatlog__message chatlog__message--pinned" data-message-id="674284841633841182" id="message-674284841633841182">
-                <div class="chatlog__content">
-                    <div class="markdown">I would really recommend everyone to set your ‘nickname’ to your full name and country flag so it’s easier to identify and be acquainted with each-other. Your choice, though! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I would really recommend everyone to set your ‘nickname’ to your full name and country flag so it’s easier to identify and be acquainted with each-other. Your choice, though!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -670,18 +688,21 @@ It’s a tutorial that explains how you can make the most out of ULIC here along
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">05-Feb-20 02:28 PM</span>
 
             <div class="chatlog__message chatlog__message--pinned" data-message-id="674501708185075752" id="message-674501708185075752">
-                <div class="chatlog__content">
-                    <div class="markdown">study resources posted on Economics, Stats, Math and Accounting channels. Check them out. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">study resources posted on Economics, Stats, Math and Accounting channels. Check them out.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -698,42 +719,49 @@ It’s a tutorial that explains how you can make the most out of ULIC here along
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">11-Feb-20 11:40 PM</span>
 
             <div class="chatlog__message chatlog__message--pinned" data-message-id="676814709349023748" id="message-676814709349023748">
-                <div class="chatlog__content">
-                    <div class="markdown"> </div>
-                </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/667013293449150474/676814708958822400/Untitled.pdf">
-Attachment: Untitled.pdf (1.12 MB)                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667013293449150474/676814708958822400/Untitled.pdf">
+                                        Attachment: Untitled.pdf (1.12 MB)
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
             </div>
             <div class="chatlog__message chatlog__message--pinned" data-message-id="676814868141178905" id="message-676814868141178905">
-                <div class="chatlog__content">
-                    <div class="markdown"> </div>
-                </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/667013293449150474/676814867876806687/Untitled.pdf">
-Attachment: Untitled.pdf (330.23 KB)                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667013293449150474/676814867876806687/Untitled.pdf">
+                                        Attachment: Untitled.pdf (330.23 KB)
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
             </div>
             <div class="chatlog__message " data-message-id="676815524717527060" id="message-676815524717527060">
-                <div class="chatlog__content">
-                    <div class="markdown">^ University of London Regulations and Guidelines for EMFSS (2019-2020) </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">^ University of London Regulations and Guidelines for EMFSS (2019-2020)</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -744,18 +772,272 @@ Attachment: Untitled.pdf (330.23 KB)                            </a>
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">11-Jun-20 08:00 PM</span>
 
             <div class="chatlog__message chatlog__message--pinned" data-message-id="720608274415878204" id="message-720608274415878204">
-                <div class="chatlog__content">
-                    <div class="markdown">Exam discussions are strictly prohibited! Any post by a member related to an exam shall be deleted promptly. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Exam discussions are strictly prohibited! Any post by a member related to an exam shall be deleted promptly.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 10:10 PM</span>
+
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="783334320310845451" id="message-783334320310845451">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">❗️Disclaimer❗️</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="783334346648059944" id="message-783334346648059944">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">“ULIC is not affiliated with the University of London. The University of London has had no part in preparing the content of the ULIC webpages on Discord and does not endorse this content. The name University of London as well as their related marks, emblems and images are registered trademarks of the University of London.
+University of London students seeking mental health and wellbeing support are advised to use the TalkCampus service, which provides 24/7 online support and access to trained advisers. Join via the Student Portal Wellbeing page”.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="783334488725651466" id="message-783334488725651466">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This disclaimer relates to the past and current period. The University of London and I are currently in the process of working to officialise the server in the very near future.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783334520879185990" id="message-783334520879185990">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention">@everyone</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783334565824823306" id="message-783334565824823306">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Pinned a message.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783334584024694814" id="message-783334584024694814">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Pinned a message.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783334608338812948" id="message-783334608338812948">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Pinned a message.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">16-Dec-20 10:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="788781168224108544" id="message-788781168224108544">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi <span class="mention">@everyone</span>! 
+
+Hope you all are doing well. I had my second meeting with UL today in regards to ULIC and I’d like to inform you that we are soon to be endorsed by UL hopefully by January/February as the University has been very much interested in our well-being and student engagement— which this platform has provided everyone with from our active societies to study groups. 
+
+I encourage you all to partake in societies and even step up if you’d like to start a new one— ULIC is your oyster and the depths of creativity are endless! 
+
+Our progress has been nothing less than fantastic and I’m proud of how far we’ve all gone as a community! <img class="emoji " alt="😊" title="😊" src="https://twemoji.maxcdn.com/2/72x72/1f60a.png"></span>
+
+                                <span class="chatlog__edited-timestamp" title="16-Dec-20 11:28 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="✨" title="✨" src="https://twemoji.maxcdn.com/2/72x72/2728.png">
+                                <span class="chatlog__reaction-count">8</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">12</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#129304;" title="&#129304;" src="https://twemoji.maxcdn.com/2/72x72/1f918.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128525;" title="&#128525;" src="https://twemoji.maxcdn.com/2/72x72/1f60d.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128076;&#127995;" title="&#128076;&#127995;" src="https://twemoji.maxcdn.com/2/72x72/1f44c-1f3fb.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128175;" title="&#128175;" src="https://twemoji.maxcdn.com/2/72x72/1f4af.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">21-Dec-20 04:45 PM</span>
+
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="790500272874717184" id="message-790500272874717184">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention">@everyone</span> 
+Today is the first anniversary of ULIC! <img class="emoji " alt="🎉" title="🎉" src="https://twemoji.maxcdn.com/2/72x72/1f389.png"> 
+This journey has been nothing less than a roller-coaster for me— I advocated for unity and comradeship and vowed to establish that. I met and had the privilege of interacting with hundreds of diverse, talented and impeccable individuals from different corners of the globe and extracted an array of commonalities between us. This has been an exhilarating journey— and I hope it was the same for you!
+
+What has been the best part of ULIC for you and what do you hope to see in the future? Drop your comment in <span class="mention">#general</span>; I’d love to know! <img class="emoji " alt="😊" title="😊" src="https://twemoji.maxcdn.com/2/72x72/1f60a.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="❤️" title="❤️" src="https://twemoji.maxcdn.com/2/72x72/2764.png">
+                                <span class="chatlog__reaction-count">14</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#129395;" title="&#129395;" src="https://twemoji.maxcdn.com/2/72x72/1f973.png">
+                                <span class="chatlog__reaction-count">5</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">4</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#129304;" title="&#129304;" src="https://twemoji.maxcdn.com/2/72x72/1f918.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="790500312833851402" id="message-790500312833851402">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Pinned a message.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">21-Dec-20 10:15 PM</span>
+
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="790583107715727380" id="message-790583107715727380">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://www.linkedin.com/company/university-of-london-international-community-ulic">https://www.linkedin.com/company/university-of-london-international-community-ulic</a> 
+ULIC LinkedIn</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="❤️" title="❤️" src="https://twemoji.maxcdn.com/2/72x72/2764.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="790583135792267266" id="message-790583135792267266">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Pinned a message.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -766,7 +1048,7 @@ Attachment: Untitled.pdf (330.23 KB)                            </a>
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 8 message(s)</div>
+    <div class="postamble__entry">Exported 20 message(s)</div>
 </div>
 
 </body>

@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -620,17 +629,23 @@ a {
         <span class="chatlog__timestamp">30-Apr-20 05:12 PM</span>
 
             <div class="chatlog__message " data-message-id="705345739923914762" id="message-705345739923914762">
-                <div class="chatlog__content">
-                    <div class="markdown">Hi <img class="emoji " alt="😃" title="😃" src="https://twemoji.maxcdn.com/2/72x72/1f603.png">  Anyone taking MSM this year? How are you studying for this module? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi <img class="emoji " alt="😃" title="😃" src="https://twemoji.maxcdn.com/2/72x72/1f603.png">  Anyone taking MSM this year? How are you studying for this module?</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="705345814234529805" id="message-705345814234529805">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://tenor.com/view/pokemon-clefairy-confused-lost-gif-5702557">https://tenor.com/view/pokemon-clefairy-confused-lost-gif-5702557</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://tenor.com/view/pokemon-clefairy-confused-lost-gif-5702557">https://tenor.com/view/pokemon-clefairy-confused-lost-gif-5702557</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -671,25 +686,34 @@ a {
         <span class="chatlog__timestamp">01-May-20 12:43 AM</span>
 
             <div class="chatlog__message " data-message-id="705459364542283896" id="message-705459364542283896">
-                <div class="chatlog__content">
-                    <div class="markdown">Glad to see someone else taking the mod! <span class="mention" title="owl#0614">@&#127480;&#127468;</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Glad to see someone else taking the mod! <span class="mention" title="owl#0614">@&#127480;&#127468;</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="705459596365660160" id="message-705459596365660160">
-                <div class="chatlog__content">
-                    <div class="markdown">Same.. I have been focusing on my other mods and neglecting MSM:/ Going to get started on it in the week ahead (like getting started on studying.. not even at revision stage yet) </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Same.. I have been focusing on my other mods and neglecting MSM:/ Going to get started on it in the week ahead (like getting started on studying.. not even at revision stage yet)</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="705459763986563102" id="message-705459763986563102">
-                <div class="chatlog__content">
-                    <div class="markdown">If you have any tips on how to go abt studying the mod, pls feel free to share. Could use all the help right now<img class="emoji " alt="😅" title="😅" src="https://twemoji.maxcdn.com/2/72x72/1f605.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">If you have any tips on how to go abt studying the mod, pls feel free to share. Could use all the help right now<img class="emoji " alt="😅" title="😅" src="https://twemoji.maxcdn.com/2/72x72/1f605.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -709,9 +733,12 @@ a {
         <span class="chatlog__timestamp">01-May-20 02:19 PM</span>
 
             <div class="chatlog__message " data-message-id="705664686737063976" id="message-705664686737063976">
-                <div class="chatlog__content">
-                    <div class="markdown">same! ok, all the best with it<img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">same! ok, all the best with it<img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -731,9 +758,12 @@ a {
         <span class="chatlog__timestamp">15-Jun-20 04:40 PM</span>
 
             <div class="chatlog__message " data-message-id="722007582264524800" id="message-722007582264524800">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="owl#0614">@&#127480;&#127468;</span> Hey, hope MSM prep is coming along well for you! Anyway, do you know if there are any webinars for the course? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="owl#0614">@&#127480;&#127468;</span> Hey, hope MSM prep is coming along well for you! Anyway, do you know if there are any webinars for the course?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -753,17 +783,23 @@ a {
         <span class="chatlog__timestamp">15-Jun-20 10:04 PM</span>
 
             <div class="chatlog__message " data-message-id="722089230012121128" id="message-722089230012121128">
-                <div class="chatlog__content">
-                    <div class="markdown"><img class="emoji " alt="😦" title="😦" src="https://twemoji.maxcdn.com/2/72x72/1f626.png"> Ah ok </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img class="emoji " alt="😦" title="😦" src="https://twemoji.maxcdn.com/2/72x72/1f626.png"> Ah ok</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="722089871891628133" id="message-722089871891628133">
-                <div class="chatlog__content">
-                    <div class="markdown">How abt you? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">How abt you?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -783,17 +819,23 @@ a {
         <span class="chatlog__timestamp">04-Jul-20 05:02 PM</span>
 
             <div class="chatlog__message " data-message-id="728898423901913108" id="message-728898423901913108">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="owl#0614">@&#127480;&#127468;</span> Hey, all the best with MSM this Tuesday!! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="owl#0614">@&#127480;&#127468;</span> Hey, all the best with MSM this Tuesday!!</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="728898522962722837" id="message-728898522962722837">
-                <div class="chatlog__content">
-                    <div class="markdown">Do you have topics you are planning to do the questions for? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Do you have topics you are planning to do the questions for?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -813,9 +855,12 @@ a {
         <span class="chatlog__timestamp">07-Jul-20 05:32 PM</span>
 
             <div class="chatlog__message " data-message-id="729993332259946537" id="message-729993332259946537">
-                <div class="chatlog__content">
-                    <div class="markdown">Anyone taking the paper today? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Anyone taking the paper today?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -835,9 +880,12 @@ a {
         <span class="chatlog__timestamp">05-Sep-20 07:50 PM</span>
 
             <div class="chatlog__message " data-message-id="751771342285570131" id="message-751771342285570131">
-                <div class="chatlog__content">
-                    <div class="markdown">Could anyone link the study guide on here? Would be much appreciated! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Could anyone link the study guide on here? Would be much appreciated!</span>
+
+                        </div>
+                    </div>
 
 
 

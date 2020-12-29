@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -614,15 +623,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="needed88#7717" data-user-id="750267933317529600" style="color: rgb(250,2,220)">needed88</span>
+        <span class="chatlog__author-name" title="needed88#7717" data-user-id="750267933317529600" style="color: rgb(230,126,34)">needed88</span>
 
 
         <span class="chatlog__timestamp">14-Oct-20 06:31 PM</span>
 
             <div class="chatlog__message " data-message-id="765884451829841941" id="message-765884451829841941">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://youtu.be/KFDlVgBMomQ">https://youtu.be/KFDlVgBMomQ</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/KFDlVgBMomQ">https://youtu.be/KFDlVgBMomQ</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -640,12 +652,12 @@ a {
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=KFDlVgBMomQ">
-                                                    <div class="markdown">How Many Potatoes Does It Take To Run DOOM?</div>
+                                                    <div class="markdown preserve-whitespace">How Many Potatoes Does It Take To Run DOOM?</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">Now, this is a story all about how
+                                            <div class="markdown preserve-whitespace">Now, this is a story all about how
 My life got flipped-turned upside down
 And I&#39;d like to take a minute
 Just sit right there
@@ -669,9 +681,12 @@ On the floor of my garage I spent most of my day...</div>
 
             </div>
             <div class="chatlog__message " data-message-id="765884466547654667" id="message-765884466547654667">
-                <div class="chatlog__content">
-                    <div class="markdown">Check this out!! <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Check this out!! <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -682,20 +697,798 @@ On the floor of my garage I spent most of my day...</div>
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">16-Oct-20 12:27 AM</span>
 
             <div class="chatlog__message " data-message-id="766336516498391081" id="message-766336516498391081">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" style="color: rgb(134, 78, 29); background-color: rgba(134, 78, 29, 0.1);">@Tech Enthusiasts Society Member</span> 
-Anyone interested in running for President of this society? Pm me if that’s the case. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Tech Enthusiasts Society Member</span> 
+Anyone interested in running for President of this society? Pm me if that’s the case.</span>
 
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 06:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="781647074541961236" id="message-781647074541961236">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey guys! Has anyone here ever invested in bitcoin?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="shreyasbhutra#5630" data-user-id="556904893244506133" style="color: rgb(230,126,34)">shreyasbhutra</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 04:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="781799080187133952" id="message-781799080187133952">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">yeah</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 07:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="781839274441441290" id="message-781839274441441290">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="shreyasbhutra#5630">@shreyasbhutra</span> really? Wow. Long time ago or just recently?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="shreyasbhutra#5630" data-user-id="556904893244506133" style="color: rgb(230,126,34)">shreyasbhutra</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 09:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="781877007499788318" id="message-781877007499788318">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">last December</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 11:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="781902036975091712" id="message-781902036975091712">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Cool are you planning to buy some more or was it just one time thing?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="shreyasbhutra#5630" data-user-id="556904893244506133" style="color: rgb(230,126,34)">shreyasbhutra</span>
+
+
+        <span class="chatlog__timestamp">28-Nov-20 04:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="782159032235982864" id="message-782159032235982864">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">i dont think that the rally will continue for long so i am gonna avoid buying more</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782159066146930698" id="message-782159066146930698">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">are youbplanning on investing?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/644223388742844416/27665689a966b35a98a53b1308bbad88.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="butterchickencassava#9831" data-user-id="644223388742844416" style="color: rgb(2,15,85)">linh&#127483;&#127475;&#127474;&#127486;&#127467;&#127479;</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 04:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="782340456277213224" id="message-782340456277213224">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Bitcoin ETP is a good option then</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="shreyasbhutra#5630" data-user-id="556904893244506133" style="color: rgb(230,126,34)">shreyasbhutra</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 02:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="782489775860088843" id="message-782489775860088843">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Investing in etps like btce sbtc is still indirectly investing in bitcoin</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 04:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="782529468644327444" id="message-782529468644327444">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I haven&#39;t invested it Bitcoin but have used it to buy stuff few years back. At present I have an investment in a music related cryptocurrency which I received as a reward.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782530090792910888" id="message-782530090792910888">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I would say Bitcoin is eventually meant to go up at least 2X it&#39;s current value if not much more. Bitcoin Cash has a higher chance of rising in value I&#39;d say though, I&#39;d say Bitcoin Cash would rise at least 5X its current value in the next 2 years. Ethereum is another good currency worth investing in though am yet to read more about it.</span>
+
+                                <span class="chatlog__edited-timestamp" title="29-Nov-20 04:55 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782530944225509416" id="message-782530944225509416">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I would love to have extended discussions with those who are interested in crypto / economics. Really looking to explore this more. It&#39;s sad that the University doesn&#39;t have a module on it. I hope it will have that in future. 
+
+<span class="mention" title="ilsatariq#4796">@Ilsa Tariq</span> can we request a module on crypto when we next talk to UoL? (or perhaps I should email them personally)</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 05:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="782533219093839922" id="message-782533219093839922">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I can definitely bring that into their notice</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 05:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="782543917701660692" id="message-782543917701660692">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This society doesn&#39;t have a president yet?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 06:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="782556369555292162" id="message-782556369555292162">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Oh that&#39;s a great idea! I would love a module on crypto!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782557175251075102" id="message-782557175251075102">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yes. I just need to educate myself a bit more about the whole thing but I definitely want to invest, as soon as possible. Actually I can&#39;t believe I haven&#39;t done it sooner and also I can&#39;t believe how I missed the news about bitcoin when it was still in its beginning. Missed such a great opportunity.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 07:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="782571556063936532" id="message-782571556063936532">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Don&#39;t worry it&#39;s just the beginning of the crypto world.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="shreyasbhutra#5630" data-user-id="556904893244506133" style="color: rgb(230,126,34)">shreyasbhutra</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 07:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="782575356129050624" id="message-782575356129050624">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yeah you should definitely educate yourself before investing</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782575387901165568" id="message-782575387901165568">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">And dont buy the hype</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782575690251108362" id="message-782575690251108362">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Your investment portfolio should be diversified</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782575866604552222" id="message-782575866604552222">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I believe the majority should consist of stocks/indexs</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 08:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="782577059049504778" id="message-782577059049504778">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Why so?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782577368048205834" id="message-782577368048205834">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Invest in what you feel is worth it. I believe  one should have the same policy whether they invest in their well-being or in financial assets.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="shreyasbhutra#5630" data-user-id="556904893244506133" style="color: rgb(230,126,34)">shreyasbhutra</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 01:01 AM</span>
+
+            <div class="chatlog__message " data-message-id="782652551471824907" id="message-782652551471824907">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Because bitcoins too unpredictable</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782652636976513085" id="message-782652636976513085">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">And you should always minimize risk and seek long term return</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782652816963403787" id="message-782652816963403787">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Investing in indexs is basically investing in the future of the country</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 01:07 AM</span>
+
+            <div class="chatlog__message " data-message-id="782654003812499498" id="message-782654003812499498">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Not at all. Cryptocurrency is unpredictable only for those who are weak with their understanding of crypto economics / latest computer science concepts</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 04:17 AM</span>
+
+            <div class="chatlog__message " data-message-id="782701701038604299" id="message-782701701038604299">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I didn&#39;t invest in bitcoin but traded ether since at the time it was on a strong upward trend. I made about 5k before it became illegal in my country</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782702001011556403" id="message-782702001011556403">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Let&#39;s chat! I&#39;m so interested in the scope of crypto not only in aspects of financial markets but also its potential in free trade of resources such as energy.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 04:18 AM</span>
+
+            <div class="chatlog__message " data-message-id="782702094388953100" id="message-782702094388953100">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="aiygen_0101#4570">@aiygen_0101</span> Wow has it really become illegal there?<img class="emoji " alt="😮" title="😮" src="https://twemoji.maxcdn.com/2/72x72/1f62e.png"> which country?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 04:19 AM</span>
+
+            <div class="chatlog__message " data-message-id="782702178401648680" id="message-782702178401648680">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">India</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782702283791269968" id="message-782702283791269968">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">There are loopholes to still trade, but I do not have a strong appetite for risk so I withdrew</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782702664570896385" id="message-782702664570896385">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Also, investing in crypto takes a lot of time. Because it fluctuates so fast. I lost the patience for it and thought I learned something and made a neat profit too</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782703610420133889" id="message-782703610420133889">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">In hindsight I should have spent more time learning prior to playing the game</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 05:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="782722356194836488" id="message-782722356194836488">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Look at this guys
+
+<a href="https://www.express.co.uk/finance/city/1365523/china-latest-bitcoin-price-index-mining-capacity-cryptocurrency">https://www.express.co.uk/finance/city/1365523/china-latest-bitcoin-price-index-mining-capacity-cryptocurrency</a></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.express.co.uk/finance/city/1365523/china-latest-bitcoin-price-index-mining-capacity-cryptocurrency">
+                                                    <div class="markdown preserve-whitespace">China seizes &#163;2.5billion of Bitcoin as Beijing set to &#39;dominate&#39; fu...</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">CHINA has seized $3.3 billion (&#163;2.48 billion) in bitcoin as the nation continues to build its mining capacity and the recent move could allow Beijing to &quot;dominate the global economy&quot; of the future, according to Max Keiser.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.images.express.co.uk/img/dynamic/22/750x445/1365523.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.images.express.co.uk/img/dynamic/22/750x445/1365523.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 09:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="782954794456186881" id="message-782954794456186881">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;m definitely up for that! I&#39;ve been eagerly looking to discuss these topics.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/644223388742844416/27665689a966b35a98a53b1308bbad88.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="butterchickencassava#9831" data-user-id="644223388742844416" style="color: rgb(2,15,85)">linh&#127483;&#127475;&#127474;&#127486;&#127467;&#127479;</span>
+
+
+        <span class="chatlog__timestamp">11-Dec-20 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="786921184926892032" id="message-786921184926892032">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Cursed web design situation from the Debate Society.
+
+We need help on with our web design situation. Might call for a web developer recruitment soon, so hit me up if anyone is interested!</span>
+
+                                <span class="chatlog__edited-timestamp" title="11-Dec-20 07:48 PM">(edited)</span>
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/669287981823033379/786921184167198760/20201211_123259.jpg">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/669287981823033379/786921184167198760/20201211_123259.jpg" alt="Image attachment" title="Image: 20201211_123259.jpg (2.21 MB)">
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
 
 
             </div>
@@ -705,7 +1498,7 @@ Anyone interested in running for President of this society? Pm me if that’s th
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 3 message(s)</div>
+    <div class="postamble__entry">Exported 40 message(s)</div>
 </div>
 
 </body>

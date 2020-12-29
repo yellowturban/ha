@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -614,15 +623,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/626181946686570498/e5cfd7d57337be2b4cbd91f660cae7ff.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Jamie#2269" data-user-id="626181946686570498" style="color: rgb(250,2,220)">Jay</span>
+        <span class="chatlog__author-name" title="Jamie#2269" data-user-id="626181946686570498" style="color: rgb(230,126,34)">Jay</span>
 
 
         <span class="chatlog__timestamp">03-May-20 12:06 AM</span>
 
             <div class="chatlog__message " data-message-id="706174827207065642" id="message-706174827207065642">
-                <div class="chatlog__content">
-                    <div class="markdown">Is anyone here taking international organisations as well? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Is anyone here taking international organisations as well?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -642,17 +654,23 @@ a {
         <span class="chatlog__timestamp">17-May-20 12:25 AM</span>
 
             <div class="chatlog__message " data-message-id="711253095358660608" id="message-711253095358660608">
-                <div class="chatlog__content">
-                    <div class="markdown">Yessir <span class="mention" title="Jamie#2269">@Jay</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yessir <span class="mention" title="Jamie#2269">@Jay</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="711253125251727390" id="message-711253125251727390">
-                <div class="chatlog__content">
-                    <div class="markdown">Bit of a late reply but I&#39;m taking it this year <img class="emoji " alt="💀" title="💀" src="https://twemoji.maxcdn.com/2/72x72/1f480.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Bit of a late reply but I&#39;m taking it this year <img class="emoji " alt="💀" title="💀" src="https://twemoji.maxcdn.com/2/72x72/1f480.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -660,10 +678,341 @@ a {
     </div>
 </div>
 
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">12-Nov-20 01:08 AM</span>
+
+            <div class="chatlog__message " data-message-id="776131137328250881" id="message-776131137328250881">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Does anyone have past papers for DM?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="SPARK#9832" data-user-id="762740794770718801" style="color: rgb(230,126,34)">SPARK</span>
+
+
+        <span class="chatlog__timestamp">18-Nov-20 01:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="778309745660395590" id="message-778309745660395590">
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778309744711827466/DV3165_FINAL_EXAM_PAPER.pdf">
+                                        Attachment: DV3165_FINAL_EXAM_PAPER.pdf (74 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778310398280859678" id="message-778310398280859678">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Emailing DV3165 - Development management - 2011 Exam - Zone-A.pdf</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778310398021206027/DV3165_-_Development_management_-_2011_Exam_-_Zone-A.pdf">
+                                        Attachment: DV3165_-_Development_management_-_2011_Exam_-_Zone-A.pdf (73.71 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778310677886009374" id="message-778310677886009374">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Emailing DV3165 - Development management - 2011 Exam - Zone-B.pdf</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778310677655715910/DV3165_-_Development_management_-_2011_Exam_-_Zone-B.pdf">
+                                        Attachment: DV3165_-_Development_management_-_2011_Exam_-_Zone-B.pdf (70.24 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778310976613253130" id="message-778310976613253130">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Emailing DV3165 - Development management - 2013 Exam - Zone-A.pdf</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778310976419135528/DV3165_-_Development_management_-_2013_Exam_-_Zone-A.pdf">
+                                        Attachment: DV3165_-_Development_management_-_2013_Exam_-_Zone-A.pdf (15.09 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778311135602016276" id="message-778311135602016276">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Emailing DV3165 - Development management - 2013 Exam - Zone-B.pdf</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778311135316279306/DV3165_-_Development_management_-_2013_Exam_-_Zone-B.pdf">
+                                        Attachment: DV3165_-_Development_management_-_2013_Exam_-_Zone-B.pdf (16.41 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778311322415661166" id="message-778311322415661166">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Emailing DV3165 - Development management - 2014 Exam - Zone-A.pdf</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778311322235830335/DV3165_-_Development_management_-_2014_Exam_-_Zone-A.pdf">
+                                        Attachment: DV3165_-_Development_management_-_2014_Exam_-_Zone-A.pdf (29.1 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778311491873931314" id="message-778311491873931314">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Emailing DV3165 - Development management - 2014 Exam - Zone-B.pdf</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778311491732504577/DV3165_-_Development_management_-_2014_Exam_-_Zone-B.pdf">
+                                        Attachment: DV3165_-_Development_management_-_2014_Exam_-_Zone-B.pdf (13.15 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778311651123920936" id="message-778311651123920936">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Emailing DV3165 - Development management - 2015 Exam - Zone-A.pdf</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778311650583248951/DV3165_-_Development_management_-_2015_Exam_-_Zone-A.pdf">
+                                        Attachment: DV3165_-_Development_management_-_2015_Exam_-_Zone-A.pdf (77.19 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778311791616720988" id="message-778311791616720988">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Emailing DV3165 - Development management - 2015 Exam - Zone-B.pdf</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778311791384985620/DV3165_-_Development_management_-_2015_Exam_-_Zone-B.pdf">
+                                        Attachment: DV3165_-_Development_management_-_2015_Exam_-_Zone-B.pdf (78.03 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778312010395287644" id="message-778312010395287644">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Emailing DV3165 - Development management - 2016 Exam - Zone-A.pdf</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778312010387292230/DV3165_-_Development_management_-_2016_Exam_-_Zone-A.pdf">
+                                        Attachment: DV3165_-_Development_management_-_2016_Exam_-_Zone-A.pdf (21.55 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778312151269507163" id="message-778312151269507163">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Emailing DV3165 - Development management - 2016 Exam - Zone-B.pdf</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/667456502390325250/778312151189291048/DV3165_-_Development_management_-_2016_Exam_-_Zone-B.pdf">
+                                        Attachment: DV3165_-_Development_management_-_2016_Exam_-_Zone-B.pdf (13.57 KB)
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778312411597373481" id="message-778312411597373481">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">For the other papers pls share ur email ID</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">18-Nov-20 02:06 AM</span>
+
+            <div class="chatlog__message " data-message-id="778320090294124565" id="message-778320090294124565">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="SPARK#9832">@SPARK</span> thank you so much!!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778320117569290242" id="message-778320117569290242">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ilsatariq@hotmail.com</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="SPARK#9832" data-user-id="762740794770718801" style="color: rgb(230,126,34)">SPARK</span>
+
+
+        <span class="chatlog__timestamp">18-Nov-20 02:06 AM</span>
+
+            <div class="chatlog__message " data-message-id="778320220041248859" id="message-778320220041248859">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Give me a day and I will send them on mail.</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 3 message(s)</div>
+    <div class="postamble__entry">Exported 19 message(s)</div>
 </div>
 
 </body>

@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -611,31 +620,37 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">25-Jan-20 09:41 PM</span>
 
             <div class="chatlog__message chatlog__message--pinned" data-message-id="670624174334672906" id="message-670624174334672906">
-                <div class="chatlog__content">
-                    <div class="markdown">“Welcome to the University of London International Community (ULIC). A well-knit circuit of University of London students with visions, aims and abilities. 
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">“Welcome to the University of London International Community (ULIC). A well-knit circuit of University of London students with visions, aims and abilities. 
 
 A community established on December 20, 2019 through a WhatsApp group of a mere 15 students began soaring to 130 students from over 30 countries in just a month. It was overwhelming to see such positive responses from students with dreams and ambitions who had been experiencing a void and unexplainable disconnection in their college journey as external students. Hence, this community played a vital role in each individual’s development and growth— prompting one to feel heard, accepted and even challenged, in a healthy way. Due to an increasing number of students eager to be a part of ULIC, it became evident that such a diverse community ought to be expanded and brought forth to another level where an individual feels at home with a wide range of other opportunities, too. I thank our fellow member— Furqan Ali Bandukda, for aiding me in setting up this server as well as helping me execute the ideas and vision I had in mind. 
 
 This is your platform. It is your right to excel, express, participate, promote and interact just as how any other conventional college student can. 
 
-I hope all of us can achieve success, excellence and brilliance in our journey together as fellow batch-mates sharing a common ground.” — Ilsa Tariq </div>
-                </div>
+I hope all of us can achieve success, excellence and brilliance in our journey together as fellow batch-mates sharing a common ground.” — Ilsa Tariq</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
-            <div class="chatlog__message " data-message-id="670624249819430913" id="message-670624249819430913">
-                <div class="chatlog__content">
-                    <div class="markdown">ULIC’s fundamental core principles revolve around elements of morality, unity, tolerance and altruism. Abidance by the following rules and regulations is for the betterment of us all and mandatory in order for a large community to thrive smoothly. 
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="670624249819430913" id="message-670624249819430913">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ULIC’s fundamental core principles revolve around elements of morality, unity, tolerance and altruism. Abidance by the following rules and regulations is for the betterment of us all and mandatory in order for a large community to thrive smoothly. Members who violate any of the following rules will be kicked out/banned from the server. 
+
+ULIC Honor Code: 
 
 1️⃣ Any form of hate speech, bigotry and bullying will not be tolerated.
 
@@ -647,15 +662,17 @@ I hope all of us can achieve success, excellence and brilliance in our journey t
 
 5️⃣ Active participation is highly encouraged.
 
-6️⃣ Feel free to express any kind of concerns, issues or suggestions to Chief or Head Manager. Everything shall remain highly confidential and be given equal significance. 
+6️⃣ Feel free to express any kind of concerns, issues or suggestions to the Director or Head Manager. Everything shall remain highly confidential and be given equal significance. 
 
-7️⃣ Members given any nature of authoritative or management position must be democratic, respectful, unbiased and level-headed 
-towards members they are responsible for.
+7️⃣ Members given any nature of authoritative or management position must be democratic, respectful, unbiased and level-headed towards members they are responsible for.
 
 8️⃣ Strict action shall be taken against obscene and explicit expressions or material shared that cause discomfort and are highly offensive to the majority. 
 
-9️⃣ Please follow the allotted designations for each text channel, and keep general conversations reserved for the General Chat Channel. <span class="chatlog__edited-timestamp" title="31-Aug-20 08:21 PM">(edited)</span></div>
-                </div>
+9️⃣ Please follow the allotted designations for each text channel, and keep general conversations reserved for the General Chat Channel.</span>
+
+                                <span class="chatlog__edited-timestamp" title="27-Dec-20 12:24 AM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
@@ -666,18 +683,21 @@ towards members they are responsible for.
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">13-Feb-20 09:17 PM</span>
 
             <div class="chatlog__message " data-message-id="677503591925153802" id="message-677503591925153802">
-                <div class="chatlog__content">
-                    <div class="markdown">Here is the permanent invite link to this community if anyone would like to send it to their friends in UOL! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Here is the permanent invite link to this community if anyone would like to send it to their friends in UOL!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -697,9 +717,37 @@ towards members they are responsible for.
         <span class="chatlog__timestamp">19-Aug-20 07:48 AM</span>
 
             <div class="chatlog__message chatlog__message--pinned" data-message-id="745429011328532553" id="message-745429011328532553">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://discord.gg/6mne7zc">https://discord.gg/6mne7zc</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://discord.gg/6mne7zc">https://discord.gg/6mne7zc</a></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">25-Dec-20 08:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="791999846303137842" id="message-791999846303137842">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Pinned a message.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -710,7 +758,7 @@ towards members they are responsible for.
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 4 message(s)</div>
+    <div class="postamble__entry">Exported 5 message(s)</div>
 </div>
 
 </body>

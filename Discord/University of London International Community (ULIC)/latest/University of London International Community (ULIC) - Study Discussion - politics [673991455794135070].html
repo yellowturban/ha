@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -614,15 +623,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">24-Mar-20 10:45 PM</span>
 
             <div class="chatlog__message " data-message-id="692021366370861116" id="message-692021366370861116">
-                <div class="chatlog__content">
-                    <div class="markdown">Hiii. No one here? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hiii. No one here?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -633,18 +645,21 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/644223388742844416/ce3d3b253c3c1bc59663af7c2c325af9.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/644223388742844416/27665689a966b35a98a53b1308bbad88.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Butter Chicken Cassava#9831" data-user-id="644223388742844416" style="color: rgb(52,152,219)">Linh</span>
+        <span class="chatlog__author-name" title="butterchickencassava#9831" data-user-id="644223388742844416" style="color: rgb(2,15,85)">linh&#127483;&#127475;&#127474;&#127486;&#127467;&#127479;</span>
 
 
         <span class="chatlog__timestamp">26-Mar-20 05:29 PM</span>
 
             <div class="chatlog__message " data-message-id="692666459960377396" id="message-692666459960377396">
-                <div class="chatlog__content">
-                    <div class="markdown">As close as it gets, I&#39;m taking international development </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">As close as it gets, I&#39;m taking international development</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -664,9 +679,12 @@ a {
         <span class="chatlog__timestamp">26-Mar-20 09:37 PM</span>
 
             <div class="chatlog__message " data-message-id="692728838332874752" id="message-692728838332874752">
-                <div class="chatlog__content">
-                    <div class="markdown">I am taking politics <span class="mention" title="vaslian#5191">@vaslian</span>  but I don’t know if I can be of any help? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I am taking politics <span class="mention" title="vaslian#5191">@vaslian</span>  but I don’t know if I can be of any help?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -680,15 +698,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">28-Mar-20 06:13 AM</span>
 
             <div class="chatlog__message " data-message-id="693221182765269022" id="message-693221182765269022">
-                <div class="chatlog__content">
-                    <div class="markdown">Just saying hi. So, hi <span class="mention" title="Butter Chicken Cassava#9831">@Linh</span> and <span class="mention" title="atiqa#4049">@atiqa</span> ! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Just saying hi. So, hi <span class="mention" title="butterchickencassava#9831">@linh&#127483;&#127475;&#127474;&#127486;&#127467;&#127479;</span> and <span class="mention" title="atiqa#4049">@atiqa</span> !</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -708,9 +729,12 @@ a {
         <span class="chatlog__timestamp">29-Mar-20 05:09 AM</span>
 
             <div class="chatlog__message " data-message-id="693567437609631866" id="message-693567437609631866">
-                <div class="chatlog__content">
-                    <div class="markdown">Hiii <span class="mention" title="vaslian#5191">@vaslian</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hiii <span class="mention" title="vaslian#5191">@vaslian</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -730,9 +754,12 @@ a {
         <span class="chatlog__timestamp">31-Mar-20 11:05 PM</span>
 
             <div class="chatlog__message " data-message-id="694562903491215430" id="message-694562903491215430">
-                <div class="chatlog__content">
-                    <div class="markdown">3rd year politics and IR student here </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">3rd year politics and IR student here</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -746,15 +773,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">31-Mar-20 11:31 PM</span>
 
             <div class="chatlog__message " data-message-id="694569664898007080" id="message-694569664898007080">
-                <div class="chatlog__content">
-                    <div class="markdown">Oh cool. What modules have you taken? <span class="mention" title="sharky#5064">@sharky</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Oh cool. What modules have you taken? <span class="mention" title="sharky#5064">@sharky</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -774,22 +804,28 @@ a {
         <span class="chatlog__timestamp">01-Apr-20 03:55 AM</span>
 
             <div class="chatlog__message " data-message-id="694636065041940568" id="message-694636065041940568">
-                <div class="chatlog__content">
-                    <div class="markdown">For this year I&#39;ve took
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">For this year I&#39;ve took
 Comparative Politics
 International Political Economy
 Democracy and Democratisation
 Development Management
-International Organisations </div>
-                </div>
+International Organisations</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694636078719565956" id="message-694636078719565956">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="vaslian#5191">@vaslian</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="vaslian#5191">@vaslian</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -803,23 +839,29 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">01-Apr-20 04:00 AM</span>
 
             <div class="chatlog__message " data-message-id="694637309454188614" id="message-694637309454188614">
-                <div class="chatlog__content">
-                    <div class="markdown">that&#39;s five though. Are you allowed to sit five courses? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">that&#39;s five though. Are you allowed to sit five courses?</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694637380103045301" id="message-694637380103045301">
-                <div class="chatlog__content">
-                    <div class="markdown">I have democracy and democratisation as well </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I have democracy and democratisation as well</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -839,9 +881,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">01-Apr-20 04:02 AM</span>
 
             <div class="chatlog__message " data-message-id="694637815937499146" id="message-694637815937499146">
-                <div class="chatlog__content">
-                    <div class="markdown">Yeah, I only took 3 in my second year so got to take 5 in my last one <img class="emoji " alt="💀" title="💀" src="https://twemoji.maxcdn.com/2/72x72/1f480.png"> <span class="mention" title="vaslian#5191">@vaslian</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yeah, I only took 3 in my second year so got to take 5 in my last one <img class="emoji " alt="💀" title="💀" src="https://twemoji.maxcdn.com/2/72x72/1f480.png"> <span class="mention" title="vaslian#5191">@vaslian</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -855,23 +900,29 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">01-Apr-20 04:09 AM</span>
 
             <div class="chatlog__message " data-message-id="694639477615886416" id="message-694639477615886416">
-                <div class="chatlog__content">
-                    <div class="markdown">I had no idea you could do that </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I had no idea you could do that</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694639534582792323" id="message-694639534582792323">
-                <div class="chatlog__content">
-                    <div class="markdown">how&#39;s that working out for you? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">how&#39;s that working out for you?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -891,25 +942,35 @@ International Organisations </div>
         <span class="chatlog__timestamp">01-Apr-20 04:09 AM</span>
 
             <div class="chatlog__message " data-message-id="694639631139864648" id="message-694639631139864648">
-                <div class="chatlog__content">
-                    <div class="markdown">Well I didn&#39;t do it on purpose, I choked in my second year exams and only passed 3/4 modules so I had to take 5 in final year <span class="chatlog__edited-timestamp" title="01-Apr-20 04:11 AM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Well I didn&#39;t do it on purpose, I choked in my second year exams and only passed 3/4 modules so I had to take 5 in final year</span>
+
+                                <span class="chatlog__edited-timestamp" title="01-Apr-20 04:11 AM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694639735590617188" id="message-694639735590617188">
-                <div class="chatlog__content">
-                    <div class="markdown">It&#39;s alright, nothing a bit of hard work can&#39;t fix  <span class="mention" title="vaslian#5191">@vaslian</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It&#39;s alright, nothing a bit of hard work can&#39;t fix  <span class="mention" title="vaslian#5191">@vaslian</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694640078663712871" id="message-694640078663712871">
-                <div class="chatlog__content">
-                    <div class="markdown">You got any good books/readings for Democracy? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">You got any good books/readings for Democracy?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -923,23 +984,29 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">01-Apr-20 04:13 AM</span>
 
             <div class="chatlog__message " data-message-id="694640648304984164" id="message-694640648304984164">
-                <div class="chatlog__content">
-                    <div class="markdown">oh that&#39;s how. I understand </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">oh that&#39;s how. I understand</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694640716068159568" id="message-694640716068159568">
-                <div class="chatlog__content">
-                    <div class="markdown">depends on what you want to prepare for the exam. There&#39;s no single essential reading </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">depends on what you want to prepare for the exam. There&#39;s no single essential reading</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -959,25 +1026,34 @@ International Organisations </div>
         <span class="chatlog__timestamp">01-Apr-20 04:16 AM</span>
 
             <div class="chatlog__message " data-message-id="694641195661393922" id="message-694641195661393922">
-                <div class="chatlog__content">
-                    <div class="markdown">Don&#39;t suppose you have any books like they did for first and second year <span class="mention" title="vaslian#5191">@vaslian</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Don&#39;t suppose you have any books like they did for first and second year <span class="mention" title="vaslian#5191">@vaslian</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694641226598580275" id="message-694641226598580275">
-                <div class="chatlog__content">
-                    <div class="markdown">All I could find is articles and journals </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">All I could find is articles and journals</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694641264569745441" id="message-694641264569745441">
-                <div class="chatlog__content">
-                    <div class="markdown">Which aren&#39;t bad but they&#39;re too specific sometimes, </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Which aren&#39;t bad but they&#39;re too specific sometimes,</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -991,39 +1067,51 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">01-Apr-20 04:16 AM</span>
 
             <div class="chatlog__message " data-message-id="694641316168204319" id="message-694641316168204319">
-                <div class="chatlog__content">
-                    <div class="markdown">I mean, there are a few books like Dahl&#39;s Democracy and its critics, but it&#39;s not absolutely necessary </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I mean, there are a few books like Dahl&#39;s Democracy and its critics, but it&#39;s not absolutely necessary</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694641388695846992" id="message-694641388695846992">
-                <div class="chatlog__content">
-                    <div class="markdown">yeah they&#39;re too specific, that&#39;s true. This course was not easy to understand regarding the readings </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">yeah they&#39;re too specific, that&#39;s true. This course was not easy to understand regarding the readings</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694641472875659355" id="message-694641472875659355">
-                <div class="chatlog__content">
-                    <div class="markdown">but if you look for individual questions in the past papers, many have specific readings, which is helpful </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">but if you look for individual questions in the past papers, many have specific readings, which is helpful</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694641508761993266" id="message-694641508761993266">
-                <div class="chatlog__content">
-                    <div class="markdown">although it never hurts to expand a bit if you have the time </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">although it never hurts to expand a bit if you have the time</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1043,9 +1131,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">01-Apr-20 04:22 AM</span>
 
             <div class="chatlog__message " data-message-id="694642913195589783" id="message-694642913195589783">
-                <div class="chatlog__content">
-                    <div class="markdown">I&#39;ll have to look to find Robert Dahl&#39;s book, idk why but for some reason my Athens account is glitchy af. But thanks man, it&#39;ll all be sweet come July time. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;ll have to look to find Robert Dahl&#39;s book, idk why but for some reason my Athens account is glitchy af. But thanks man, it&#39;ll all be sweet come July time.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1059,31 +1150,40 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">01-Apr-20 04:24 AM</span>
 
             <div class="chatlog__message " data-message-id="694643396597514350" id="message-694643396597514350">
-                <div class="chatlog__content">
-                    <div class="markdown">hahaha. You can find that online </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">hahaha. You can find that online</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694643417367576606" id="message-694643417367576606">
-                <div class="chatlog__content">
-                    <div class="markdown">from the VLE </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">from the VLE</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="694643504781066341" id="message-694643504781066341">
-                <div class="chatlog__content">
-                    <div class="markdown">Athens accounts do not work anymore. You&#39;ll have to log into services through the UOL Online Library </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Athens accounts do not work anymore. You&#39;ll have to log into services through the UOL Online Library</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1103,17 +1203,23 @@ International Organisations </div>
         <span class="chatlog__timestamp">14-Apr-20 11:54 PM</span>
 
             <div class="chatlog__message " data-message-id="699648853602861156" id="message-699648853602861156">
-                <div class="chatlog__content">
-                    <div class="markdown">Hey!! Guyss? Were u able to find all the essential textbooks for PS1130 and PS1172? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey!! Guyss? Were u able to find all the essential textbooks for PS1130 and PS1172?</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="699649002903437322" id="message-699649002903437322">
-                <div class="chatlog__content">
-                    <div class="markdown">Specifically principles of comparative politics? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Specifically principles of comparative politics?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1133,9 +1239,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">15-Apr-20 07:33 PM</span>
 
             <div class="chatlog__message " data-message-id="699945518398439496" id="message-699945518398439496">
-                <div class="chatlog__content">
-                    <div class="markdown">yeah i’ve <span class="mention" title="atiqa#4049">@atiqa</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">yeah i’ve <span class="mention" title="atiqa#4049">@atiqa</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1155,17 +1264,23 @@ International Organisations </div>
         <span class="chatlog__timestamp">15-Apr-20 10:28 PM</span>
 
             <div class="chatlog__message " data-message-id="699989636986175488" id="message-699989636986175488">
-                <div class="chatlog__content">
-                    <div class="markdown">Do u have their pdfs? <span class="mention" title="Hosnain R Sunny#2301">@Hosnain R Sunny</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Do u have their pdfs? <span class="mention" title="Hosnain R Sunny#2301">@Hosnain R Sunny</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="699989679226749049" id="message-699989679226749049">
-                <div class="chatlog__content">
-                    <div class="markdown">Can u please send them here??? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Can u please send them here???</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1185,17 +1300,23 @@ International Organisations </div>
         <span class="chatlog__timestamp">15-Apr-20 10:29 PM</span>
 
             <div class="chatlog__message " data-message-id="699989778912903249" id="message-699989778912903249">
-                <div class="chatlog__content">
-                    <div class="markdown">yeah i’ve pdf </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">yeah i’ve pdf</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="699989861515526185" id="message-699989861515526185">
-                <div class="chatlog__content">
-                    <div class="markdown">give me your email id <span class="mention" title="atiqa#4049">@atiqa</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">give me your email id <span class="mention" title="atiqa#4049">@atiqa</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1215,17 +1336,23 @@ International Organisations </div>
         <span class="chatlog__timestamp">15-Apr-20 10:34 PM</span>
 
             <div class="chatlog__message " data-message-id="699991148336382002" id="message-699991148336382002">
-                <div class="chatlog__content">
-                    <div class="markdown">Atiqaakarim@gmail.com </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Atiqaakarim@gmail.com</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="699991182641594428" id="message-699991182641594428">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Hosnain R Sunny#2301">@Hosnain R Sunny</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Hosnain R Sunny#2301">@Hosnain R Sunny</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1245,9 +1372,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">15-Apr-20 10:36 PM</span>
 
             <div class="chatlog__message " data-message-id="699991464041775255" id="message-699991464041775255">
-                <div class="chatlog__content">
-                    <div class="markdown">thanks and plz check your mail after half an hour <span class="mention" title="atiqa#4049">@atiqa</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">thanks and plz check your mail after half an hour <span class="mention" title="atiqa#4049">@atiqa</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1267,9 +1397,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">15-Apr-20 10:44 PM</span>
 
             <div class="chatlog__message " data-message-id="699993642055630851" id="message-699993642055630851">
-                <div class="chatlog__content">
-                    <div class="markdown">Thankyouuuuu sooo muchh <span class="mention" title="Hosnain R Sunny#2301">@Hosnain R Sunny</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thankyouuuuu sooo muchh <span class="mention" title="Hosnain R Sunny#2301">@Hosnain R Sunny</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1289,9 +1422,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">15-Apr-20 11:50 PM</span>
 
             <div class="chatlog__message " data-message-id="700010241428815952" id="message-700010241428815952">
-                <div class="chatlog__content">
-                    <div class="markdown">sent to your mail <span class="mention" title="atiqa#4049">@atiqa</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">sent to your mail <span class="mention" title="atiqa#4049">@atiqa</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1311,17 +1447,23 @@ International Organisations </div>
         <span class="chatlog__timestamp">22-Apr-20 11:33 PM</span>
 
             <div class="chatlog__message " data-message-id="702542637684490260" id="message-702542637684490260">
-                <div class="chatlog__content">
-                    <div class="markdown">Can you please send me the PDF for comparative politics brother  <span class="mention" title="Hosnain R Sunny#2301">@Hosnain R Sunny</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Can you please send me the PDF for comparative politics brother  <span class="mention" title="Hosnain R Sunny#2301">@Hosnain R Sunny</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702542653308534867" id="message-702542653308534867">
-                <div class="chatlog__content">
-                    <div class="markdown">My email is oashraf1996@gmail.com </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">My email is oashraf1996@gmail.com</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1341,25 +1483,34 @@ International Organisations </div>
         <span class="chatlog__timestamp">07-May-20 11:27 AM</span>
 
             <div class="chatlog__message " data-message-id="707795813547376680" id="message-707795813547376680">
-                <div class="chatlog__content">
-                    <div class="markdown">Has anyone attempted the past papers? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Has anyone attempted the past papers?</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="707795876541890570" id="message-707795876541890570">
-                <div class="chatlog__content">
-                    <div class="markdown">If yes, can you share the answers? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">If yes, can you share the answers?</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="707795920082698321" id="message-707795920082698321">
-                <div class="chatlog__content">
-                    <div class="markdown">I am really confused about the format </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I am really confused about the format</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1379,9 +1530,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">07-May-20 09:34 PM</span>
 
             <div class="chatlog__message " data-message-id="707948424066236493" id="message-707948424066236493">
-                <div class="chatlog__content">
-                    <div class="markdown">There&#39;s past papers for the online exam? <span class="mention" title="atiqa#4049">@atiqa</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">There&#39;s past papers for the online exam? <span class="mention" title="atiqa#4049">@atiqa</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1401,17 +1555,23 @@ International Organisations </div>
         <span class="chatlog__timestamp">07-May-20 10:05 PM</span>
 
             <div class="chatlog__message " data-message-id="707956234271326279" id="message-707956234271326279">
-                <div class="chatlog__content">
-                    <div class="markdown">Idk that but I meant the practise questions given at the end of each chapter and the past exam papers on the vle </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Idk that but I meant the practise questions given at the end of each chapter and the past exam papers on the vle</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="707956458246897705" id="message-707956458246897705">
-                <div class="chatlog__content">
-                    <div class="markdown">Btw I think they are sticking to the same standard ppr for the online exam </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Btw I think they are sticking to the same standard ppr for the online exam</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1425,15 +1585,18 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">10-May-20 07:01 AM</span>
 
             <div class="chatlog__message " data-message-id="708816049121787905" id="message-708816049121787905">
-                <div class="chatlog__content">
-                    <div class="markdown">there are no definitive &#39;answers&#39; but you can see how to go about the questions on the examiners&#39; commentaries </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">there are no definitive &#39;answers&#39; but you can see how to go about the questions on the examiners&#39; commentaries</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1453,9 +1616,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">10-May-20 10:32 PM</span>
 
             <div class="chatlog__message " data-message-id="709050295149264958" id="message-709050295149264958">
-                <div class="chatlog__content">
-                    <div class="markdown">Okay thankyouuu <span class="mention" title="vaslian#5191">@vaslian</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Okay thankyouuu <span class="mention" title="vaslian#5191">@vaslian</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1469,15 +1635,18 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">11-May-20 08:27 PM</span>
 
             <div class="chatlog__message " data-message-id="709381187491332188" id="message-709381187491332188">
-                <div class="chatlog__content">
-                    <div class="markdown">don&#39;t forget to use real-world examples and offer your opinion on the argument </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">don&#39;t forget to use real-world examples and offer your opinion on the argument</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1503,9 +1672,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">15-May-20 04:38 AM</span>
 
             <div class="chatlog__message " data-message-id="710591891539755068" id="message-710591891539755068">
-                <div class="chatlog__content">
-                    <div class="markdown">2nd year BSc International Relations student from Pakistan here. Somehow managed to do really well in the first year. If anyone, especially a first year student, needs help with exam technique etc, please feel free to get in touch. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">2nd year BSc International Relations student from Pakistan here. Somehow managed to do really well in the first year. If anyone, especially a first year student, needs help with exam technique etc, please feel free to get in touch.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1525,9 +1697,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">17-May-20 12:06 AM</span>
 
             <div class="chatlog__message " data-message-id="711248229865357373" id="message-711248229865357373">
-                <div class="chatlog__content">
-                    <div class="markdown">How&#39;s your prep going? <span class="mention" title="vaslian#5191">@vaslian</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">How&#39;s your prep going? <span class="mention" title="vaslian#5191">@vaslian</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1541,15 +1716,18 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">17-May-20 04:14 AM</span>
 
             <div class="chatlog__message " data-message-id="711310717415981108" id="message-711310717415981108">
-                <div class="chatlog__content">
-                    <div class="markdown">good, I guess. I&#39;m slowly but steadily finishing all the topics I think are necessary. And you? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">good, I guess. I&#39;m slowly but steadily finishing all the topics I think are necessary. And you?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1569,33 +1747,45 @@ International Organisations </div>
         <span class="chatlog__timestamp">17-May-20 07:51 PM</span>
 
             <div class="chatlog__message " data-message-id="711546354098241536" id="message-711546354098241536">
-                <div class="chatlog__content">
-                    <div class="markdown">I&#39;m procrastinating hard af <span class="mention" title="vaslian#5191">@vaslian</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;m procrastinating hard af <span class="mention" title="vaslian#5191">@vaslian</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="711546384498688082" id="message-711546384498688082">
-                <div class="chatlog__content">
-                    <div class="markdown">Need to up my game <img class="emoji " alt="💀" title="💀" src="https://twemoji.maxcdn.com/2/72x72/1f480.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Need to up my game <img class="emoji " alt="💀" title="💀" src="https://twemoji.maxcdn.com/2/72x72/1f480.png"></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="711546429146923099" id="message-711546429146923099">
-                <div class="chatlog__content">
-                    <div class="markdown">But the exams being online handed me a big ass lifeline </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">But the exams being online handed me a big ass lifeline</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="711546474768367686" id="message-711546474768367686">
-                <div class="chatlog__content">
-                    <div class="markdown">If the exams took place rn I&#39;d be so scrrwed bro LOL </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">If the exams took place rn I&#39;d be so scrrwed bro LOL</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1609,23 +1799,29 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">17-May-20 09:14 PM</span>
 
             <div class="chatlog__message " data-message-id="711567269368561763" id="message-711567269368561763">
-                <div class="chatlog__content">
-                    <div class="markdown">Hahaha I get it man. It gave some people some time to catch up to what&#39;s necessary. I mean, I would have been able to catch up in time, but it&#39;s much easier this way, if we&#39;re honest </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hahaha I get it man. It gave some people some time to catch up to what&#39;s necessary. I mean, I would have been able to catch up in time, but it&#39;s much easier this way, if we&#39;re honest</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="711567331154984980" id="message-711567331154984980">
-                <div class="chatlog__content">
-                    <div class="markdown">Extra time never hurts I guess </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Extra time never hurts I guess</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1645,17 +1841,24 @@ International Organisations </div>
         <span class="chatlog__timestamp">17-May-20 09:19 PM</span>
 
             <div class="chatlog__message " data-message-id="711568705372422194" id="message-711568705372422194">
-                <div class="chatlog__content">
-                    <div class="markdown">Nope never haha </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Nope never haha</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="711568759445389313" id="message-711568759445389313">
-                <div class="chatlog__content">
-                    <div class="markdown">Glad they gave us the extra time lmfao <span class="chatlog__edited-timestamp" title="17-May-20 09:20 PM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Glad they gave us the extra time lmfao</span>
+
+                                <span class="chatlog__edited-timestamp" title="17-May-20 09:20 PM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
@@ -1681,9 +1884,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">18-May-20 04:47 AM</span>
 
             <div class="chatlog__message " data-message-id="711681262074593321" id="message-711681262074593321">
-                <div class="chatlog__content">
-                    <div class="markdown">Which topics do u think are necessary than the others <span class="mention" title="vaslian#5191">@vaslian</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Which topics do u think are necessary than the others <span class="mention" title="vaslian#5191">@vaslian</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1697,15 +1903,18 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">18-May-20 06:55 PM</span>
 
             <div class="chatlog__message " data-message-id="711894812831252523" id="message-711894812831252523">
-                <div class="chatlog__content">
-                    <div class="markdown">Are we talking comparative politics here? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Are we talking comparative politics here?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1725,10 +1934,13 @@ International Organisations </div>
         <span class="chatlog__timestamp">20-May-20 07:08 PM</span>
 
             <div class="chatlog__message " data-message-id="712622844424749107" id="message-712622844424749107">
-                <div class="chatlog__content">
-                    <div class="markdown"><div class="quote">Are we talking comparative politics here?
-</div><span class="mention" title="vaslian#5191">@vaslian</span>   I was talking about intro to political science </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote">Are we talking comparative politics here?
+</div><span class="mention" title="vaslian#5191">@vaslian</span>   I was talking about intro to political science</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1742,23 +1954,29 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">20-May-20 11:52 PM</span>
 
             <div class="chatlog__message " data-message-id="712694242224504902" id="message-712694242224504902">
-                <div class="chatlog__content">
-                    <div class="markdown">oh </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">oh</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="712694448668147834" id="message-712694448668147834">
-                <div class="chatlog__content">
-                    <div class="markdown">well, for one, you have Duverger&#39;s law </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">well, for one, you have Duverger&#39;s law</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1784,9 +2002,12 @@ International Organisations </div>
         <span class="chatlog__timestamp">18-Jul-20 06:54 PM</span>
 
             <div class="chatlog__message " data-message-id="734000117824356353" id="message-734000117824356353">
-                <div class="chatlog__content">
-                    <div class="markdown">Is anyone here taking comparative politics? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Is anyone here taking comparative politics?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1800,15 +2021,18 @@ International Organisations </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(173,20,87)">Romana &#127480;&#127472;</span>
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
 
 
         <span class="chatlog__timestamp">24-Sep-20 05:53 AM</span>
 
             <div class="chatlog__message " data-message-id="758445956689166407" id="message-758445956689166407">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> Hi! <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"><img class="emoji " alt="👋" title="👋" src="https://twemoji.maxcdn.com/2/72x72/1f44b.png"> I&#39;m going into my second year of BSc Politics and International relations. I received my results on Monday (Intro to IR - 63, Intro to Pol.sc. - 56, Intro to modern pol. thought - 54). I&#39;m very happy I passed but I would love to do better with 200 and 300 courses. Did you find 200 modules more difficult than 100 modules? What do you think must not be missing in a first class essay? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> Hi! <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"><img class="emoji " alt="👋" title="👋" src="https://twemoji.maxcdn.com/2/72x72/1f44b.png"> I&#39;m going into my second year of BSc Politics and International relations. I received my results on Monday (Intro to IR - 63, Intro to Pol.sc. - 56, Intro to modern pol. thought - 54). I&#39;m very happy I passed but I would love to do better with 200 and 300 courses. Did you find 200 modules more difficult than 100 modules? What do you think must not be missing in a first class essay?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1828,14 +2052,17 @@ International Organisations </div>
         <span class="chatlog__timestamp">24-Sep-20 10:38 AM</span>
 
             <div class="chatlog__message " data-message-id="758517799294468126" id="message-758517799294468126">
-                <div class="chatlog__content">
-                    <div class="markdown"><div class="quote"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> Hi! <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"><img class="emoji " alt="👋" title="👋" src="https://twemoji.maxcdn.com/2/72x72/1f44b.png"> I&#39;m going into my second year of BSc Politics and International relations. I received my results on Monday (Intro to IR - 63, Intro to Pol.sc. - 56, Intro to modern pol. thought - 54). I&#39;m very happy I passed but I would love to do better with 200 and 300 courses. Did you find 200 modules more difficult than 100 modules? What do you think must not be missing in a first class essay?
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> Hi! <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"><img class="emoji " alt="👋" title="👋" src="https://twemoji.maxcdn.com/2/72x72/1f44b.png"> I&#39;m going into my second year of BSc Politics and International relations. I received my results on Monday (Intro to IR - 63, Intro to Pol.sc. - 56, Intro to modern pol. thought - 54). I&#39;m very happy I passed but I would love to do better with 200 and 300 courses. Did you find 200 modules more difficult than 100 modules? What do you think must not be missing in a first class essay?
 </div><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> 
 
 congratulations on your result, esp on your intro to IR course. Well, the content obviously gets a bit more technical and detailed. I realised I couldn&#39;t go into 200 and 300 level courses without hvaing properly studied them. The overall answering technique, however, remains the same. 
 
-I will be better placed to comment on this when I get my results next week <img class="emoji " alt="😂" title="😂" src="https://twemoji.maxcdn.com/2/72x72/1f602.png"> <img class="emoji " alt="😅" title="😅" src="https://twemoji.maxcdn.com/2/72x72/1f605.png"> </div>
-                </div>
+I will be better placed to comment on this when I get my results next week <img class="emoji " alt="😂" title="😂" src="https://twemoji.maxcdn.com/2/72x72/1f602.png"> <img class="emoji " alt="😅" title="😅" src="https://twemoji.maxcdn.com/2/72x72/1f605.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1849,15 +2076,18 @@ I will be better placed to comment on this when I get my results next week <img 
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(173,20,87)">Romana &#127480;&#127472;</span>
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
 
 
         <span class="chatlog__timestamp">24-Sep-20 06:20 PM</span>
 
             <div class="chatlog__message " data-message-id="758633983478071326" id="message-758633983478071326">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> No worries at all you can reply later when you have your results <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> I hope you have done great! Fingers crossed <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> No worries at all you can reply later when you have your results <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> I hope you have done great! Fingers crossed <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1883,9 +2113,12 @@ I will be better placed to comment on this when I get my results next week <img 
         <span class="chatlog__timestamp">24-Sep-20 06:50 PM</span>
 
             <div class="chatlog__message " data-message-id="758641584274800640" id="message-758641584274800640">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> thank you! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> thank you!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1899,15 +2132,18 @@ I will be better placed to comment on this when I get my results next week <img 
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(173,20,87)">Romana &#127480;&#127472;</span>
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
 
 
         <span class="chatlog__timestamp">29-Sep-20 06:47 AM</span>
 
             <div class="chatlog__message " data-message-id="760271417358286888" id="message-760271417358286888">
-                <div class="chatlog__content">
-                    <div class="markdown">Hi everyone <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> has anyone here ever taken PS3088 Politics and policies of the European Union and if so, what were your thoughts on it, did you like the module? I&#39;m considering taking it this year since 2020/2021 is the last year the module will be available and it will be withdrawn afterwards. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi everyone <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> has anyone here ever taken PS3088 Politics and policies of the European Union and if so, what were your thoughts on it, did you like the module? I&#39;m considering taking it this year since 2020/2021 is the last year the module will be available and it will be withdrawn afterwards.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1927,15 +2163,18 @@ I will be better placed to comment on this when I get my results next week <img 
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="M.T.G#1394" data-user-id="675379370227138629" style="color: rgb(113,54,138)">M.T.G</span>
+        <span class="chatlog__author-name" title="M.T.G#1394" data-user-id="675379370227138629" style="color: rgb(230,126,34)">M.T.G</span>
 
 
         <span class="chatlog__timestamp">12-Oct-20 04:52 AM</span>
 
             <div class="chatlog__message " data-message-id="764953717870166037" id="message-764953717870166037">
-                <div class="chatlog__content">
-                    <div class="markdown">Hey does anyone have the pdf for International Political Economy&#39;s subject guide? Please let me know if anyone does </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey does anyone have the pdf for International Political Economy&#39;s subject guide? Please let me know if anyone does</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1946,18 +2185,21 @@ I will be better placed to comment on this when I get my results next week <img 
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">12-Oct-20 02:30 PM</span>
 
             <div class="chatlog__message " data-message-id="765099119777284116" id="message-765099119777284116">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="M.T.G#1394">@M.T.G</span> pm me your email </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="M.T.G#1394">@M.T.G</span> pm me your email</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1977,19 +2219,26 @@ I will be better placed to comment on this when I get my results next week <img 
         <span class="chatlog__timestamp">13-Oct-20 01:43 PM</span>
 
             <div class="chatlog__message " data-message-id="765449550843609098" id="message-765449550843609098">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> generally, 200 courses require more research and analysis than 100. But if you keep practicing past papers and have a good essay structure, then it is possible to score a distinction. 
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> generally, 200 courses require more research and analysis than 100. But if you keep practicing past papers and have a good essay structure, then it is possible to score a distinction. 
 
-PEA (Point, Example, Analysis) is a good way to write your essay. Also KIS (Keep it simple), you have to imagine that the examiner is a 10 year old and doesn&#39;t have much knowledge, so try to keep the essays simple and easy to read but make your points clear <span class="chatlog__edited-timestamp" title="13-Oct-20 01:48 PM">(edited)</span></div>
-                </div>
+PEA (Point, Example, Analysis) is a good way to write your essay. Also KIS (Keep it simple), you have to imagine that the examiner is a 10 year old and doesn&#39;t have much knowledge, so try to keep the essays simple and easy to read but make your points clear</span>
+
+                                <span class="chatlog__edited-timestamp" title="13-Oct-20 01:48 PM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="765450013274800188" id="message-765450013274800188">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> also, PS3088 is a great choice if you will be taking Comparative Politics or Democracy and Democratisation. In both those subjects, the EU is pretty much mandatory to study and almost every time you get 1 exam question about the EU and sovereignty </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> also, PS3088 is a great choice if you will be taking Comparative Politics or Democracy and Democratisation. In both those subjects, the EU is pretty much mandatory to study and almost every time you get 1 exam question about the EU and sovereignty</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -2003,15 +2252,18 @@ PEA (Point, Example, Analysis) is a good way to write your essay. Also KIS (Keep
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(173,20,87)">Romana &#127480;&#127472;</span>
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
 
 
         <span class="chatlog__timestamp">13-Oct-20 10:00 PM</span>
 
             <div class="chatlog__message " data-message-id="765574576112533545" id="message-765574576112533545">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="sharky#5064">@sharky</span> thank you so much for the advice! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="sharky#5064">@sharky</span> thank you so much for the advice!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -2031,17 +2283,23 @@ PEA (Point, Example, Analysis) is a good way to write your essay. Also KIS (Keep
         <span class="chatlog__timestamp">13-Oct-20 10:01 PM</span>
 
             <div class="chatlog__message " data-message-id="765574846993137665" id="message-765574846993137665">
-                <div class="chatlog__content">
-                    <div class="markdown">No problem,and best of luck <span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">No problem,and best of luck <span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="765574912206307388" id="message-765574912206307388">
-                <div class="chatlog__content">
-                    <div class="markdown">With hard work and good intentions, anything is possible </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">With hard work and good intentions, anything is possible</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -2061,11 +2319,14 @@ PEA (Point, Example, Analysis) is a good way to write your essay. Also KIS (Keep
         <span class="chatlog__timestamp">15-Oct-20 02:24 PM</span>
 
             <div class="chatlog__message " data-message-id="766184761608896533" id="message-766184761608896533">
-                <div class="chatlog__content">
-                    <div class="markdown"><div class="quote"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> No worries at all you can reply later when you have your results <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> I hope you have done great! Fingers crossed <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> No worries at all you can reply later when you have your results <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> I hope you have done great! Fingers crossed <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png">
 </div>&gt; 
-<span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> hello again, I just got the result for my last module and I guess I&#39;m in some positon to answer your questions now. Have you decided your modules yet? </div>
-                </div>
+<span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> hello again, I just got the result for my last module and I guess I&#39;m in some positon to answer your questions now. Have you decided your modules yet?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -2079,15 +2340,19 @@ PEA (Point, Example, Analysis) is a good way to write your essay. Also KIS (Keep
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(173,20,87)">Romana &#127480;&#127472;</span>
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
 
 
         <span class="chatlog__timestamp">16-Oct-20 03:18 AM</span>
 
             <div class="chatlog__message " data-message-id="766379441672683551" id="message-766379441672683551">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span>  Hi again!<img class="emoji " alt="👋" title="👋" src="https://twemoji.maxcdn.com/2/72x72/1f44b.png"><img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> I&#39;m glad you finally have all your results! Are you happy with the grades? I am definitely taking Comparative politics, Inter. pol. theory &amp; Democracy and democratisation. For the 4th module, I should be taking Nationalism and IR but I have logged an enquiry whether I could take Politics&amp;policies of the EU instead since this is the last year this module will be available (still waiting for the response). <span class="chatlog__edited-timestamp" title="16-Oct-20 03:18 AM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span>  Hi again!<img class="emoji " alt="👋" title="👋" src="https://twemoji.maxcdn.com/2/72x72/1f44b.png"><img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> I&#39;m glad you finally have all your results! Are you happy with the grades? I am definitely taking Comparative politics, Inter. pol. theory &amp; Democracy and democratisation. For the 4th module, I should be taking Nationalism and IR but I have logged an enquiry whether I could take Politics&amp;policies of the EU instead since this is the last year this module will be available (still waiting for the response).</span>
+
+                                <span class="chatlog__edited-timestamp" title="16-Oct-20 03:18 AM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
@@ -2107,16 +2372,19 @@ PEA (Point, Example, Analysis) is a good way to write your essay. Also KIS (Keep
         <span class="chatlog__timestamp">16-Oct-20 09:05 AM</span>
 
             <div class="chatlog__message " data-message-id="766466812929114112" id="message-766466812929114112">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> well, i did well but think it could have gone better. My modules for this year year were: 
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> well, i did well but think it could have gone better. My modules for this year year were: 
 - Int Pol Theory: 61
 - Int Pol Economy: 63
 - Foreign Policy Analysis: 70
 - Public Int Law: 72
 
 
-I was bummed about IPT because i thought I did really well. As for this year, I’ll be taking D&amp;D and Nationalism in IR. If you don’t mind me asking, what difference does it make if this is the last year of administration for this course? </div>
-                </div>
+I was bummed about IPT because i thought I did really well. As for this year, I’ll be taking D&amp;D and Nationalism in IR. If you don’t mind me asking, what difference does it make if this is the last year of administration for this course?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -2130,15 +2398,18 @@ I was bummed about IPT because i thought I did really well. As for this year, I�
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(173,20,87)">Romana &#127480;&#127472;</span>
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
 
 
         <span class="chatlog__timestamp">16-Oct-20 11:44 PM</span>
 
             <div class="chatlog__message " data-message-id="766688056707121162" id="message-766688056707121162">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> wow congratulations!! Those are amazing results even though you&#39;re saying you expected more for IPT. But still, you did great, have you already scored 70+ in the previous year for some modules? A couple more first class grades and you&#39;re heading towards a first class degree <img class="emoji " alt="😊" title="😊" src="https://twemoji.maxcdn.com/2/72x72/1f60a.png"> oh I&#39;m not sure, I just read in this year&#39;s regulations that Politics&amp;policies of the EU  will be available to study as a module for the last time in 2020/2021 and I just simply find it interesting and was initially planning taking it in my last year but since it won&#39;t be around then I&#39;d like go take it this year </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> wow congratulations!! Those are amazing results even though you&#39;re saying you expected more for IPT. But still, you did great, have you already scored 70+ in the previous year for some modules? A couple more first class grades and you&#39;re heading towards a first class degree <img class="emoji " alt="😊" title="😊" src="https://twemoji.maxcdn.com/2/72x72/1f60a.png"> oh I&#39;m not sure, I just read in this year&#39;s regulations that Politics&amp;policies of the EU  will be available to study as a module for the last time in 2020/2021 and I just simply find it interesting and was initially planning taking it in my last year but since it won&#39;t be around then I&#39;d like go take it this year</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -2152,15 +2423,440 @@ I was bummed about IPT because i thought I did really well. As for this year, I�
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="M.T.G#1394" data-user-id="675379370227138629" style="color: rgb(113,54,138)">M.T.G</span>
+        <span class="chatlog__author-name" title="M.T.G#1394" data-user-id="675379370227138629" style="color: rgb(230,126,34)">M.T.G</span>
 
 
         <span class="chatlog__timestamp">18-Oct-20 04:38 AM</span>
 
             <div class="chatlog__message " data-message-id="767124452928126976" id="message-767124452928126976">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> congratulations on that amazing result!! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> congratulations on that amazing result!!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="morgenthau#9618" data-user-id="710590242557788161" style="color: rgb(52,152,219)">morgenthau &#127477;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 06:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="768789254893076492" id="message-768789254893076492">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> congratulations on that amazing result!!
+</div><span class="mention" title="M.T.G#1394">@M.T.G</span> thank you!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="768790553969295361" id="message-768790553969295361">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> wow congratulations!! Those are amazing results even though you&#39;re saying you expected more for IPT. But still, you did great, have you already scored 70+ in the previous year for some modules? A couple more first class grades and you&#39;re heading towards a first class degree <img class="emoji " alt="😊" title="😊" src="https://twemoji.maxcdn.com/2/72x72/1f60a.png"> oh I&#39;m not sure, I just read in this year&#39;s regulations that Politics&amp;policies of the EU  will be available to study as a module for the last time in 2020/2021 and I just simply find it interesting and was initially planning taking it in my last year but since it won&#39;t be around then I&#39;d like go take it this year
+</div>&gt; 
+<span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> I see, makes sense to take it while you can then. I took one course like that in my first year, Human Geography. That year it was in its last offering as well. 
+
+I had three 70+ scores in my first year so hopefully I don&#39;t mess up in my final year</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 07:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="768797827961847818" id="message-768797827961847818">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> oh btw, can I ask, the Public International Law module - was the exam different because it was a law module? Was it proctored?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="morgenthau#9618" data-user-id="710590242557788161" style="color: rgb(52,152,219)">morgenthau &#127477;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-20 07:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="768799105320353833" id="message-768799105320353833">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">it wasn&#39;t proctored but it had a shorter time frame. Three hours and fifteen minutes</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="768799162761609246" id="message-768799162761609246">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">and instead of the usual 4 questions, we just had to attempt 2</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/684235320136695871/094d510a33061d6652ef618b93557f7a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="warrantlessEvil#5455" data-user-id="684235320136695871" style="color: rgb(52,152,219)">warrantlessEvil</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="783244230205898782" id="message-783244230205898782">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey anyone studying  International Political Economy want a buddy to help out or needing help reviewing their works ?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="M.T.G#1394" data-user-id="675379370227138629" style="color: rgb(230,126,34)">M.T.G</span>
+
+
+        <span class="chatlog__timestamp">02-Dec-20 05:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="783627567398649866" id="message-783627567398649866">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I study IPE and would really appreciate that! Altho I haven&#39;t attempted any essays yet</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/672306182546784276/6a11cb11d5723b94284c34b07dd4a160.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jorge Luis LDM#5237" data-user-id="672306182546784276" style="color: rgb(230,126,34)">Jorge Luis LDM</span>
+
+
+        <span class="chatlog__timestamp">04-Dec-20 02:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="784117293239369760" id="message-784117293239369760">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hello guys, does anyone have the pdf book of introduction to politics science?? Please<img class="emoji " alt="🙏" title="🙏" src="https://twemoji.maxcdn.com/2/72x72/1f64f.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">04-Dec-20 02:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="784122046585765908" id="message-784122046585765908">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Jorge Luis LDM#5237">@Jorge Luis LDM</span> which one? The &#39;Principles of comparative politics&#39;?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/672306182546784276/6a11cb11d5723b94284c34b07dd4a160.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jorge Luis LDM#5237" data-user-id="672306182546784276" style="color: rgb(230,126,34)">Jorge Luis LDM</span>
+
+
+        <span class="chatlog__timestamp">04-Dec-20 02:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="784122773651718155" id="message-784122773651718155">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span>, is there more than 1 book for intro to politics science?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">04-Dec-20 02:34 AM</span>
+
+            <div class="chatlog__message " data-message-id="784125409628520489" id="message-784125409628520489">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Well this one is the essential one but there is some further reading listed in ever chapter but it&#39;s mostly journals I think</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="784126577960550410" id="message-784126577960550410">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Sorry it won&#39;t let me send it here, are you in the UOL WhatsApp group?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="beatriz#4746" data-user-id="783881048621711370" style="color: rgb(52,152,219)">beatriz</span>
+
+
+        <span class="chatlog__timestamp">10-Dec-20 02:40 AM</span>
+
+            <div class="chatlog__message " data-message-id="786301168124952646" id="message-786301168124952646">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">hi all, can you please share with me the study guide for Intro to International Relations? my module is pending validation and I don&#39;t have access yet to it</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="786301180342566943" id="message-786301180342566943">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">thanks</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/672306182546784276/6a11cb11d5723b94284c34b07dd4a160.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jorge Luis LDM#5237" data-user-id="672306182546784276" style="color: rgb(230,126,34)">Jorge Luis LDM</span>
+
+
+        <span class="chatlog__timestamp">16-Dec-20 12:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="788620342540107806" id="message-788620342540107806">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> , hello, sorry If I am answer you in this moment, I am not in the UOL WhatsApp grupo <img class="emoji " alt="😞" title="😞" src="https://twemoji.maxcdn.com/2/72x72/1f61e.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">17-Dec-20 02:09 AM</span>
+
+            <div class="chatlog__message " data-message-id="788830184362475550" id="message-788830184362475550">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">@Jorge Luis LDM#5237 not a problem, here&#39;s the link (hope it&#39;s ok to share here)
+
+<a href="https://chat.whatsapp.com/LSUOBXWXsx01rOReYTcwko">https://chat.whatsapp.com/LSUOBXWXsx01rOReYTcwko</a>
+
+see if you can get in because last time some students tried to join it was already full because we reached the max no. of participants but there are always a few people leaving from time to time so you might still get in but if you can&#39;t I&#39;ll send you my number in DM so you can text me on WhatsApp and I&#39;ll send the book there</span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(27,166,145,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://chat.whatsapp.com/LSUOBXWXsx01rOReYTcwko">
+                                                    <div class="markdown preserve-whitespace">EMFSS UOL</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">WhatsApp Group Invite</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/789709492413136947/cc42555237111f188e462997964d29d3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="zilehuma &#127477;&#127472;&#127468;&#127463;#4986" data-user-id="789709492413136947" style="color: rgb(230,126,34)">zilehuma &#127477;&#127472;&#127468;&#127463;</span>
+
+
+        <span class="chatlog__timestamp">26-Dec-20 02:16 PM</span>
+
+            <div class="chatlog__message " data-message-id="792274685378297866" id="message-792274685378297866">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Guysss a special announcement for world history students , don&#39;t strive to find your study budy, 
+Because 
+I&#39;m going to make  dedicated group for world history IR1034 
+Only world history students can join that, those interested please dm me at +92 3366333012,
+ also share on every social media, UOL forum and discord</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="792274821043191821" id="message-792274821043191821">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey Romana, the group is actually full, but people can join the subject groups</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -2171,7 +2867,7 @@ I was bummed about IPT because i thought I did really well. As for this year, I�
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 87 message(s)</div>
+    <div class="postamble__entry">Exported 105 message(s)</div>
 </div>
 
 </body>

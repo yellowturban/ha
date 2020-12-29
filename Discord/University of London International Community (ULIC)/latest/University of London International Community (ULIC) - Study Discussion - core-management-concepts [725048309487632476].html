@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -620,17 +629,23 @@ a {
         <span class="chatlog__timestamp">24-Jun-20 02:04 AM</span>
 
             <div class="chatlog__message " data-message-id="725048641835892747" id="message-725048641835892747">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Anne#8876">@Anne</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Anne#8876">@Anne</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="725048774153470052" id="message-725048774153470052">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Simar#1370">@Simar</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Simar#1370">@Simar</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -644,15 +659,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/365870874458324992/641cf545eee651648d267cd9ab91e1d1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Tudor &#128142;#6584" data-user-id="365870874458324992" style="color: rgb(0,237,255)">Tudor &#128142;</span>
+        <span class="chatlog__author-name" title="Tudor &#128142;#6584" data-user-id="365870874458324992" style="color: rgb(230,126,34)">Tudor &#128142;</span>
 
 
         <span class="chatlog__timestamp">24-Jun-20 02:13 AM</span>
 
             <div class="chatlog__message " data-message-id="725050826120232993" id="message-725050826120232993">
-                <div class="chatlog__content">
-                    <div class="markdown">oOoh </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">oOoh</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -672,17 +690,23 @@ a {
         <span class="chatlog__timestamp">24-Jun-20 03:10 PM</span>
 
             <div class="chatlog__message " data-message-id="725246472169455626" id="message-725246472169455626">
-                <div class="chatlog__content">
-                    <div class="markdown">Yay thank you! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yay thank you!</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="725246623411732521" id="message-725246623411732521">
-                <div class="chatlog__content">
-                    <div class="markdown">Did anyone attend the webinar yesterday? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Did anyone attend the webinar yesterday?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -702,25 +726,34 @@ a {
         <span class="chatlog__timestamp">25-Jun-20 12:19 AM</span>
 
             <div class="chatlog__message " data-message-id="725384571855700008" id="message-725384571855700008">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span> thank you! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span> thank you!</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="725384649513238529" id="message-725384649513238529">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Simar#1370">@Simar</span> yup, I attended it </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Simar#1370">@Simar</span> yup, I attended it</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="725384667934490707" id="message-725384667934490707">
-                <div class="chatlog__content">
-                    <div class="markdown">did you? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">did you?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -740,9 +773,12 @@ a {
         <span class="chatlog__timestamp">25-Jun-20 12:51 AM</span>
 
             <div class="chatlog__message " data-message-id="725392610687975476" id="message-725392610687975476">
-                <div class="chatlog__content">
-                    <div class="markdown">If you guys have any other requests or suggestions feel free to @ me or simply message me directly. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">If you guys have any other requests or suggestions feel free to @ me or simply message me directly.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -762,17 +798,23 @@ a {
         <span class="chatlog__timestamp">25-Jun-20 05:48 PM</span>
 
             <div class="chatlog__message " data-message-id="725648719382577232" id="message-725648719382577232">
-                <div class="chatlog__content">
-                    <div class="markdown">will do! Thanks, <span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span>! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">will do! Thanks, <span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span>!</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="725648778568400966" id="message-725648778568400966">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://tenor.com/view/thank-you-blowing-kisses-muah-gif-11960820">https://tenor.com/view/thank-you-blowing-kisses-muah-gif-11960820</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://tenor.com/view/thank-you-blowing-kisses-muah-gif-11960820">https://tenor.com/view/thank-you-blowing-kisses-muah-gif-11960820</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -807,15 +849,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/365870874458324992/641cf545eee651648d267cd9ab91e1d1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Tudor &#128142;#6584" data-user-id="365870874458324992" style="color: rgb(0,237,255)">Tudor &#128142;</span>
+        <span class="chatlog__author-name" title="Tudor &#128142;#6584" data-user-id="365870874458324992" style="color: rgb(230,126,34)">Tudor &#128142;</span>
 
 
         <span class="chatlog__timestamp">25-Jun-20 05:53 PM</span>
 
             <div class="chatlog__message " data-message-id="725649990856343582" id="message-725649990856343582">
-                <div class="chatlog__content">
-                    <div class="markdown">mwah mwah </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">mwah mwah</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -835,17 +880,23 @@ a {
         <span class="chatlog__timestamp">25-Jun-20 06:02 PM</span>
 
             <div class="chatlog__message " data-message-id="725652115170525215" id="message-725652115170525215">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span> thanks! Yes but had to leave midway </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span> thanks! Yes but had to leave midway</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="725652131666853951" id="message-725652131666853951">
-                <div class="chatlog__content">
-                    <div class="markdown">Will watch the link </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Will watch the link</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -865,33 +916,45 @@ a {
         <span class="chatlog__timestamp">26-Jun-20 10:57 PM</span>
 
             <div class="chatlog__message " data-message-id="726088803747627109" id="message-726088803747627109">
-                <div class="chatlog__content">
-                    <div class="markdown">yup! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">yup!</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="726088897091600395" id="message-726088897091600395">
-                <div class="chatlog__content">
-                    <div class="markdown">The content bit wasn&#39;t as informative as I&#39;d hoped </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">The content bit wasn&#39;t as informative as I&#39;d hoped</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="726089065568534549" id="message-726089065568534549">
-                <div class="chatlog__content">
-                    <div class="markdown">but something is better than nothing I suppose </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">but something is better than nothing I suppose</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="726089083616755782" id="message-726089083616755782">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Simar#1370">@Simar</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Simar#1370">@Simar</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -911,17 +974,23 @@ a {
         <span class="chatlog__timestamp">04-Jul-20 05:01 PM</span>
 
             <div class="chatlog__message " data-message-id="728898230213148672" id="message-728898230213148672">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Simar#1370">@Simar</span> All the best with the upcoming exam on Monday! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Simar#1370">@Simar</span> All the best with the upcoming exam on Monday!</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="728898306503344211" id="message-728898306503344211">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://tenor.com/view/mean-girls-you-can-do-it-strong-gif-10739731">https://tenor.com/view/mean-girls-you-can-do-it-strong-gif-10739731</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://tenor.com/view/mean-girls-you-can-do-it-strong-gif-10739731">https://tenor.com/view/mean-girls-you-can-do-it-strong-gif-10739731</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -962,17 +1031,23 @@ a {
         <span class="chatlog__timestamp">05-Jul-20 12:16 AM</span>
 
             <div class="chatlog__message " data-message-id="729007818715430944" id="message-729007818715430944">
-                <div class="chatlog__content">
-                    <div class="markdown">Heyy thank you!! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Heyy thank you!!</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="729007847664386048" id="message-729007847664386048">
-                <div class="chatlog__content">
-                    <div class="markdown">You have it too right? <span class="mention" title="Anne#8876">@Anne</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">You have it too right? <span class="mention" title="Anne#8876">@Anne</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -992,9 +1067,12 @@ a {
         <span class="chatlog__timestamp">05-Jul-20 04:09 PM</span>
 
             <div class="chatlog__message " data-message-id="729247525130862613" id="message-729247525130862613">
-                <div class="chatlog__content">
-                    <div class="markdown">We can use the relevant examples in the guide book during the exam, right? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">We can use the relevant examples in the guide book during the exam, right?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1014,9 +1092,12 @@ a {
         <span class="chatlog__timestamp">05-Jul-20 04:22 PM</span>
 
             <div class="chatlog__message " data-message-id="729250953290579978" id="message-729250953290579978">
-                <div class="chatlog__content">
-                    <div class="markdown">the format for the answers is still intro+body+conclusion yeah? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">the format for the answers is still intro+body+conclusion yeah?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1036,26 +1117,35 @@ a {
         <span class="chatlog__timestamp">05-Jul-20 06:50 PM</span>
 
             <div class="chatlog__message " data-message-id="729288146726158376" id="message-729288146726158376">
-                <div class="chatlog__content">
-                    <div class="markdown"><div class="quote">You have it too right? <span class="mention" title="Anne#8876">@Anne</span>
-</div><span class="mention" title="Simar#1370">@Simar</span> Yup!! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote">You have it too right? <span class="mention" title="Anne#8876">@Anne</span>
+</div><span class="mention" title="Simar#1370">@Simar</span> Yup!!</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="729288318227054632" id="message-729288318227054632">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="nazanewbie#3315">@nazanewbie</span> from what I have understood, yes we can use examples from the guidebook (paraphrase it though to show your understanding) </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="nazanewbie#3315">@nazanewbie</span> from what I have understood, yes we can use examples from the guidebook (paraphrase it though to show your understanding)</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="729288446966890586" id="message-729288446966890586">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="ari#0832">@ari</span> Yup! for body you can have subheadings for different points (paragraphs) </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ari#0832">@ari</span> Yup! for body you can have subheadings for different points (paragraphs)</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1075,9 +1165,12 @@ a {
         <span class="chatlog__timestamp">05-Jul-20 08:00 PM</span>
 
             <div class="chatlog__message " data-message-id="729305796369973298" id="message-729305796369973298">
-                <div class="chatlog__content">
-                    <div class="markdown">thanks! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">thanks!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1089,9 +1182,12 @@ a {
                     </div>
             </div>
             <div class="chatlog__message " data-message-id="729305880331419759" id="message-729305880331419759">
-                <div class="chatlog__content">
-                    <div class="markdown">just hope everything fits in 600 words </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">just hope everything fits in 600 words</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1111,9 +1207,12 @@ a {
         <span class="chatlog__timestamp">05-Jul-20 08:31 PM</span>
 
             <div class="chatlog__message " data-message-id="729313495778197565" id="message-729313495778197565">
-                <div class="chatlog__content">
-                    <div class="markdown">Thanks for clarifying!! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thanks for clarifying!!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1139,9 +1238,12 @@ a {
         <span class="chatlog__timestamp">05-Jul-20 11:24 PM</span>
 
             <div class="chatlog__message " data-message-id="729357080439554079" id="message-729357080439554079">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://chat.whatsapp.com/AY2y0t6j4gd9foo6JGlXfd">https://chat.whatsapp.com/AY2y0t6j4gd9foo6JGlXfd</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://chat.whatsapp.com/AY2y0t6j4gd9foo6JGlXfd">https://chat.whatsapp.com/AY2y0t6j4gd9foo6JGlXfd</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -1153,12 +1255,12 @@ a {
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://chat.whatsapp.com/AY2y0t6j4gd9foo6JGlXfd">
-                                                    <div class="markdown">Mn2177 CMC</div>
+                                                    <div class="markdown preserve-whitespace">Mn2177 CMC</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">WhatsApp Group Invite</div>
+                                            <div class="markdown preserve-whitespace">WhatsApp Group Invite</div>
                                         </div>
 
                                 </div>
@@ -1176,9 +1278,12 @@ a {
 
             </div>
             <div class="chatlog__message " data-message-id="729357128841822261" id="message-729357128841822261">
-                <div class="chatlog__content">
-                    <div class="markdown">This is the whatsapp group link </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This is the whatsapp group link</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1198,10 +1303,13 @@ a {
         <span class="chatlog__timestamp">05-Jul-20 11:52 PM</span>
 
             <div class="chatlog__message " data-message-id="729363972880597013" id="message-729363972880597013">
-                <div class="chatlog__content">
-                    <div class="markdown"><div class="quote">just hope everything fits in 600 words
-</div><span class="mention" title="ari#0832">@ari</span> same!! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote">just hope everything fits in 600 words
+</div><span class="mention" title="ari#0832">@ari</span> same!!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1221,9 +1329,12 @@ a {
         <span class="chatlog__timestamp">06-Jul-20 02:16 AM</span>
 
             <div class="chatlog__message " data-message-id="729400403111968818" id="message-729400403111968818">
-                <div class="chatlog__content">
-                    <div class="markdown">i just joined haha probably too late but whatever </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">i just joined haha probably too late but whatever</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1243,17 +1354,23 @@ a {
         <span class="chatlog__timestamp">08-Jul-20 02:55 AM</span>
 
             <div class="chatlog__message " data-message-id="730134935771414611" id="message-730134935771414611">
-                <div class="chatlog__content">
-                    <div class="markdown">Did any of you receive a turnitin e-mail that shows you submit your exam paper at a time that is actually later than the time you upload it ? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Did any of you receive a turnitin e-mail that shows you submit your exam paper at a time that is actually later than the time you upload it ?</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="730135406347288598" id="message-730135406347288598">
-                <div class="chatlog__content">
-                    <div class="markdown">I uploaded my exam at 11.50 but the turnitin receipt says the submission was made at 12.40. That’s weird </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I uploaded my exam at 11.50 but the turnitin receipt says the submission was made at 12.40. That’s weird</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1273,33 +1390,45 @@ a {
         <span class="chatlog__timestamp">08-Jul-20 06:21 PM</span>
 
             <div class="chatlog__message " data-message-id="730368070958448651" id="message-730368070958448651">
-                <div class="chatlog__content">
-                    <div class="markdown">I had this prob as well! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I had this prob as well!</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="730368302949466142" id="message-730368302949466142">
-                <div class="chatlog__content">
-                    <div class="markdown">Received my vle notification  &amp; email that it was submitted before 12pm (BST) but the turnitin email reflects a different time after 12pm (BST) </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Received my vle notification  &amp; email that it was submitted before 12pm (BST) but the turnitin email reflects a different time after 12pm (BST)</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="730368584706162698" id="message-730368584706162698">
-                <div class="chatlog__content">
-                    <div class="markdown">i guess it takes time for the software to check </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">i guess it takes time for the software to check</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="730368790864330803" id="message-730368790864330803">
-                <div class="chatlog__content">
-                    <div class="markdown">is the turnitin email supposed to reflect the same time tho? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">is the turnitin email supposed to reflect the same time tho?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1319,17 +1448,23 @@ a {
         <span class="chatlog__timestamp">09-Jul-20 09:43 AM</span>
 
             <div class="chatlog__message " data-message-id="730599956783693885" id="message-730599956783693885">
-                <div class="chatlog__content">
-                    <div class="markdown">I am not sure :/ </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I am not sure :/</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="730600174149304330" id="message-730600174149304330">
-                <div class="chatlog__content">
-                    <div class="markdown">I hope it won’t be a problem </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I hope it won’t be a problem</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1349,9 +1484,12 @@ a {
         <span class="chatlog__timestamp">09-Jul-20 08:27 PM</span>
 
             <div class="chatlog__message " data-message-id="730761972802519103" id="message-730761972802519103">
-                <div class="chatlog__content">
-                    <div class="markdown">same:( </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">same:(</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1371,9 +1509,12 @@ a {
         <span class="chatlog__timestamp">29-Sep-20 04:59 PM</span>
 
             <div class="chatlog__message " data-message-id="760425582357118976" id="message-760425582357118976">
-                <div class="chatlog__content">
-                    <div class="markdown">Does cmc have a whatsapp group? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Does cmc have a whatsapp group?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1393,10 +1534,13 @@ a {
         <span class="chatlog__timestamp">29-Sep-20 07:02 PM</span>
 
             <div class="chatlog__message " data-message-id="760456540451897355" id="message-760456540451897355">
-                <div class="chatlog__content">
-                    <div class="markdown"><div class="quote"><a href="https://chat.whatsapp.com/AY2y0t6j4gd9foo6JGlXfd">https://chat.whatsapp.com/AY2y0t6j4gd9foo6JGlXfd</a>
-</div>this is the link to the CMC whatsapp grp that was last shared by <span class="mention" title="Simar#1370">@Simar</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote"><a href="https://chat.whatsapp.com/AY2y0t6j4gd9foo6JGlXfd">https://chat.whatsapp.com/AY2y0t6j4gd9foo6JGlXfd</a>
+</div>this is the link to the CMC whatsapp grp that was last shared by <span class="mention" title="Simar#1370">@Simar</span></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -1408,12 +1552,12 @@ a {
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://chat.whatsapp.com/AY2y0t6j4gd9foo6JGlXfd">
-                                                    <div class="markdown">WhatsApp Group Invite</div>
+                                                    <div class="markdown preserve-whitespace">WhatsApp Group Invite</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">WhatsApp Group Invite</div>
+                                            <div class="markdown preserve-whitespace">WhatsApp Group Invite</div>
                                         </div>
 
                                 </div>
@@ -1431,17 +1575,23 @@ a {
 
             </div>
             <div class="chatlog__message " data-message-id="760456580868735038" id="message-760456580868735038">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="sitarajayasundera#1659">@sitarajayasundera</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="sitarajayasundera#1659">@sitarajayasundera</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="760456692839743499" id="message-760456692839743499">
-                <div class="chatlog__content">
-                    <div class="markdown">not sure if the group is active though since I left after exams </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">not sure if the group is active though since I left after exams</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1461,9 +1611,12 @@ a {
         <span class="chatlog__timestamp">29-Sep-20 08:15 PM</span>
 
             <div class="chatlog__message " data-message-id="760474767005974529" id="message-760474767005974529">
-                <div class="chatlog__content">
-                    <div class="markdown">Umm I don&#39;t think it&#39;s working <span class="mention" title="Anne#8876">@Anne</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Umm I don&#39;t think it&#39;s working <span class="mention" title="Anne#8876">@Anne</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1483,9 +1636,12 @@ a {
         <span class="chatlog__timestamp">29-Sep-20 09:13 PM</span>
 
             <div class="chatlog__message " data-message-id="760489336901992448" id="message-760489336901992448">
-                <div class="chatlog__content">
-                    <div class="markdown">ooh i see.. maybe it was started for the 19/20 cmc students. so you could always get a new group going and share that on the vle forum and in the discord chat for those looking? <span class="mention" title="sitarajayasundera#1659">@sitarajayasundera</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ooh i see.. maybe it was started for the 19/20 cmc students. so you could always get a new group going and share that on the vle forum and in the discord chat for those looking? <span class="mention" title="sitarajayasundera#1659">@sitarajayasundera</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1505,9 +1661,12 @@ a {
         <span class="chatlog__timestamp">13-Oct-20 03:16 PM</span>
 
             <div class="chatlog__message " data-message-id="765473034130685962" id="message-765473034130685962">
-                <div class="chatlog__content">
-                    <div class="markdown">Is there a subject guide for Core Management Concepts? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Is there a subject guide for Core Management Concepts?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1521,15 +1680,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/697429365872656406/556c2d33d38e7fcd2a8da65549464961.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Mimi &#127462;&#127479;#3266" data-user-id="697429365872656406" style="color: rgb(52,152,219)">Mimi &#127462;&#127479;</span>
+        <span class="chatlog__author-name" title="Mimi &#127462;&#127479;#3266" data-user-id="697429365872656406" style="color: rgb(2,15,85)">Mimi &#127462;&#127479;</span>
 
 
         <span class="chatlog__timestamp">13-Oct-20 06:52 PM</span>
 
             <div class="chatlog__message " data-message-id="765527301940051969" id="message-765527301940051969">
-                <div class="chatlog__content">
-                    <div class="markdown">Yes! I believe the sent it in the general chat a few days ago </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yes! I believe the sent it in the general chat a few days ago</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1543,19 +1705,27 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="SPARK#9832" data-user-id="762740794770718801" style="color: rgb(109,19,41)">SPARK</span>
+        <span class="chatlog__author-name" title="SPARK#9832" data-user-id="762740794770718801" style="color: rgb(230,126,34)">SPARK</span>
 
 
         <span class="chatlog__timestamp">15-Oct-20 03:24 AM</span>
 
             <div class="chatlog__message " data-message-id="766018627060105296" id="message-766018627060105296">
-                <div class="chatlog__content">
-                    <div class="markdown">This is an older version. Latest is an online version. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This is an older version. Latest is an online version.</span>
+
+                        </div>
+                    </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/725048309487632476/766018626406055946/CMC_latest_study_guide.pdf">
-Attachment: CMC_latest_study_guide.pdf (1.17 MB)                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/725048309487632476/766018626406055946/CMC_latest_study_guide.pdf">
+                                        Attachment: CMC_latest_study_guide.pdf (1.17 MB)
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -1575,14 +1745,188 @@ Attachment: CMC_latest_study_guide.pdf (1.17 MB)                            </a>
         <span class="chatlog__timestamp">20-Oct-20 08:57 AM</span>
 
             <div class="chatlog__message " data-message-id="767914265587089428" id="message-767914265587089428">
-                <div class="chatlog__content">
-                    <div class="markdown"> </div>
-                </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/725048309487632476/767914264807473172/MN2177_Core_Management_Concepts.zip">
-Attachment: MN2177_Core_Management_Concepts.zip (7.57 MB)                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/725048309487632476/767914264807473172/MN2177_Core_Management_Concepts.zip">
+                                        Attachment: MN2177_Core_Management_Concepts.zip (7.57 MB)
+                                    </a>
+                            </div>
+                        </div>
                     </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="George_k#3625" data-user-id="750266592897531928" style="color: rgb(230,126,34)">George_k</span>
+
+
+        <span class="chatlog__timestamp">09-Nov-20 07:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="775322789031706655" id="message-775322789031706655">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hello, is there an active study group for CMC 20-21 session?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">26-Nov-20 10:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="781531768973033522" id="message-781531768973033522">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Anyone has notes for cmc?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781531803147436052" id="message-781531803147436052">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Or resources?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Muskaan#0533" data-user-id="784731456744325151" style="color: rgb(230,126,34)">Muskaan</span>
+
+
+        <span class="chatlog__timestamp">05-Dec-20 06:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="784734575259418644" id="message-784734575259418644">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey, is there any whatsapp group for ot?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="maliha#5676" data-user-id="786918016398000138" style="color: rgb(52,152,219)">maliha</span>
+
+
+        <span class="chatlog__timestamp">12-Dec-20 07:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="787272759742562314" id="message-787272759742562314">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Anyone having Cmc answer scripts for questions that are given at the end of each chapter?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/695075682195341313/f4ab563194705522cd3fe1cda768611d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="inciso2000#8051" data-user-id="695075682195341313" style="color: rgb(230,126,34)">inciso2000</span>
+
+
+        <span class="chatlog__timestamp">14-Dec-20 01:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="787919094505537589" id="message-787919094505537589">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hellooo! Is there any groupchat for this?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="787919184267837490" id="message-787919184267837490">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">anddd does anyone need/want a study partner? idk haha</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khan_94#8085" data-user-id="706080557460750426" style="color: rgb(230,126,34)">khan_94</span>
+
+
+        <span class="chatlog__timestamp">19-Dec-20 10:01 AM</span>
+
+            <div class="chatlog__message " data-message-id="789673641755017277" id="message-789673641755017277">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">hello everyone as a lot of us here or everyone that takes cmc i wanted to ask if someone is interested in like group discussion to cover this subject as this need a lot of understanding and integrating OT HRM and E-business which some of you might not know. lets make it easy and fun while we cover it.... <span class="mention" title="ilsatariq#4796">@Ilsa Tariq</span> what do u think</span>
+
+                        </div>
+                    </div>
+
 
 
             </div>
@@ -1592,7 +1936,7 @@ Attachment: MN2177_Core_Management_Concepts.zip (7.57 MB)                       
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 53 message(s)</div>
+    <div class="postamble__entry">Exported 61 message(s)</div>
 </div>
 
 </body>

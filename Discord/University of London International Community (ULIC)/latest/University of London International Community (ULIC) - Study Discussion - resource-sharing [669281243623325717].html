@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -612,18 +621,21 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">09-Feb-20 10:37 PM</span>
 
             <div class="chatlog__message chatlog__message--pinned" data-message-id="676074265027543072" id="message-676074265027543072">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://drive.google.com/folderview?id=1h6QTqpCGwghIPpb3dJ4rB8JLNs470QDw">https://drive.google.com/folderview?id=1h6QTqpCGwghIPpb3dJ4rB8JLNs470QDw</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://drive.google.com/folderview?id=1h6QTqpCGwghIPpb3dJ4rB8JLNs470QDw">https://drive.google.com/folderview?id=1h6QTqpCGwghIPpb3dJ4rB8JLNs470QDw</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -635,7 +647,7 @@ a {
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://drive.google.com/folderview?id=1h6QTqpCGwghIPpb3dJ4rB8JLNs470QDw">
-                                                    <div class="markdown">UOL - Google Drive</div>
+                                                    <div class="markdown preserve-whitespace">UOL - Google Drive</div>
                                                 </a>
                                         </div>
 
@@ -650,25 +662,34 @@ a {
 
             </div>
             <div class="chatlog__message chatlog__message--pinned" data-message-id="676074354085462035" id="message-676074354085462035">
-                <div class="chatlog__content">
-                    <div class="markdown">All past papers for (most) courses ^ </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">All past papers for (most) courses ^</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="676074373949423617" id="message-676074373949423617">
-                <div class="chatlog__content">
-                    <div class="markdown">Pinned a message. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Pinned a message.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="676074391045406751" id="message-676074391045406751">
-                <div class="chatlog__content">
-                    <div class="markdown">Pinned a message. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Pinned a message.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -679,18 +700,21 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/717ef3bb87df74fb535edbe17291e2d1.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="color: rgb(248,7,7)">Xzester</span>
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
 
 
         <span class="chatlog__timestamp">10-Feb-20 09:42 AM</span>
 
             <div class="chatlog__message " data-message-id="676241456175775754" id="message-676241456175775754">
-                <div class="chatlog__content">
-                    <div class="markdown">Great </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Great</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -704,15 +728,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="FN#3994" data-user-id="676089743288565760" style="color: rgb(0,237,255)">FN</span>
+        <span class="chatlog__author-name" title="FN#3994" data-user-id="676089743288565760" style="color: rgb(230,126,34)">FN</span>
 
 
         <span class="chatlog__timestamp">10-Feb-20 09:14 PM</span>
 
             <div class="chatlog__message " data-message-id="676415597864550400" id="message-676415597864550400">
-                <div class="chatlog__content">
-                    <div class="markdown">Thank you so much. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thank you so much.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -726,16 +753,19 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/159985870458322944/b50adff099924dd5e6b72d13f77eb9d7.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="MEE6#4876" data-user-id="159985870458322944" style="color: rgb(248,77,77)">MEE6</span>
+        <span class="chatlog__author-name" title="MEE6#4876" data-user-id="159985870458322944" style="color: rgb(31,139,76)">MEE6</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">10-Feb-20 09:14 PM</span>
 
             <div class="chatlog__message " data-message-id="676415598787559444" id="message-676415598787559444">
-                <div class="chatlog__content">
-                    <div class="markdown">GG <span class="mention" title="FN#3994">@FN</span>, you just advanced to level 1! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">GG <span class="mention" title="FN#3994">@FN</span>, you just advanced to level 1!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -749,15 +779,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="FN#3994" data-user-id="676089743288565760" style="color: rgb(0,237,255)">FN</span>
+        <span class="chatlog__author-name" title="FN#3994" data-user-id="676089743288565760" style="color: rgb(230,126,34)">FN</span>
 
 
         <span class="chatlog__timestamp">10-Feb-20 10:47 PM</span>
 
             <div class="chatlog__message " data-message-id="676439175574192161" id="message-676439175574192161">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://www.youtube.com/channel/UCRGXV1QlxZ8aucmE45tRx8w">https://www.youtube.com/channel/UCRGXV1QlxZ8aucmE45tRx8w</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://www.youtube.com/channel/UCRGXV1QlxZ8aucmE45tRx8w">https://www.youtube.com/channel/UCRGXV1QlxZ8aucmE45tRx8w</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -769,12 +802,12 @@ a {
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://www.youtube.com/channel/UCRGXV1QlxZ8aucmE45tRx8w">
-                                                    <div class="markdown">NancyPi</div>
+                                                    <div class="markdown preserve-whitespace">NancyPi</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">Nancy formerly of MathBFF has a new channel! All her videos moved here to NancyPi, and all her new videos will be here from now on! Thank you all for your su...</div>
+                                            <div class="markdown preserve-whitespace">Nancy formerly of MathBFF has a new channel! All her videos moved here to NancyPi, and all her new videos will be here from now on! Thank you all for your su...</div>
                                         </div>
 
                                 </div>
@@ -798,9 +831,12 @@ a {
                     </div>
             </div>
             <div class="chatlog__message " data-message-id="676439459125919754" id="message-676439459125919754">
-                <div class="chatlog__content">
-                    <div class="markdown">The above link has really good explanations on differentiation, limits, integration </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">The above link has really good explanations on differentiation, limits, integration</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -811,18 +847,21 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">10-Feb-20 10:54 PM</span>
 
             <div class="chatlog__message " data-message-id="676440839827881995" id="message-676440839827881995">
-                <div class="chatlog__content">
-                    <div class="markdown">Thanks for sharing! <span class="mention" title="FN#3994">@FN</span> put it up on the math channel too <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thanks for sharing! <span class="mention" title="FN#3994">@FN</span> put it up on the math channel too <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -836,23 +875,29 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="FN#3994" data-user-id="676089743288565760" style="color: rgb(0,237,255)">FN</span>
+        <span class="chatlog__author-name" title="FN#3994" data-user-id="676089743288565760" style="color: rgb(230,126,34)">FN</span>
 
 
         <span class="chatlog__timestamp">10-Feb-20 10:54 PM</span>
 
             <div class="chatlog__message " data-message-id="676440878629388288" id="message-676440878629388288">
-                <div class="chatlog__content">
-                    <div class="markdown">okay </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">okay</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="676441554784616479" id="message-676441554784616479">
-                <div class="chatlog__content">
-                    <div class="markdown">Where did you find the UoL past papers and notes……. They are really helpful. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Where did you find the UoL past papers and notes……. They are really helpful.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -863,18 +908,21 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">10-Feb-20 11:34 PM</span>
 
             <div class="chatlog__message " data-message-id="676450929637195827" id="message-676450929637195827">
-                <div class="chatlog__content">
-                    <div class="markdown">Glad to know! <span class="mention" title="FN#3994">@FN</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Glad to know! <span class="mention" title="FN#3994">@FN</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -885,18 +933,21 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/717ef3bb87df74fb535edbe17291e2d1.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="color: rgb(248,7,7)">Xzester</span>
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
 
 
         <span class="chatlog__timestamp">11-Feb-20 12:56 AM</span>
 
             <div class="chatlog__message " data-message-id="676471659275747338" id="message-676471659275747338">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="FN#3994">@FN</span> It&#39;s all there on VLE website </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="FN#3994">@FN</span> It&#39;s all there on VLE website</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -916,9 +967,12 @@ a {
         <span class="chatlog__timestamp">10-Apr-20 01:44 AM</span>
 
             <div class="chatlog__message " data-message-id="697864528049733634" id="message-697864528049733634">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="ilsatariq#4796">@ilsatariq</span>  Hello, dont you have principles of banking and finance and principles of accounting in this google drive you’ve shared ? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ilsatariq#4796">@Ilsa Tariq</span>  Hello, dont you have principles of banking and finance and principles of accounting in this google drive you’ve shared ?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -938,9 +992,12 @@ a {
         <span class="chatlog__timestamp">10-Apr-20 01:45 AM</span>
 
             <div class="chatlog__message " data-message-id="697864865607319562" id="message-697864865607319562">
-                <div class="chatlog__content">
-                    <div class="markdown">Both of those courses should be there with papers spanning around 10 years as well as other resources. <span class="mention" title="fizzakn#3064">@fizzakn</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Both of those courses should be there with papers spanning around 10 years as well as other resources. <span class="mention" title="fizzakn#3064">@fizzakn</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -960,9 +1017,12 @@ a {
         <span class="chatlog__timestamp">10-Apr-20 01:52 AM</span>
 
             <div class="chatlog__message " data-message-id="697866501683806249" id="message-697866501683806249">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span> yeah okay found it. Thanks ! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span> yeah okay found it. Thanks !</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -982,9 +1042,12 @@ a {
         <span class="chatlog__timestamp">11-Apr-20 08:47 AM</span>
 
             <div class="chatlog__message " data-message-id="698333295280390194" id="message-698333295280390194">
-                <div class="chatlog__content">
-                    <div class="markdown">Uol Google drive is extremely helpful. Thank you so much for sharing. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Uol Google drive is extremely helpful. Thank you so much for sharing.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1004,10 +1067,13 @@ a {
         <span class="chatlog__timestamp">23-May-20 10:18 PM</span>
 
             <div class="chatlog__message " data-message-id="713757686231072788" id="message-713757686231072788">
-                <div class="chatlog__content">
-                    <div class="markdown">Does anyone have the following article?
-Ghemawat, P. ‘Managing differences: the central challenge of global strategy’, Harvard Business Review March 2007, pp.42–55. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Does anyone have the following article?
+Ghemawat, P. ‘Managing differences: the central challenge of global strategy’, Harvard Business Review March 2007, pp.42–55.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1021,15 +1087,18 @@ Ghemawat, P. ‘Managing differences: the central challenge of global strategy�
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="amalina#8480" data-user-id="709309468701229063" style="color: rgb(162,98,98)">amalina</span>
+        <span class="chatlog__author-name" title="amalina#8480" data-user-id="709309468701229063" style="color: rgb(230,126,34)">amalina</span>
 
 
         <span class="chatlog__timestamp">23-May-20 11:55 PM</span>
 
             <div class="chatlog__message " data-message-id="713782247102087288" id="message-713782247102087288">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Deleted User#0000">@Deleted User</span> hey, I do have this if you want. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Deleted User#0000">@Deleted User</span> hey, I do have this if you want.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1040,18 +1109,21 @@ Ghemawat, P. ‘Managing differences: the central challenge of global strategy�
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">24-May-20 04:47 AM</span>
 
             <div class="chatlog__message " data-message-id="713855641713901588" id="message-713855641713901588">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="amalina#8480">@amalina</span> pm to me too! Thanks </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="amalina#8480">@amalina</span> pm to me too! Thanks</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1071,11 +1143,14 @@ Ghemawat, P. ‘Managing differences: the central challenge of global strategy�
         <span class="chatlog__timestamp">04-Jun-20 03:14 AM</span>
 
             <div class="chatlog__message " data-message-id="717818512281698334" id="message-717818512281698334">
-                <div class="chatlog__content">
-                    <div class="markdown">guys, in case you&#39;re looking for papers from journals etc and they&#39;re behind a paywall, simply use this website: <a href="https://sci-hub.tw">https://sci-hub.tw</a>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">guys, in case you&#39;re looking for papers from journals etc and they&#39;re behind a paywall, simply use this website: <a href="https://sci-hub.tw">https://sci-hub.tw</a>
 
-You&#39;ll need either the pmid, doi or the url of the paper to access and download it </div>
-                </div>
+You&#39;ll need either the pmid, doi or the url of the paper to access and download it</span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -1087,12 +1162,12 @@ You&#39;ll need either the pmid, doi or the url of the paper to access and downl
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://sci-hub.tw/">
-                                                    <div class="markdown">Sci-Hub: устраняя преграды на пути распространения знаний</div>
+                                                    <div class="markdown preserve-whitespace">Sci-Hub: устраняя преграды на пути распространения знаний</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">Первый в мире пиратский ресурс, который открыл массовый доступ к десяткам миллионов научных статей</div>
+                                            <div class="markdown preserve-whitespace">Первый в мире пиратский ресурс, который открыл массовый доступ к десяткам миллионов научных статей</div>
                                         </div>
 
                                 </div>
@@ -1116,9 +1191,13 @@ You&#39;ll need either the pmid, doi or the url of the paper to access and downl
                     </div>
             </div>
             <div class="chatlog__message " data-message-id="717818966105522195" id="message-717818966105522195">
-                <div class="chatlog__content">
-                    <div class="markdown">story behind the wesbite: <a href="https://en.wikipedia.org/wiki/Sci-Hub">https://en.wikipedia.org/wiki/Sci-Hub</a> <span class="chatlog__edited-timestamp" title="04-Jun-20 03:16 AM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">story behind the wesbite: <a href="https://en.wikipedia.org/wiki/Sci-Hub">https://en.wikipedia.org/wiki/Sci-Hub</a></span>
+
+                                <span class="chatlog__edited-timestamp" title="04-Jun-20 03:16 AM">(edited)</span>
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -1130,12 +1209,12 @@ You&#39;ll need either the pmid, doi or the url of the paper to access and downl
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://en.wikipedia.org/wiki/Sci-Hub">
-                                                    <div class="markdown">Sci-Hub</div>
+                                                    <div class="markdown preserve-whitespace">Sci-Hub</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">Sci-Hub is a website that provides free access to millions of research papers and books, without regard to copyright, by bypassing publishers&#39; paywalls in various ways.Sci-Hub was founded by Alexandra Elbakyan in 2011 in Kazakhstan in response to the high cost of research pape...</div>
+                                            <div class="markdown preserve-whitespace">Sci-Hub is a website that provides free access to millions of research papers and books, without regard to copyright, by bypassing publishers&#39; paywalls in various ways.Sci-Hub was founded by Alexandra Elbakyan in 2011 in Kazakhstan in response to the high cost of research pape...</div>
                                         </div>
 
                                 </div>
@@ -1166,15 +1245,18 @@ You&#39;ll need either the pmid, doi or the url of the paper to access and downl
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="FNS_4han#5397" data-user-id="580362465909407744" style="color: rgb(250,2,220)">FNS_4han</span>
+        <span class="chatlog__author-name" title="FNS_4han#5397" data-user-id="580362465909407744" style="color: rgb(230,126,34)">FNS_4han</span>
 
 
         <span class="chatlog__timestamp">09-Jun-20 01:14 AM</span>
 
             <div class="chatlog__message " data-message-id="719600303263055872" id="message-719600303263055872">
-                <div class="chatlog__content">
-                    <div class="markdown">anyone taking organisation theory this year? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">anyone taking organisation theory this year?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1188,15 +1270,18 @@ You&#39;ll need either the pmid, doi or the url of the paper to access and downl
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/672306182546784276/6a11cb11d5723b94284c34b07dd4a160.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Jorge Luis LDM#5237" data-user-id="672306182546784276" style="color: rgb(52,152,219)">Jorge Luis LDM</span>
+        <span class="chatlog__author-name" title="Jorge Luis LDM#5237" data-user-id="672306182546784276" style="color: rgb(230,126,34)">Jorge Luis LDM</span>
 
 
         <span class="chatlog__timestamp">14-Jun-20 12:01 PM</span>
 
             <div class="chatlog__message " data-message-id="721575118832271370" id="message-721575118832271370">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="ilsatariq#4796">@ilsatariq</span>#, thanks a lot for sharing all past papers!! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ilsatariq#4796">@Ilsa Tariq</span>#, thanks a lot for sharing all past papers!!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1216,10 +1301,13 @@ You&#39;ll need either the pmid, doi or the url of the paper to access and downl
         <span class="chatlog__timestamp">15-Jun-20 04:17 AM</span>
 
             <div class="chatlog__message " data-message-id="721820517660623018" id="message-721820517660623018">
-                <div class="chatlog__content">
-                    <div class="markdown">can some1 provide me with this article for Business and Management (MN1178), please?
-   Collings, D. and H. Scullion ‘Global staffing’, International Journal of Human Resources Management, Special issue 20(6) 2009, pp.1249–450. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">can some1 provide me with this article for Business and Management (MN1178), please?
+   Collings, D. and H. Scullion ‘Global staffing’, International Journal of Human Resources Management, Special issue 20(6) 2009, pp.1249–450.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1239,15 +1327,23 @@ You&#39;ll need either the pmid, doi or the url of the paper to access and downl
         <span class="chatlog__timestamp">15-Jun-20 07:17 PM</span>
 
             <div class="chatlog__message " data-message-id="722047146966253598" id="message-722047146966253598">
-                <div class="chatlog__content">
-                    <div class="markdown"><div class="quote">can some1 provide me with this article for Business and Management (MN1178), please?
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote">can some1 provide me with this article for Business and Management (MN1178), please?
    Collings, D. and H. Scullion ‘Global staffing’, International Journal of Human Resources Management, Special issue 20(6) 2009, pp.1249–450.
-</div><span class="mention" title="Deleted User#0000">@Deleted User</span> </div>
-                </div>
+</div><span class="mention" title="Deleted User#0000">@Deleted User</span></span>
+
+                        </div>
+                    </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/669281243623325717/722047146567663727/collings2009.pdf">
-Attachment: collings2009.pdf (72.18 KB)                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/669281243623325717/722047146567663727/collings2009.pdf">
+                                        Attachment: collings2009.pdf (72.18 KB)
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -1267,9 +1363,12 @@ Attachment: collings2009.pdf (72.18 KB)                            </a>
         <span class="chatlog__timestamp">15-Jun-20 07:41 PM</span>
 
             <div class="chatlog__message " data-message-id="722053063325515796" id="message-722053063325515796">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> thanks a lot! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> thanks a lot!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1295,9 +1394,12 @@ Attachment: collings2009.pdf (72.18 KB)                            </a>
         <span class="chatlog__timestamp">26-Jun-20 02:57 PM</span>
 
             <div class="chatlog__message " data-message-id="725967970043691018" id="message-725967970043691018">
-                <div class="chatlog__content">
-                    <div class="markdown">bro you are a legend for sharing that <span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">bro you are a legend for sharing that <span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1323,10 +1425,13 @@ Attachment: collings2009.pdf (72.18 KB)                            </a>
         <span class="chatlog__timestamp">27-Jun-20 10:17 AM</span>
 
             <div class="chatlog__message " data-message-id="726259964209004604" id="message-726259964209004604">
-                <div class="chatlog__content">
-                    <div class="markdown"><div class="quote">bro you are a legend for sharing that <span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span>
-</div><span class="mention" title="sharky#5064">@sharky</span> glad to have helped bro </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote">bro you are a legend for sharing that <span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span>
+</div><span class="mention" title="sharky#5064">@sharky</span> glad to have helped bro</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1346,33 +1451,45 @@ Attachment: collings2009.pdf (72.18 KB)                            </a>
         <span class="chatlog__timestamp">28-Jun-20 03:13 PM</span>
 
             <div class="chatlog__message " data-message-id="726696686474493962" id="message-726696686474493962">
-                <div class="chatlog__content">
-                    <div class="markdown">Sorry for being unable to share this earlier, I know those taking MN1178 were unable to access some news articles, especially those in the Harvard Business Review, because they were behind paywalls </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Sorry for being unable to share this earlier, I know those taking MN1178 were unable to access some news articles, especially those in the Harvard Business Review, because they were behind paywalls</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="726696801364738090" id="message-726696801364738090">
-                <div class="chatlog__content">
-                    <div class="markdown">I just discovered this browser extension today while trying to access a reading for IR2137 </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I just discovered this browser extension today while trying to access a reading for IR2137</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="726696947741753424" id="message-726696947741753424">
-                <div class="chatlog__content">
-                    <div class="markdown">It allows you to bypass paywalls on news websites </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It allows you to bypass paywalls on news websites</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="726697034928881665" id="message-726697034928881665">
-                <div class="chatlog__content">
-                    <div class="markdown">The extension is available for Chrome and Firefox, and you can download it here: <a href="https://github.com/iamadamdev/bypass-paywalls-chrome">https://github.com/iamadamdev/bypass-paywalls-chrome</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">The extension is available for Chrome and Firefox, and you can download it here: <a href="https://github.com/iamadamdev/bypass-paywalls-chrome">https://github.com/iamadamdev/bypass-paywalls-chrome</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -1384,12 +1501,12 @@ Attachment: collings2009.pdf (72.18 KB)                            </a>
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://github.com/iamadamdev/bypass-paywalls-chrome">
-                                                    <div class="markdown">iamadamdev/bypass-paywalls-chrome</div>
+                                                    <div class="markdown preserve-whitespace">iamadamdev/bypass-paywalls-chrome</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">Bypass Paywalls web browser extension for Chrome and Firefox. - iamadamdev/bypass-paywalls-chrome</div>
+                                            <div class="markdown preserve-whitespace">Bypass Paywalls web browser extension for Chrome and Firefox. - iamadamdev/bypass-paywalls-chrome</div>
                                         </div>
 
                                 </div>
@@ -1421,15 +1538,18 @@ Attachment: collings2009.pdf (72.18 KB)                            </a>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/581545518824685629/9c334fdedda6715fa3df3085d978118a.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Chimere#0530" data-user-id="581545518824685629" style="color: rgb(0,237,255)">CCC</span>
+        <span class="chatlog__author-name" title="Chimere#0530" data-user-id="581545518824685629" style="color: rgb(230,126,34)">CCC</span>
 
 
         <span class="chatlog__timestamp">28-Jun-20 04:09 PM</span>
 
             <div class="chatlog__message " data-message-id="726710791667187769" id="message-726710791667187769">
-                <div class="chatlog__content">
-                    <div class="markdown">+ </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">+</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1449,9 +1569,12 @@ Attachment: collings2009.pdf (72.18 KB)                            </a>
         <span class="chatlog__timestamp">28-Jun-20 04:39 PM</span>
 
             <div class="chatlog__message " data-message-id="726718346271129693" id="message-726718346271129693">
-                <div class="chatlog__content">
-                    <div class="markdown">wow thank you!!!!!! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">wow thank you!!!!!!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1462,18 +1585,21 @@ Attachment: collings2009.pdf (72.18 KB)                            </a>
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">30-Jun-20 02:47 AM</span>
 
             <div class="chatlog__message " data-message-id="727233887071240313" id="message-727233887071240313">
-                <div class="chatlog__content">
-                    <div class="markdown">Thanks for sharing! <span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thanks for sharing! <span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1490,18 +1616,21 @@ Attachment: collings2009.pdf (72.18 KB)                            </a>
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="annyeong#5927" data-user-id="709209441085685790" style="color: rgb(0,237,255)">annyeong</span>
+        <span class="chatlog__author-name" title="Cindy#2121" data-user-id="709209441085685790" style="color: rgb(230,126,34)">Cindy</span>
 
 
         <span class="chatlog__timestamp">30-Jun-20 05:27 PM</span>
 
             <div class="chatlog__message " data-message-id="727455337967386625" id="message-727455337967386625">
-                <div class="chatlog__content">
-                    <div class="markdown">does anyone have past yr paper of asset pricing, corporate finance, and managerial econs? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">does anyone have past yr paper of asset pricing, corporate finance, and managerial econs?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1521,36 +1650,48 @@ Attachment: collings2009.pdf (72.18 KB)                            </a>
         <span class="chatlog__timestamp">30-Jun-20 07:37 PM</span>
 
             <div class="chatlog__message " data-message-id="727488002024144897" id="message-727488002024144897">
-                <div class="chatlog__content">
-                    <div class="markdown"><div class="quote">does anyone have past yr paper of asset pricing, corporate finance, and managerial econs?
-</div><span class="mention" title="annyeong#5927">@annyeong</span> 
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote">does anyone have past yr paper of asset pricing, corporate finance, and managerial econs?
+</div><span class="mention" title="Cindy#2121">@Cindy</span> 
 
-managerial economics: <a href="https://emfss.elearning.london.ac.uk/mod/book/view.php?id=28754&chapterid=7992">https://emfss.elearning.london.ac.uk/mod/book/view.php?id=28754&amp;chapterid=7992</a> </div>
-                </div>
+managerial economics: <a href="https://emfss.elearning.london.ac.uk/mod/book/view.php?id=28754&chapterid=7992">https://emfss.elearning.london.ac.uk/mod/book/view.php?id=28754&amp;chapterid=7992</a></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="727488119502536734" id="message-727488119502536734">
-                <div class="chatlog__content">
-                    <div class="markdown">Asset pricing: <a href="https://emfss.elearning.london.ac.uk/mod/book/view.php?id=30334&chapterid=9396">https://emfss.elearning.london.ac.uk/mod/book/view.php?id=30334&amp;chapterid=9396</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Asset pricing: <a href="https://emfss.elearning.london.ac.uk/mod/book/view.php?id=30334&chapterid=9396">https://emfss.elearning.london.ac.uk/mod/book/view.php?id=30334&amp;chapterid=9396</a></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="727488237660012555" id="message-727488237660012555">
-                <div class="chatlog__content">
-                    <div class="markdown">corporate finance: <a href="https://emfss.elearning.london.ac.uk/mod/book/view.php?id=23144&chapterid=2682">https://emfss.elearning.london.ac.uk/mod/book/view.php?id=23144&amp;chapterid=2682</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">corporate finance: <a href="https://emfss.elearning.london.ac.uk/mod/book/view.php?id=23144&chapterid=2682">https://emfss.elearning.london.ac.uk/mod/book/view.php?id=23144&amp;chapterid=2682</a></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="727488282786660452" id="message-727488282786660452">
-                <div class="chatlog__content">
-                    <div class="markdown">Please click links after you have logged onto the VLE </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Please click links after you have logged onto the VLE</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1561,18 +1702,21 @@ managerial economics: <a href="https://emfss.elearning.london.ac.uk/mod/book/vie
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="annyeong#5927" data-user-id="709209441085685790" style="color: rgb(0,237,255)">annyeong</span>
+        <span class="chatlog__author-name" title="Cindy#2121" data-user-id="709209441085685790" style="color: rgb(230,126,34)">Cindy</span>
 
 
         <span class="chatlog__timestamp">30-Jun-20 07:43 PM</span>
 
             <div class="chatlog__message " data-message-id="727489504335888465" id="message-727489504335888465">
-                <div class="chatlog__content">
-                    <div class="markdown">Thankyouu <span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thankyouu <span class="mention" title="morgenthau#9618">@morgenthau &#127477;&#127472;</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1592,9 +1736,12 @@ managerial economics: <a href="https://emfss.elearning.london.ac.uk/mod/book/vie
         <span class="chatlog__timestamp">08-Jul-20 11:39 PM</span>
 
             <div class="chatlog__message " data-message-id="730448006796673116" id="message-730448006796673116">
-                <div class="chatlog__content">
-                    <div class="markdown">Can anyone find me this book? <a href="https://www.amazon.com/Emotional-Intelligence-Everyday-Joseph-Ciarrochi/dp/1841690279">https://www.amazon.com/Emotional-Intelligence-Everyday-Joseph-Ciarrochi/dp/1841690279</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Can anyone find me this book? <a href="https://www.amazon.com/Emotional-Intelligence-Everyday-Joseph-Ciarrochi/dp/1841690279">https://www.amazon.com/Emotional-Intelligence-Everyday-Joseph-Ciarrochi/dp/1841690279</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -1606,12 +1753,12 @@ managerial economics: <a href="https://emfss.elearning.london.ac.uk/mod/book/vie
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://www.amazon.com/Emotional-Intelligence-Everyday-Joseph-Ciarrochi/dp/1841690279">
-                                                    <div class="markdown">Emotional Intelligence in Everyday Life: Ciarrochi, Joseph, Forgas,...</div>
+                                                    <div class="markdown preserve-whitespace">Emotional Intelligence in Everyday Life: Ciarrochi, Joseph, Forgas,...</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">Emotional Intelligence in Everyday Life [Ciarrochi, Joseph, Forgas, Joseph P., Mayer, John D.] on Amazon.com. <em>FREE</em> shipping on qualifying offers. Emotional Intelligence in Everyday Life</div>
+                                            <div class="markdown preserve-whitespace">Emotional Intelligence in Everyday Life [Ciarrochi, Joseph, Forgas, Joseph P., Mayer, John D.] on Amazon.com. <em>FREE</em> shipping on qualifying offers. Emotional Intelligence in Everyday Life</div>
                                         </div>
 
                                 </div>
@@ -1632,16 +1779,19 @@ managerial economics: <a href="https://emfss.elearning.london.ac.uk/mod/book/vie
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="komal_advani#3785" data-user-id="696307000166055986" style="color: rgb(233,30,99)">komal_advani</span>
+        <span class="chatlog__author-name" title="komal_advani#3785" data-user-id="696307000166055986" style="color: rgb(230,126,34)">komal_advani</span>
 
 
         <span class="chatlog__timestamp">11-Jul-20 02:44 AM</span>
 
             <div class="chatlog__message " data-message-id="731219426149531650" id="message-731219426149531650">
-                <div class="chatlog__content">
-                    <div class="markdown">those students who are in SIM any course please share me SOLN of 2020 mock paper =AUDIT AND ASSURANCE
-sim mock 2020 question paper is in vle WITHOUT any solution </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">those students who are in SIM any course please share me SOLN of 2020 mock paper =AUDIT AND ASSURANCE
+sim mock 2020 question paper is in vle WITHOUT any solution</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1655,15 +1805,18 @@ sim mock 2020 question paper is in vle WITHOUT any solution </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/510378590572118016/bc2b4976d63c3ed215fc2cf22a93ec6a.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="owl#0614" data-user-id="510378590572118016" style="color: rgb(0,237,255)">&#127480;&#127468;</span>
+        <span class="chatlog__author-name" title="owl#0614" data-user-id="510378590572118016" style="color: rgb(230,126,34)">&#127480;&#127468;</span>
 
 
         <span class="chatlog__timestamp">13-Jul-20 09:30 PM</span>
 
             <div class="chatlog__message " data-message-id="732227423265095690" id="message-732227423265095690">
-                <div class="chatlog__content">
-                    <div class="markdown">Anyone has audit and assurance notes can share with me? After your exams. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Anyone has audit and assurance notes can share with me? After your exams.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1677,15 +1830,18 @@ sim mock 2020 question paper is in vle WITHOUT any solution </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/697198573896335381/b5484b9e0adf2ea4f7eaa9bfd35b5bd5.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="tanishbhai#1572" data-user-id="697198573896335381" style="color: rgb(52,152,219)">tanishbhai</span>
+        <span class="chatlog__author-name" title="tanz#1572" data-user-id="697198573896335381" style="color: rgb(52,152,219)">tanz</span>
 
 
         <span class="chatlog__timestamp">15-Jul-20 06:41 PM</span>
 
             <div class="chatlog__message " data-message-id="732909692409479219" id="message-732909692409479219">
-                <div class="chatlog__content">
-                    <div class="markdown">Does anyone have Asset pricing and macroeconomics notes? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Does anyone have Asset pricing and macroeconomics notes?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1699,16 +1855,20 @@ sim mock 2020 question paper is in vle WITHOUT any solution </div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="needed88#7717" data-user-id="750267933317529600" style="color: rgb(250,2,220)">needed88</span>
+        <span class="chatlog__author-name" title="needed88#7717" data-user-id="750267933317529600" style="color: rgb(230,126,34)">needed88</span>
 
 
         <span class="chatlog__timestamp">06-Sep-20 11:41 PM</span>
 
             <div class="chatlog__message " data-message-id="752191777586544730" id="message-752191777586544730">
-                <div class="chatlog__content">
-                    <div class="markdown">Hi there, can anyone send me the Study Guides to the following courses?
-Management and innovation of e-business (IS3167) <span class="chatlog__edited-timestamp" title="14-Sep-20 10:31 PM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi there, can anyone send me the Study Guides to the following courses?
+Management and innovation of e-business (IS3167)</span>
+
+                                <span class="chatlog__edited-timestamp" title="14-Sep-20 10:31 PM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
@@ -1728,9 +1888,12 @@ Management and innovation of e-business (IS3167) <span class="chatlog__edited-ti
         <span class="chatlog__timestamp">13-Sep-20 04:58 AM</span>
 
             <div class="chatlog__message " data-message-id="754445983676497970" id="message-754445983676497970">
-                <div class="chatlog__content">
-                    <div class="markdown">Does anyone have the answer booklet/ppt for Christopher Dougherty (Econometrics) ? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Does anyone have the answer booklet/ppt for Christopher Dougherty (Econometrics) ?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1744,15 +1907,18 @@ Management and innovation of e-business (IS3167) <span class="chatlog__edited-ti
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/626181946686570498/e5cfd7d57337be2b4cbd91f660cae7ff.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Jamie#2269" data-user-id="626181946686570498" style="color: rgb(250,2,220)">Jay</span>
+        <span class="chatlog__author-name" title="Jamie#2269" data-user-id="626181946686570498" style="color: rgb(230,126,34)">Jay</span>
 
 
         <span class="chatlog__timestamp">14-Sep-20 02:46 AM</span>
 
             <div class="chatlog__message " data-message-id="754775147977638072" id="message-754775147977638072">
-                <div class="chatlog__content">
-                    <div class="markdown">does anyone have Introduction to Industrial Organization (Cabral)? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">does anyone have Introduction to Industrial Organization (Cabral)?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1766,15 +1932,18 @@ Management and innovation of e-business (IS3167) <span class="chatlog__edited-ti
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/626181946686570498/e5cfd7d57337be2b4cbd91f660cae7ff.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Jamie#2269" data-user-id="626181946686570498" style="color: rgb(250,2,220)">Jay</span>
+        <span class="chatlog__author-name" title="Jamie#2269" data-user-id="626181946686570498" style="color: rgb(230,126,34)">Jay</span>
 
 
         <span class="chatlog__timestamp">14-Sep-20 03:28 AM</span>
 
             <div class="chatlog__message " data-message-id="754785652104757348" id="message-754785652104757348">
-                <div class="chatlog__content">
-                    <div class="markdown">scratch that - i found it </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">scratch that - i found it</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1785,42 +1954,58 @@ Management and innovation of e-business (IS3167) <span class="chatlog__edited-ti
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/644223388742844416/ce3d3b253c3c1bc59663af7c2c325af9.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/644223388742844416/27665689a966b35a98a53b1308bbad88.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Butter Chicken Cassava#9831" data-user-id="644223388742844416" style="color: rgb(52,152,219)">Linh</span>
+        <span class="chatlog__author-name" title="butterchickencassava#9831" data-user-id="644223388742844416" style="color: rgb(2,15,85)">linh&#127483;&#127475;&#127474;&#127486;&#127467;&#127479;</span>
 
 
         <span class="chatlog__timestamp">15-Sep-20 12:21 AM</span>
 
             <div class="chatlog__message " data-message-id="755101029896421476" id="message-755101029896421476">
-                <div class="chatlog__content">
-                    <div class="markdown">Hi guys, I&#39;m selling this textbook for 30€ including shipping to anywhere in the world.
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi guys, I&#39;m selling this textbook for 30€ including shipping to anywhere in the world.
 
-I used this for stats 100 last year and it covers pretty much most of the topics for the stats syllabus at UL, and excercises from basics to more intermediate. Enough to get me by with the UL stats 100 examination last year. I was forced to buy it from my first year at another institution before I transferred to UL. <span class="chatlog__edited-timestamp" title="15-Sep-20 12:24 AM">(edited)</span></div>
-                </div>
+I used this for stats 100 last year and it covers pretty much most of the topics for the stats syllabus at UL, and excercises from basics to more intermediate. Enough to get me by with the UL stats 100 examination last year. I was forced to buy it from my first year at another institution before I transferred to UL.</span>
+
+                                <span class="chatlog__edited-timestamp" title="15-Sep-20 12:24 AM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="755101131981455370" id="message-755101131981455370">
-                <div class="chatlog__content">
-                    <div class="markdown">Very good condition, slight curling at the corner. Paperback. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Very good condition, slight curling at the corner. Paperback.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="755101950512726048" id="message-755101950512726048">
-                <div class="chatlog__content">
-                    <div class="markdown">College Mathematics for Business by Pearson.
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">College Mathematics for Business by Pearson.
 
-Here is the index scanned and all that it covers. <span class="chatlog__edited-timestamp" title="15-Sep-20 12:26 AM">(edited)</span></div>
-                </div>
+Here is the index scanned and all that it covers.</span>
+
+                                <span class="chatlog__edited-timestamp" title="15-Sep-20 12:26 AM">(edited)</span>
+                        </div>
+                    </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/669281243623325717/755101950512595004/Numeriser_14_sept._2020.pdf">
-Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/669281243623325717/755101950512595004/Numeriser_14_sept._2020.pdf">
+                                        Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -1840,9 +2025,12 @@ Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)                            </a
         <span class="chatlog__timestamp">17-Sep-20 06:15 AM</span>
 
             <div class="chatlog__message " data-message-id="755914669037715466" id="message-755914669037715466">
-                <div class="chatlog__content">
-                    <div class="markdown">Hi guys, can someone tell me where can we download the subject guides from on the VLE? On the updated website </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi guys, can someone tell me where can we download the subject guides from on the VLE? On the updated website</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1856,23 +2044,29 @@ Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)                            </a
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/670721634109489155/50f3e563d18d23c82badcf36a2beee52.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="harismazhar3#0270" data-user-id="670721634109489155" style="color: rgb(0,237,255)">harismazhar3</span>
+        <span class="chatlog__author-name" title="harismazhar3#0270" data-user-id="670721634109489155" style="color: rgb(2,15,85)">harismazhar3</span>
 
 
         <span class="chatlog__timestamp">17-Sep-20 07:49 AM</span>
 
             <div class="chatlog__message " data-message-id="755938553728466957" id="message-755938553728466957">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://drive.google.com/folderview?id=1h6QTqpCGwghIPpb3dJ4rB8JLNs470QDw">https://drive.google.com/folderview?id=1h6QTqpCGwghIPpb3dJ4rB8JLNs470QDw</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://drive.google.com/folderview?id=1h6QTqpCGwghIPpb3dJ4rB8JLNs470QDw">https://drive.google.com/folderview?id=1h6QTqpCGwghIPpb3dJ4rB8JLNs470QDw</a></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="755938596845781093" id="message-755938596845781093">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Mahnoor Faisal#3050">@Mahnoor Faisal</span> might help u out </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Mahnoor Faisal#3050">@Mahnoor Faisal</span> might help u out</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1892,9 +2086,12 @@ Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)                            </a
         <span class="chatlog__timestamp">17-Sep-20 01:51 PM</span>
 
             <div class="chatlog__message " data-message-id="756029620725350521" id="message-756029620725350521">
-                <div class="chatlog__content">
-                    <div class="markdown">Thankyou so much <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thankyou so much <img class="emoji " alt="🙂" title="🙂" src="https://twemoji.maxcdn.com/2/72x72/1f642.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1908,15 +2105,18 @@ Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)                            </a
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/670721634109489155/50f3e563d18d23c82badcf36a2beee52.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="harismazhar3#0270" data-user-id="670721634109489155" style="color: rgb(0,237,255)">harismazhar3</span>
+        <span class="chatlog__author-name" title="harismazhar3#0270" data-user-id="670721634109489155" style="color: rgb(2,15,85)">harismazhar3</span>
 
 
         <span class="chatlog__timestamp">17-Sep-20 07:37 PM</span>
 
             <div class="chatlog__message " data-message-id="756116691594903552" id="message-756116691594903552">
-                <div class="chatlog__content">
-                    <div class="markdown">You&#39;re welcome </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">You&#39;re welcome</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1930,23 +2130,30 @@ Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)                            </a
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="needed88#7717" data-user-id="750267933317529600" style="color: rgb(250,2,220)">needed88</span>
+        <span class="chatlog__author-name" title="needed88#7717" data-user-id="750267933317529600" style="color: rgb(230,126,34)">needed88</span>
 
 
         <span class="chatlog__timestamp">23-Sep-20 04:44 AM</span>
 
             <div class="chatlog__message " data-message-id="758066159521366167" id="message-758066159521366167">
-                <div class="chatlog__content">
-                    <div class="markdown">hello guys, now that we have our results, hopefully everyone is satisfied with them; I scored around 70 both in Maths and Statistics and I am looking for people who scored more than that (90+ would be awesome) and are willing to send me their papers they submitted - my intention is purely educational, that is, I would like to check the methods that were used for solving the problems and also compare these with mine... I want to get much better than ~70 marks and I am planning to take Maths 2 and Stats 2 so I really need to improve <span class="chatlog__edited-timestamp" title="23-Sep-20 04:45 AM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">hello guys, now that we have our results, hopefully everyone is satisfied with them; I scored around 70 both in Maths and Statistics and I am looking for people who scored more than that (90+ would be awesome) and are willing to send me their papers they submitted - my intention is purely educational, that is, I would like to check the methods that were used for solving the problems and also compare these with mine... I want to get much better than ~70 marks and I am planning to take Maths 2 and Stats 2 so I really need to improve</span>
+
+                                <span class="chatlog__edited-timestamp" title="23-Sep-20 04:45 AM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="758066198037528731" id="message-758066198037528731">
-                <div class="chatlog__content">
-                    <div class="markdown">I would highly appreciate your help! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I would highly appreciate your help!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1966,15 +2173,18 @@ Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)                            </a
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/626181946686570498/e5cfd7d57337be2b4cbd91f660cae7ff.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Jamie#2269" data-user-id="626181946686570498" style="color: rgb(250,2,220)">Jay</span>
+        <span class="chatlog__author-name" title="Jamie#2269" data-user-id="626181946686570498" style="color: rgb(230,126,34)">Jay</span>
 
 
         <span class="chatlog__timestamp">05-Oct-20 03:10 AM</span>
 
             <div class="chatlog__message " data-message-id="762391134935842836" id="message-762391134935842836">
-                <div class="chatlog__content">
-                    <div class="markdown">Anyone have Complex Emergencies - David Keen? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Anyone have Complex Emergencies - David Keen?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1988,15 +2198,19 @@ Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)                            </a
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="needed88#7717" data-user-id="750267933317529600" style="color: rgb(250,2,220)">needed88</span>
+        <span class="chatlog__author-name" title="needed88#7717" data-user-id="750267933317529600" style="color: rgb(230,126,34)">needed88</span>
 
 
         <span class="chatlog__timestamp">10-Oct-20 06:29 PM</span>
 
             <div class="chatlog__message " data-message-id="764434364494512128" id="message-764434364494512128">
-                <div class="chatlog__content">
-                    <div class="markdown">Does anyone know where to find academic papers for Computer Science? Parallel to my Business and Management degree, I would like to get familiar with the latest, scientifically proven concepts of Computer Science. The same applies to Business and Management, so if you know a website for that too, I would highly appreciate your help. What I mean by a &#39;website&#39; is some place where the latest papers are shared and either for free or for a low subscription fee available. I am not looking for specific papers, I just want to be up-to-date in these fields as I am planning to apply for MSc after my BSc and probably I want a PhD too... <span class="chatlog__edited-timestamp" title="10-Oct-20 06:29 PM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Does anyone know where to find academic papers for Computer Science? Parallel to my Business and Management degree, I would like to get familiar with the latest, scientifically proven concepts of Computer Science. The same applies to Business and Management, so if you know a website for that too, I would highly appreciate your help. What I mean by a &#39;website&#39; is some place where the latest papers are shared and either for free or for a low subscription fee available. I am not looking for specific papers, I just want to be up-to-date in these fields as I am planning to apply for MSc after my BSc and probably I want a PhD too...</span>
+
+                                <span class="chatlog__edited-timestamp" title="10-Oct-20 06:29 PM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
@@ -2016,9 +2230,439 @@ Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)                            </a
         <span class="chatlog__timestamp">13-Oct-20 09:50 PM</span>
 
             <div class="chatlog__message " data-message-id="765572250010648597" id="message-765572250010648597">
-                <div class="chatlog__content">
-                    <div class="markdown">Aren’t the latest papers available on the VLE itself </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Aren’t the latest papers available on the VLE itself</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MAAMA#7677" data-user-id="765295451519320096" style="color: rgb(52,152,219)">MAAMA</span>
+
+
+        <span class="chatlog__timestamp">12-Nov-20 03:16 PM</span>
+
+            <div class="chatlog__message " data-message-id="776344619734663188" id="message-776344619734663188">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">does anyone have sim mock 2018 for asset pricing?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Nive#6052" data-user-id="771411129838731264" style="color: rgb(230,126,34)">Nive</span>
+
+
+        <span class="chatlog__timestamp">18-Nov-20 11:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="778645370673954848" id="message-778645370673954848">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Does anyone have any kind of short notes for HRM?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MAAMA#7677" data-user-id="765295451519320096" style="color: rgb(52,152,219)">MAAMA</span>
+
+
+        <span class="chatlog__timestamp">22-Nov-20 11:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="780096086987243541" id="message-780096086987243541">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">does anyone have Macroeconomics exam paper 2020?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 12:49 AM</span>
+
+            <div class="chatlog__message " data-message-id="782287043559686149" id="message-782287043559686149">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey guys, does anyone have &#39;Policy making in the European Union&#39; (Wallace, Pollack, Young)?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="vanshi#5722" data-user-id="783316747834228776" style="color: rgb(230,126,34)">vanshi</span>
+
+
+        <span class="chatlog__timestamp">07-Dec-20 05:03 AM</span>
+
+            <div class="chatlog__message " data-message-id="785250166956359700" id="message-785250166956359700">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey, are there any whatsapp study groups for these subjects that I could join: Intro to Econ, M1&amp;2, S1&amp;2, Princples of Banking and finance</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Diya Nath#4449" data-user-id="763434156016271380" style="color: rgb(52,152,219)">Diya Nath</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 05:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="786157549694877716" id="message-786157549694877716">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yes</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="786159169987674113" id="message-786159169987674113">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="vanshi#5722">@vanshi</span> Mathematics
+
+<a href="https://chat.whatsapp.com/C831GIrgmMW6eGy8EpQtSS">https://chat.whatsapp.com/C831GIrgmMW6eGy8EpQtSS</a>
+
+Accounting
+
+<a href="https://chat.whatsapp.com/F0sSbHnJr3H09UsXHzlkbJ">https://chat.whatsapp.com/F0sSbHnJr3H09UsXHzlkbJ</a>
+
+Statistics
+
+<a href="https://chat.whatsapp.com/FxkLxL4cW9jImUQZ3nfX5D">https://chat.whatsapp.com/FxkLxL4cW9jImUQZ3nfX5D</a>
+
+Politics
+
+<a href="https://chat.whatsapp.com/JS74TtPhlKIIjcKUDl7lZH">https://chat.whatsapp.com/JS74TtPhlKIIjcKUDl7lZH</a>
+
+Economics
+
+<a href="https://chat.whatsapp.com/Kr222ueWPPkIq3c7WCacbT">https://chat.whatsapp.com/Kr222ueWPPkIq3c7WCacbT</a>
+
+International Development 
+
+<a href="https://chat.whatsapp.com/DcdW0gTyiNWGAQMp7McAWW">https://chat.whatsapp.com/DcdW0gTyiNWGAQMp7McAWW</a>
+
+International Relations
+
+<a href="https://chat.whatsapp.com/GB0qmnZFn1VBnT4001mI0h">https://chat.whatsapp.com/GB0qmnZFn1VBnT4001mI0h</a>
+
+History 
+
+<a href="https://chat.whatsapp.com/DO7PlpTZY4MA1KOgoRKACG">https://chat.whatsapp.com/DO7PlpTZY4MA1KOgoRKACG</a>
+
+Business and Management subjects 
+
+<a href="https://chat.whatsapp.com/CO9KEvT1MRQDhrkIoLNQFo">https://chat.whatsapp.com/CO9KEvT1MRQDhrkIoLNQFo</a>
+
+Banking and Finance
+
+<a href="https://chat.whatsapp.com/LeAZJR5aFhbKduIO0KJVwK">https://chat.whatsapp.com/LeAZJR5aFhbKduIO0KJVwK</a>
+
+Psychology 
+
+<a href="https://chat.whatsapp.com/DkExhJ28Sjc0w22dxvTef5">https://chat.whatsapp.com/DkExhJ28Sjc0w22dxvTef5</a>
+
+Computer Science
+
+<a href="https://chat.whatsapp.com/GsP01U6MiLZHj5rqDNkZ8z">https://chat.whatsapp.com/GsP01U6MiLZHj5rqDNkZ8z</a></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(27,166,145,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://chat.whatsapp.com/C831GIrgmMW6eGy8EpQtSS">
+                                                    <div class="markdown preserve-whitespace">UOL Mathematics</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">WhatsApp Group Invite</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(27,166,145,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://chat.whatsapp.com/F0sSbHnJr3H09UsXHzlkbJ">
+                                                    <div class="markdown preserve-whitespace">UOL Accounting</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">WhatsApp Group Invite</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(27,166,145,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://chat.whatsapp.com/FxkLxL4cW9jImUQZ3nfX5D">
+                                                    <div class="markdown preserve-whitespace">UOL Statistics</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">WhatsApp Group Invite</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(27,166,145,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://chat.whatsapp.com/JS74TtPhlKIIjcKUDl7lZH">
+                                                    <div class="markdown preserve-whitespace">UOL politics</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">WhatsApp Group Invite</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(27,166,145,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://chat.whatsapp.com/Kr222ueWPPkIq3c7WCacbT">
+                                                    <div class="markdown preserve-whitespace">UOL Economics</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">WhatsApp Group Invite</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/ZIvBTrQd9nP.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="vanshi#5722" data-user-id="783316747834228776" style="color: rgb(230,126,34)">vanshi</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 10:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="786245455897296896" id="message-786245455897296896">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thanksss!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="karimmm#5699" data-user-id="404017916804333578" style="color: rgb(230,126,34)">karimmm</span>
+
+
+        <span class="chatlog__timestamp">14-Dec-20 07:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="788000038479593493" id="message-788000038479593493">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey guys, does anyone have the book of &quot; Mathematics for economics and finance&quot; downloaded?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/185640968270118912/2c0c242f34aedff91d1f4bf7b1e1a906.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="jonny boi#0465" data-user-id="185640968270118912" style="color: rgb(52,152,219)">jonny boi</span>
+
+
+        <span class="chatlog__timestamp">15-Dec-20 06:58 AM</span>
+
+            <div class="chatlog__message " data-message-id="788178043797504050" id="message-788178043797504050">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">is there a whatsapp group for econometrics?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -2029,7 +2673,7 @@ Attachment: Numeriser_14_sept._2020.pdf (1.34 MB)                            </a
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 64 message(s)</div>
+    <div class="postamble__entry">Exported 74 message(s)</div>
 </div>
 
 </body>

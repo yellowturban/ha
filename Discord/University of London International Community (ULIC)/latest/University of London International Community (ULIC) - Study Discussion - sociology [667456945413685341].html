@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -614,15 +623,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/690884502712746015/ba560c76789df3328a1196902ecd2827.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(32,102,148)">vaslian</span>
+        <span class="chatlog__author-name" title="vaslian#5191" data-user-id="690884502712746015" style="color: rgb(230,126,34)">vaslian</span>
 
 
         <span class="chatlog__timestamp">07-Jun-20 08:00 PM</span>
 
             <div class="chatlog__message " data-message-id="719158910837063700" id="message-719158910837063700">
-                <div class="chatlog__content">
-                    <div class="markdown">Hey, has anyone taken contemporary sociology this year? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey, has anyone taken contemporary sociology this year?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -636,15 +648,43 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="SPARK#9832" data-user-id="762740794770718801" style="color: rgb(109,19,41)">SPARK</span>
+        <span class="chatlog__author-name" title="SPARK#9832" data-user-id="762740794770718801" style="color: rgb(230,126,34)">SPARK</span>
 
 
         <span class="chatlog__timestamp">09-Oct-20 02:56 AM</span>
 
             <div class="chatlog__message " data-message-id="763837123173285948" id="message-763837123173285948">
-                <div class="chatlog__content">
-                    <div class="markdown">Cud some1 pls share Study Guide and Past Papers here. Also Essential Text/s </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Cud some1 pls share Study Guide and Past Papers here. Also Essential Text/s</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/731595582631706775/12ad6b2e50e340952c0d4002e2c0797e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="laiba#0493" data-user-id="731595582631706775" style="color: rgb(230,126,34)">laiba</span>
+
+
+        <span class="chatlog__timestamp">15-Dec-20 10:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="788406289775984712" id="message-788406289775984712">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey, do we have a whatsapp group for contemporary sociology?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -655,7 +695,7 @@ a {
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 2 message(s)</div>
+    <div class="postamble__entry">Exported 3 message(s)</div>
 </div>
 
 </body>

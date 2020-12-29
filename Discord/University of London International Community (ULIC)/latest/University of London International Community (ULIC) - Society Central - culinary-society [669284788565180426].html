@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -611,19 +620,1581 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">16-Oct-20 12:27 AM</span>
 
             <div class="chatlog__message " data-message-id="766336409841172552" id="message-766336409841172552">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" style="color: rgb(109, 19, 41); background-color: rgba(109, 19, 41, 0.1);">@Culinary Society Member</span> 
-Anyone interested in running for President of this society? Pm me if that’s the case. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Culinary Society Member</span> 
+Anyone interested in running for President of this society? Pm me if that’s the case.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 05:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="782543722726293504" id="message-782543722726293504">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Anyone here into exotic vegetarian food? I have a few original recipes / potential combinations in mind</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 01:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="782845191299792956" id="message-782845191299792956">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;m down for trying anything new. Btw what&#39;s your definition of exotic?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 09:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="782956387965730816" id="message-782956387965730816">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">By exotic I meant gourmet experimental cuisine, new recipes which have never been heard of by the general mass or has never even been created in past. 
+
+I have some original food recipes and prototype ingredient combinations of my own but am looking to explore this on a deeper level eventually.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782957524214874152" id="message-782957524214874152">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">My observation is that the vegetarian world doesn&#39;t celebrate its food like its celebrated in non-vegetarian high societies. (For which France is a famous example)
+
+It&#39;s a niche with a lot of potential. There is experimental gourmet vegan food but it&#39;s still a new field. I am particularly interested in experimental Indian vegetarian cuisine. There is just so much to explore.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:30 AM</span>
+
+            <div class="chatlog__message " data-message-id="783067388425273344" id="message-783067388425273344">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Oh I&#39;m Indian. So I eat vegetarian food everyday. I can give you few recipes</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783067559020724224" id="message-783067559020724224">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I also am eating healthy for the past 4 months, so I cook loads of vegan. Although I&#39;m not vegetarian or vegan myself, I can&#39;t eat meat more than once a week.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783067630240006156" id="message-783067630240006156">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;ll share a few recipes here as I cook this week.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:41 AM</span>
+
+            <div class="chatlog__message " data-message-id="783070197799977020" id="message-783070197799977020">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="aiygen_0101#4570">@aiygen_0101</span> I&#39;m not saying all Indian food is exotic. I&#39;m from New Delhi. 
+
+From exotic I meant specifically experimental cuisine here. To me experimenting with creation of new recipes and formulae is a way to explore exoticism.  
+
+That might or might not be exotic for someone else.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783070410891067432" id="message-783070410891067432">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I am talking about food as a form of art here rather than just simple nourishment. It serves both.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783071207938457630" id="message-783071207938457630">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I haven&#39;t explored baking very much yet but would surely love to do in future. To me food should primarily be good for health, I feel that baked food is often not that healthy. Can you elaborate on why you prefer baked food for health reasons <span class="mention" title="aiygen_0101#4570">@aiygen_0101</span> ? 
+
+I am not that fond of bread usually.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:45 AM</span>
+
+            <div class="chatlog__message " data-message-id="783071212531089449" id="message-783071212531089449">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;m a little out of my depth</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783071259721728010" id="message-783071259721728010">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I just cook for nourishment</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:46 AM</span>
+
+            <div class="chatlog__message " data-message-id="783071436755173396" id="message-783071436755173396">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Nourishment and health should come first yes. After that one can start exploring the artistic aspect of food I believe</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:46 AM</span>
+
+            <div class="chatlog__message " data-message-id="783071571513835530" id="message-783071571513835530">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Baked food can be extremely healthy because you don&#39;t use oil or direct heat. Like roasted vegetables or stuffed potatoes etc. Even baked chips or crisps. Parsnips, celery etc can be baked into snacks</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:47 AM</span>
+
+            <div class="chatlog__message " data-message-id="783071705236504616" id="message-783071705236504616">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">True yeah</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783071900074508398" id="message-783071900074508398">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I should really get into baking in that case. I thought baking is primarily for bread based food. <img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:48 AM</span>
+
+            <div class="chatlog__message " data-message-id="783071915870912534" id="message-783071915870912534">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I think good should be healthy and tasty. I&#39;m not a big fan of artsy foods. Soul foods are more my style. Messy and delicious.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783072226848276551" id="message-783072226848276551">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It&#39;s actually quite commonly used in the west to cook meals not just desserts. Pies and tarts etc are baked. Pot roast and stuff. But anyway I&#39;m note interested in the vegetables being baked and I&#39;m not confident about using the oven.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:49 AM</span>
+
+            <div class="chatlog__message " data-message-id="783072228286791722" id="message-783072228286791722">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I love the idea of spiritually soothing foods since for me art itself is rooted in spirituality. Why should it be messy though? I like it clean</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:49 AM</span>
+
+            <div class="chatlog__message " data-message-id="783072307639484494" id="message-783072307639484494">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">You just cannot eat chicken wings clean</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783072319593644064" id="message-783072319593644064">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Or ramen</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783072353579565097" id="message-783072353579565097">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Or biryani</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="783072486186418226" id="message-783072486186418226">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">But then how good are those messy foods for health?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="783072512468320256" id="message-783072512468320256">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">So messy food is usually stuff that&#39;s too delicious to bare</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783072580936007740" id="message-783072580936007740">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">You can make anything healthy with the right ingredients and cooking techniques</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783072616244183045" id="message-783072616244183045">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">My biryani had no trans fats</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783072660149633065" id="message-783072660149633065">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I don&#39;t use oil or ghee</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:51 AM</span>
+
+            <div class="chatlog__message " data-message-id="783072751983394846" id="message-783072751983394846">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Messy food scares me haha. Scares me that I might risk the sin of gluttony.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:51 AM</span>
+
+            <div class="chatlog__message " data-message-id="783072774049497099" id="message-783072774049497099">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Or reduce measurements to start</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783072840378482728" id="message-783072840378482728">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">How do you eat vada pav or Pani Puri?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:52 AM</span>
+
+            <div class="chatlog__message " data-message-id="783072972813893654" id="message-783072972813893654">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Right now I&#39;m having a very controlled diet because I had a surgery two weeks back</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:53 AM</span>
+
+            <div class="chatlog__message " data-message-id="783073171174981632" id="message-783073171174981632">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I eat quinoa two times a week and make bento boxes or salads with them. It&#39;s a very filling grain and you can do a lot with it.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:53 AM</span>
+
+            <div class="chatlog__message " data-message-id="783073235481657354" id="message-783073235481657354">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">During this time I experienced a lot of changes because of healthy diet. I wish to carry these changes to the future as well, so my policy on the food I consume would be different than it was in past</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783073289362735124" id="message-783073289362735124">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I like quinoa</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:53 AM</span>
+
+            <div class="chatlog__message " data-message-id="783073327542829068" id="message-783073327542829068">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Try it. Especially if you&#39;re recovering from something. I&#39;ve also switched to brown rice completely</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:54 AM</span>
+
+            <div class="chatlog__message " data-message-id="783073388880068620" id="message-783073388880068620">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Nice idea</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Romana &#127480;&#127472;#2548" data-user-id="758320946586189854" style="color: rgb(230,126,34)">Romana &#127480;&#127472;</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:54 AM</span>
+
+            <div class="chatlog__message " data-message-id="783073405892427807" id="message-783073405892427807">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Xzester#4520">@Xzester</span> hope you&#39;re getting better after the surgery!<img class="emoji " alt="🤞" title="🤞" src="https://twemoji.maxcdn.com/2/72x72/1f91e.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:54 AM</span>
+
+            <div class="chatlog__message " data-message-id="783073459936034820" id="message-783073459936034820">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Switch to low carb options when you can&#39;t get exercise</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:54 AM</span>
+
+            <div class="chatlog__message " data-message-id="783073530417250324" id="message-783073530417250324">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thanks a lot, it&#39;s been tough but I&#39;m getting better <span class="mention" title="Romana &#127480;&#127472;#2548">@Romana &#127480;&#127472;</span> ! ❤️</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:55 AM</span>
+
+            <div class="chatlog__message " data-message-id="783073736185479219" id="message-783073736185479219">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Sorry. Hope you&#39;re having a quick recovery. And using this time to improve your habits is inspirational</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:55 AM</span>
+
+            <div class="chatlog__message " data-message-id="783073815055695913" id="message-783073815055695913">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yeah I&#39;ve been eating either protein rich foods or just fruits all day</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:55 AM</span>
+
+            <div class="chatlog__message " data-message-id="783073867089444904" id="message-783073867089444904">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Don&#39;t forget carbs it&#39;s important</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783073898899832853" id="message-783073898899832853">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Pick the right ones though</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127860;" title="&#127860;" src="https://twemoji.maxcdn.com/2/72x72/1f374.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:56 AM</span>
+
+            <div class="chatlog__message " data-message-id="783074033003528203" id="message-783074033003528203">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yeah but carbs are so easy to get</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783074058195566632" id="message-783074058195566632">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">They are everywhere here</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:57 AM</span>
+
+            <div class="chatlog__message " data-message-id="783074275946659870" id="message-783074275946659870">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I also limit my roti intake. I add things into the aata to make it heavier. Like curd, radishes, jeera etc</span>
+
+                                <span class="chatlog__edited-timestamp" title="01-Dec-20 04:58 AM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:57 AM</span>
+
+            <div class="chatlog__message " data-message-id="783074360029872210" id="message-783074360029872210">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Curd in flour? Nice</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:58 AM</span>
+
+            <div class="chatlog__message " data-message-id="783074388303282247" id="message-783074388303282247">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Can&#39;t cut it out because maa ki yaad aati hai</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783074432083689493" id="message-783074432083689493">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yes, it makes roti softer</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783074531458678875" id="message-783074531458678875">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Neat trick my Mom taught me</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:59 AM</span>
+
+            <div class="chatlog__message " data-message-id="783074635251187764" id="message-783074635251187764">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It&#39;s been nice talking, I would love to talk more about culinary in future!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783074694370164796" id="message-783074694370164796">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Especially about experimental cuisines</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783074965141454850" id="message-783074965141454850">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="aiygen_0101#4570">@aiygen_0101</span> would you like to try a small experiment with roti? There&#39;s a specific spice / flour which can be added to it. Aztecs used to use that spice a lot</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783075091441123349" id="message-783075091441123349">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hm. <img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png"> Let me know</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 05:00 AM</span>
+
+            <div class="chatlog__message " data-message-id="783075111019610192" id="message-783075111019610192">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Which one?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 05:01 AM</span>
+
+            <div class="chatlog__message " data-message-id="783075165952016424" id="message-783075165952016424">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It will sound a bit silly</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 05:01 AM</span>
+
+            <div class="chatlog__message " data-message-id="783075209561374743" id="message-783075209561374743">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Tumeric?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 05:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="783075391698501703" id="message-783075391698501703">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Cocoa. Bitter cocoa. 
+
+Not the cocoa you get in chocolates. Pure cocoa with no milk or sugar added. Milk chocolates are rather lame I believe.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783075482856849469" id="message-783075482856849469">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Powdered cocoa + wheat flour.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 05:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="783075505204232213" id="message-783075505204232213">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Oh. That&#39;s interesting. How to cut the bitterness?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 05:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="783075531963891744" id="message-783075531963891744">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Add some red chilli</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 05:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="783075571416039424" id="message-783075571416039424">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;ll try it out</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783075702005563422" id="message-783075702005563422">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It&#39;s a very good ingredient</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 05:03 AM</span>
+
+            <div class="chatlog__message " data-message-id="783075707395506187" id="message-783075707395506187">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Do let me know your experience. Balancing the ingredients is the key.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 05:03 AM</span>
+
+            <div class="chatlog__message " data-message-id="783075734045589515" id="message-783075734045589515">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I love cocoa</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783075844825808916" id="message-783075844825808916">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Will do</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">17-Dec-20 03:04 AM</span>
+
+            <div class="chatlog__message " data-message-id="788844025355436062" id="message-788844025355436062">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Looking for a good ramen recipe. Easy and basic</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788844185662783488" id="message-788844185662783488">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Anyone has something for me? :)</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">17-Dec-20 03:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="788851397717393455" id="message-788851397717393455">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I can search one up if you want <span class="mention" title="aiygen_0101#4570">@aiygen_0101</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788851549421961266" id="message-788851549421961266">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I have my own modifier when it comes to spicy noodles, I can also add that as a suggestion on top.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788851684629413979" id="message-788851684629413979">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">However did you try out that roti recipe I earlier suggested haha?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788851752635727872" id="message-788851752635727872">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;m curious how it went</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">17-Dec-20 03:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="788851755625480203" id="message-788851755625480203">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Haven&#39;t made roti since we spoke</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">17-Dec-20 03:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="788851776581140521" id="message-788851776581140521">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Oh</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788851916422905866" id="message-788851916422905866">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">That combination can work in any other thing too if you want</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788852284351578134" id="message-788852284351578134">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Let me know if you want me to. If not I&#39;d suggest starting with instant ramen noodles first, there are many flavours available</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788852595527254047" id="message-788852595527254047">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">My friend suggested this: <a href="https://amzn.to/2y3KBty">https://amzn.to/2y3KBty</a></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788852758685024286" id="message-788852758685024286">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">That&#39;s Korean ramen tho</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788852846228537404" id="message-788852846228537404">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;m yet to try it but I bet this is awesome</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">22-Dec-20 03:52 AM</span>
+
+            <div class="chatlog__message " data-message-id="790668064231391242" id="message-790668064231391242">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="butterchickencassava#9831">@linh&#127483;&#127475;&#127474;&#127486;&#127467;&#127479;</span> If you don&#39;t mind me asking btw, do you know about how the situation for experimental vegan cuisine research in France is like? I&#39;ve been interested in exploring experimental vegetarian cuisine and I hear that it&#39;s on a boom in France since last few years. Wish I could get some study material references</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -634,7 +2205,7 @@ Anyone interested in running for President of this society? Pm me if that’s th
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 1 message(s)</div>
+    <div class="postamble__entry">Exported 81 message(s)</div>
 </div>
 
 </body>

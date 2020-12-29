@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -614,23 +623,29 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/670157620707065856/f05bfe01a363629712f7cd1b520d4427.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Syed Raza#9163" data-user-id="670157620707065856" style="color: rgb(173,20,87)">Syed Raza</span>
+        <span class="chatlog__author-name" title="Syed Raza#9163" data-user-id="670157620707065856" style="color: rgb(230,126,34)">Syed Raza</span>
 
 
         <span class="chatlog__timestamp">02-Jul-20 05:46 PM</span>
 
             <div class="chatlog__message " data-message-id="728184902981386291" id="message-728184902981386291">
-                <div class="chatlog__content">
-                    <div class="markdown">Hello everyone, hope you are doing good. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hello everyone, hope you are doing good.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="728185072494051379" id="message-728185072494051379">
-                <div class="chatlog__content">
-                    <div class="markdown">Please share your work with each other and learn, inspire each other. To start with here&#39;s mine - <a href="https://www.instagram.com/eudaimonic.soul/?hl=en">https://www.instagram.com/eudaimonic.soul/?hl=en</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Please share your work with each other and learn, inspire each other. To start with here&#39;s mine - <a href="https://www.instagram.com/eudaimonic.soul/?hl=en">https://www.instagram.com/eudaimonic.soul/?hl=en</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -642,12 +657,12 @@ a {
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://www.instagram.com/eudaimonic.soul/?hl=en">
-                                                    <div class="markdown">Login • Instagram</div>
+                                                    <div class="markdown preserve-whitespace">Login • Instagram</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">Welcome back to Instagram. Sign in to check out what your friends, family &amp; interests have been capturing &amp; sharing around the world.</div>
+                                            <div class="markdown preserve-whitespace">Welcome back to Instagram. Sign in to check out what your friends, family &amp; interests have been capturing &amp; sharing around the world.</div>
                                         </div>
 
                                 </div>
@@ -665,18 +680,21 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">03-Jul-20 03:13 AM</span>
 
             <div class="chatlog__message " data-message-id="728327623297728573" id="message-728327623297728573">
-                <div class="chatlog__content">
-                    <div class="markdown">Nice work! <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"> <span class="mention" title="Syed Raza#9163">@Syed Raza</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Nice work! <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"> <span class="mention" title="Syed Raza#9163">@Syed Raza</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -690,15 +708,211 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/670157620707065856/f05bfe01a363629712f7cd1b520d4427.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Syed Raza#9163" data-user-id="670157620707065856" style="color: rgb(173,20,87)">Syed Raza</span>
+        <span class="chatlog__author-name" title="Syed Raza#9163" data-user-id="670157620707065856" style="color: rgb(230,126,34)">Syed Raza</span>
 
 
         <span class="chatlog__timestamp">03-Jul-20 03:14 AM</span>
 
             <div class="chatlog__message " data-message-id="728327832937431146" id="message-728327832937431146">
-                <div class="chatlog__content">
-                    <div class="markdown">Thank you so much, do follow and motivate. Means a lot! <img class="emoji " alt="🙏" title="🙏" src="https://twemoji.maxcdn.com/2/72x72/1f64f.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thank you so much, do follow and motivate. Means a lot! <img class="emoji " alt="🙏" title="🙏" src="https://twemoji.maxcdn.com/2/72x72/1f64f.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Muskaan#0533" data-user-id="784731456744325151" style="color: rgb(230,126,34)">Muskaan</span>
+
+
+        <span class="chatlog__timestamp">08-Dec-20 06:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="785810176628097026" id="message-785810176628097026">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey , how to join this club for photography ?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">08-Dec-20 06:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="785810792578416660" id="message-785810792578416660">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Would you like to consider being President? <span class="mention" title="Muskaan#0533">@Muskaan</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Muskaan#0533" data-user-id="784731456744325151" style="color: rgb(230,126,34)">Muskaan</span>
+
+
+        <span class="chatlog__timestamp">08-Dec-20 06:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="785811829514436620" id="message-785811829514436620">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I really dont know much about discord , it’s just been a day.So if you feel I can manage then why not:)))</span>
+
+                                <span class="chatlog__edited-timestamp" title="08-Dec-20 06:20 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="785812537937231882" id="message-785812537937231882">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://instagram.com/eunoia_takes?igshid=1pb8y2c5xbp0j">https://instagram.com/eunoia_takes?igshid=1pb8y2c5xbp0j</a></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="785812764610134037" id="message-785812764610134037">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This is my photography account on ig .</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 02:18 AM</span>
+
+            <div class="chatlog__message " data-message-id="785933434782089257" id="message-785933434782089257">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">If you are passionate for photography you should consider it. I&#39;m myself into abstract photography and have friends in the same. I&#39;d love to support you and help out if you are willing to lead.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Muskaan#0533" data-user-id="784731456744325151" style="color: rgb(230,126,34)">Muskaan</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 02:58 AM</span>
+
+            <div class="chatlog__message " data-message-id="785943303727611937" id="message-785943303727611937">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Well , thanks for being supportive.I will surely consider it:)))</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">22-Dec-20 06:57 AM</span>
+
+            <div class="chatlog__message " data-message-id="790714590014079007" id="message-790714590014079007">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Here&#39;s one of my favourite original photographs.</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/669284222669815849/790714589763076127/22448432_10208391071653055_2906011840153636259_n.png">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/669284222669815849/790714589763076127/22448432_10208391071653055_2906011840153636259_n.png" alt="Image attachment" title="Image: 22448432_10208391071653055_2906011840153636259_n.png (552.79 KB)">
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="790714882521038890" id="message-790714882521038890">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(Do not download it without permission please.)</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -709,7 +923,7 @@ a {
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 4 message(s)</div>
+    <div class="postamble__entry">Exported 13 message(s)</div>
 </div>
 
 </body>

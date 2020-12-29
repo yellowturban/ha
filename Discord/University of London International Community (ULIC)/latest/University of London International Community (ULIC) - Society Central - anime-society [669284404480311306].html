@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -620,9 +629,12 @@ a {
         <span class="chatlog__timestamp">22-Feb-20 09:47 PM</span>
 
             <div class="chatlog__message " data-message-id="680772625106206787" id="message-680772625106206787">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" style="color: rgb(113, 54, 138); background-color: rgba(113, 54, 138, 0.1);">@Anime Society Member</span> Hey Guys, I thought it would be nice to kick things off in here. Would be nice to hear your stories on how you ended up interested in the anime life. Maybe share the genres you&#39;re into and get a discussion going. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Anime Society Member</span> Hey Guys, I thought it would be nice to kick things off in here. Would be nice to hear your stories on how you ended up interested in the anime life. Maybe share the genres you&#39;re into and get a discussion going.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -633,19 +645,22 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/717ef3bb87df74fb535edbe17291e2d1.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="color: rgb(248,7,7)">Xzester</span>
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
 
 
         <span class="chatlog__timestamp">23-Feb-20 01:20 AM</span>
 
             <div class="chatlog__message " data-message-id="680826364366291084" id="message-680826364366291084">
-                <div class="chatlog__content">
-                    <div class="markdown">I feel anime can greatly add depth to one&#39;s personality, though too much of it is bad. I&#39;ve been watching anime ever since I was 3. I don&#39;t watch anime at present, just a little every few months. 
-<span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span>  I think it would be beneficial if we were to keep the societies public and visible to all for now as they&#39;d be able to get a taste of what&#39;s in here. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I feel anime can greatly add depth to one&#39;s personality, though too much of it is bad. I&#39;ve been watching anime ever since I was 3. I don&#39;t watch anime at present, just a little every few months. 
+<span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span>  I think it would be beneficial if we were to keep the societies public and visible to all for now as they&#39;d be able to get a taste of what&#39;s in here.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -656,26 +671,32 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">23-Feb-20 02:27 AM</span>
 
             <div class="chatlog__message " data-message-id="680843227498020898" id="message-680843227498020898">
-                <div class="chatlog__content">
-                    <div class="markdown">Noted. Making them public. What’s your favourite anime? <span class="mention" title="Xzester#4520">@Xzester</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Noted. Making them public. What’s your favourite anime? <span class="mention" title="Xzester#4520">@Xzester</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="680843313577721918" id="message-680843313577721918">
-                <div class="chatlog__content">
-                    <div class="markdown">Never watched one </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Never watched one</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -686,18 +707,21 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/717ef3bb87df74fb535edbe17291e2d1.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="color: rgb(248,7,7)">Xzester</span>
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
 
 
         <span class="chatlog__timestamp">23-Feb-20 02:29 AM</span>
 
             <div class="chatlog__message " data-message-id="680843692994723852" id="message-680843692994723852">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="ilsatariq#4796">@ilsatariq</span> My favourites are Psycho Pass, Steins Gate and Tokyo Ghoul. Psycho Pass is pretty intense and rather twisted.. so not for the faint of heart. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ilsatariq#4796">@Ilsa Tariq</span> My favourites are Psycho Pass, Steins Gate and Tokyo Ghoul. Psycho Pass is pretty intense and rather twisted.. so not for the faint of heart.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -708,18 +732,21 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">23-Feb-20 02:31 AM</span>
 
             <div class="chatlog__message " data-message-id="680844055550099510" id="message-680844055550099510">
-                <div class="chatlog__content">
-                    <div class="markdown">Well then looks like I’ll have to skip on Psycho Pass <span class="mention" title="Xzester#4520">@Xzester</span> thanks for giving a disclaimer <img class="emoji " alt="😅" title="😅" src="https://twemoji.maxcdn.com/2/72x72/1f605.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Well then looks like I’ll have to skip on Psycho Pass <span class="mention" title="Xzester#4520">@Xzester</span> thanks for giving a disclaimer <img class="emoji " alt="😅" title="😅" src="https://twemoji.maxcdn.com/2/72x72/1f605.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -730,18 +757,21 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/717ef3bb87df74fb535edbe17291e2d1.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="color: rgb(248,7,7)">Xzester</span>
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
 
 
         <span class="chatlog__timestamp">23-Feb-20 02:33 AM</span>
 
             <div class="chatlog__message " data-message-id="680844690018271260" id="message-680844690018271260">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="ilsatariq#4796">@ilsatariq</span> It&#39;s basically a very mature anime and deals with some dark but very mature concepts. I can&#39;t say if you should watch it, but you should. lol </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ilsatariq#4796">@Ilsa Tariq</span> It&#39;s basically a very mature anime and deals with some dark but very mature concepts. I can&#39;t say if you should watch it, but you should. lol</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -752,26 +782,32 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/671760306271289345/280d3ba74b91417ff323db219dcdf47b.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/671760306271289345/a_87073beb6977deb5a8c077453bbf45ba.gif" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="itachi#7645" data-user-id="671760306271289345" style="color: rgb(0,237,255)">itachi</span>
+        <span class="chatlog__author-name" title="bready#0058" data-user-id="671760306271289345" style="color: rgb(230,126,34)">bread</span>
 
 
         <span class="chatlog__timestamp">23-Feb-20 04:52 AM</span>
 
             <div class="chatlog__message " data-message-id="680879681418952742" id="message-680879681418952742">
-                <div class="chatlog__content">
-                    <div class="markdown">I grew up with Naruto, one of my favourites. Detective Conan and Pokemon too though I haven&#39;t been keeping up with them. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I grew up with Naruto, one of my favourites. Detective Conan and Pokemon too though I haven&#39;t been keeping up with them.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="680879740416163861" id="message-680879740416163861">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Xzester#4520">@Xzester</span> Oh wow. Those are my favourites as well except Steins Gate, I haven&#39;t watched it. Have you watched Zankyou No Terror? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Xzester#4520">@Xzester</span> Oh wow. Those are my favourites as well except Steins Gate, I haven&#39;t watched it. Have you watched Zankyou No Terror?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -782,26 +818,32 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/717ef3bb87df74fb535edbe17291e2d1.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="color: rgb(248,7,7)">Xzester</span>
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
 
 
         <span class="chatlog__timestamp">23-Feb-20 04:53 AM</span>
 
             <div class="chatlog__message " data-message-id="680879891167838272" id="message-680879891167838272">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="itachi#7645">@itachi</span> Yep I have, though I think I didn&#39;t complete it. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="bready#0058">@bread</span> Yep I have, though I think I didn&#39;t complete it.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="680880257532035187" id="message-680880257532035187">
-                <div class="chatlog__content">
-                    <div class="markdown">High five for being a Psycho Pass fan! Psycho Pass is my favourite.. it&#39;s just so rich and good.. I never thought I&#39;d be someone to pick favourite but it&#39;s been this way from few years. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">High five for being a Psycho Pass fan! Psycho Pass is my favourite.. it&#39;s just so rich and good.. I never thought I&#39;d be someone to pick favourite but it&#39;s been this way from few years.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -821,9 +863,12 @@ a {
         <span class="chatlog__timestamp">23-Feb-20 05:55 AM</span>
 
             <div class="chatlog__message " data-message-id="680895588321329270" id="message-680895588321329270">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="itachi#7645">@itachi</span> I quite enjoyed Zankyou no Terror. The Story was really impactful, most of the plot was really well delivered upon (although I wasn&#39;t the biggest fan of the Showdown with Five). The themes that the anime covered and did so really well infact is pretty commendable. The way the story concluded managed to hit me. I think alot of people felt that impact in a similar way. The whole idea of the phantoms of the past that were once made to be forgotten simply trying to revive with the purpose of resonating towards a future where others don&#39;t experience the same. It was easy to get immersed into the entire setting. And the portrayal of the main duos clever tactics was also a key note worth admiring. One of the greater things about it for me was also the OST and Opening+Ending themes in general. Overall it was a really well made original animated series, definitely one of my favorite works By Mappa. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="bready#0058">@bread</span> I quite enjoyed Zankyou no Terror. The Story was really impactful, most of the plot was really well delivered upon (although I wasn&#39;t the biggest fan of the Showdown with Five). The themes that the anime covered and did so really well infact is pretty commendable. The way the story concluded managed to hit me. I think alot of people felt that impact in a similar way. The whole idea of the phantoms of the past that were once made to be forgotten simply trying to revive with the purpose of resonating towards a future where others don&#39;t experience the same. It was easy to get immersed into the entire setting. And the portrayal of the main duos clever tactics was also a key note worth admiring. One of the greater things about it for me was also the OST and Opening+Ending themes in general. Overall it was a really well made original animated series, definitely one of my favorite works By Mappa.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -837,15 +882,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/365870874458324992/641cf545eee651648d267cd9ab91e1d1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Tudor &#128142;#6584" data-user-id="365870874458324992" style="color: rgb(0,237,255)">Tudor &#128142;</span>
+        <span class="chatlog__author-name" title="Tudor &#128142;#6584" data-user-id="365870874458324992" style="color: rgb(230,126,34)">Tudor &#128142;</span>
 
 
         <span class="chatlog__timestamp">10-May-20 11:58 PM</span>
 
             <div class="chatlog__message " data-message-id="709071935631523880" id="message-709071935631523880">
-                <div class="chatlog__content">
-                    <div class="markdown">one of my fav animes that isn&#39;t as mainstream is Assassination Classroom, you can watch whole thing on youtube if you&#39;d like </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">one of my fav animes that isn&#39;t as mainstream is Assassination Classroom, you can watch whole thing on youtube if you&#39;d like</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -865,9 +913,12 @@ a {
         <span class="chatlog__timestamp">11-May-20 01:28 AM</span>
 
             <div class="chatlog__message " data-message-id="709094560826916886" id="message-709094560826916886">
-                <div class="chatlog__content">
-                    <div class="markdown">I&#39;ve actually seen the first season of Assassination Classroom. I enjoyed it quite a bit back then. I&#39;ve seen the first few episodes of the second season too but haven&#39;t had the chance to delve deeper into it just yet. Both seasons are also available on Netflix I believe which is a great option too for watching it. What would you say you liked most about the show? <span class="mention" title="Tudor &#128142;#6584">@Tudor &#128142;</span>  perhaps we&#39;ll find some similarities as well as more reccomendations to discuss from that. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;ve actually seen the first season of Assassination Classroom. I enjoyed it quite a bit back then. I&#39;ve seen the first few episodes of the second season too but haven&#39;t had the chance to delve deeper into it just yet. Both seasons are also available on Netflix I believe which is a great option too for watching it. What would you say you liked most about the show? <span class="mention" title="Tudor &#128142;#6584">@Tudor &#128142;</span>  perhaps we&#39;ll find some similarities as well as more reccomendations to discuss from that.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -881,39 +932,51 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/365870874458324992/641cf545eee651648d267cd9ab91e1d1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Tudor &#128142;#6584" data-user-id="365870874458324992" style="color: rgb(0,237,255)">Tudor &#128142;</span>
+        <span class="chatlog__author-name" title="Tudor &#128142;#6584" data-user-id="365870874458324992" style="color: rgb(230,126,34)">Tudor &#128142;</span>
 
 
         <span class="chatlog__timestamp">11-May-20 01:30 AM</span>
 
             <div class="chatlog__message " data-message-id="709094964356710446" id="message-709094964356710446">
-                <div class="chatlog__content">
-                    <div class="markdown">I especially like the creativity of the show, the characters are interesting, and the sense of tight-knitness, family even among classmates and their teacher. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I especially like the creativity of the show, the characters are interesting, and the sense of tight-knitness, family even among classmates and their teacher.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="709094993633214526" id="message-709094993633214526">
-                <div class="chatlog__content">
-                    <div class="markdown">Also it was a lot of fun. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Also it was a lot of fun.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="709095323259371520" id="message-709095323259371520">
-                <div class="chatlog__content">
-                    <div class="markdown">I rank it even better than fullmetal alchemist:brotherhood, opm, death note, devilman crybaby, sword art, or seven deadly sins </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I rank it even better than fullmetal alchemist:brotherhood, opm, death note, devilman crybaby, sword art, or seven deadly sins</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="709095464972320859" id="message-709095464972320859">
-                <div class="chatlog__content">
-                    <div class="markdown">out of a lot of animes, I feel like it actually teaches you quite a few things </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">out of a lot of animes, I feel like it actually teaches you quite a few things</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -924,19 +987,632 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">16-Oct-20 12:26 AM</span>
 
             <div class="chatlog__message " data-message-id="766336331243847690" id="message-766336331243847690">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" style="color: rgb(113, 54, 138); background-color: rgba(113, 54, 138, 0.1);">@Anime Society Member</span> 
-Anyone interested in running for President of this society? Pm me if that’s the case. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Anime Society Member</span> 
+Anyone interested in running for President of this society? Pm me if that’s the case.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/645370009387925524/c0ef651b4d4d1c9be373d1d84a654d9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="wu cup of tea#0393" data-user-id="645370009387925524" style="color: rgb(230,126,34)">wu cup of tea</span>
+
+
+        <span class="chatlog__timestamp">02-Dec-20 06:59 AM</span>
+
+            <div class="chatlog__message " data-message-id="783467304259551242" id="message-783467304259551242">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hello Everyone!! 
+
+I&#39;m super excited to announce that the recruitment for the core team of the Anime society begins today!! 
+
+The purpose of this society is to study and discuss asian culture, media, (ranging from asian dramas to anime), language (anything and everything related to anime and K-culture )... We want to make sure any member who joins into the society gets a sense of belonging. Genre discussion, anime recommendations, fan fics, and various other competitions would be held to keep you occupied and tied to the society. The society is open to everyone who is interested in Anime and asian culture, regardless of ethnicity, religion, nationality, gender etc. The society aims to discuss only appropriate anime culture and genres.
+
+We&#39;re currently open to three positions-
+
+1. Vice President 
+2. Secretary 
+3. Parliamentarian
+
+Please text me personally to enroll and know more about the functions and roles. 
+
+Swati Subramanian,
+President of Anime Society</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">02-Dec-20 05:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="783626774579511296" id="message-783626774579511296">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention">@everyone</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">02-Dec-20 09:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="783682762959355974" id="message-783682762959355974">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;I had another query, why the animation society extend to include Asian dramas and culture?
+
+The word anime comes from the word animation and is literally used for the same in Japan, even for non-japanese animation. I think the extension of the theme dilutes it.
+
+And since you mentioned Asia, that also includes Turkey, India, Pakistan, Russia and other countries. It would be bigotry to not include them if you are using the word Asia. I strongly suggest limiting the theme to Japanese animation only at least for initial time.&quot;
+
+A copy of a query I just sent to the president. What does everyone else think?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/645370009387925524/c0ef651b4d4d1c9be373d1d84a654d9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="wu cup of tea#0393" data-user-id="645370009387925524" style="color: rgb(230,126,34)">wu cup of tea</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 05:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="783806318275461161" id="message-783806318275461161">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thanks for the feedback <span class="mention" title="Xzester#4520">@Xzester</span> , my bad,  a little correction guys,  as of now,  we&#39;re currently focusing on anime and kdrama to be specific.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 05:36 AM</span>
+
+            <div class="chatlog__message " data-message-id="783808831909658624" id="message-783808831909658624">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="wu cup of tea#0393">@wu cup of tea</span> While I don&#39;t dislike kdrama, any reason for that choice? Japanese drama is equally cool and suits the theme more imo. But yeah ultimately it&#39;s your decision</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/645370009387925524/c0ef651b4d4d1c9be373d1d84a654d9a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="wu cup of tea#0393" data-user-id="645370009387925524" style="color: rgb(230,126,34)">wu cup of tea</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 05:38 AM</span>
+
+            <div class="chatlog__message " data-message-id="783809365613477938" id="message-783809365613477938">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I mean,,  haha yess I&#39;m very much into kdramas and have watched only a few jdramas to be specific... Honestly,  I just got into anime so I was emphasizing on both equally as I&#39;ve planned the activities accordingly. But it&#39;s ultimately the members&#39; call.  I personally think it would be real fun if we had sessions for kdrama as well as anime... So lets see what the members suggest!!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 05:42 AM</span>
+
+            <div class="chatlog__message " data-message-id="783810298485800960" id="message-783810298485800960">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Ah well I&#39;m a member as well and a Japanese animation / culture enthusiast.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/674270466663514142/dda4ee2c8e99adea25af4d2fc356db87.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="hipopo#0382" data-user-id="674270466663514142" style="color: rgb(0,237,255)">hipopo</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 12:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="783919058017976340" id="message-783919058017976340">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">anyone watching jujutsu kaisen now <img class="emoji " alt="😩" title="😩" src="https://twemoji.maxcdn.com/2/72x72/1f629.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 11:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="784084088537219123" id="message-784084088537219123">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">.. Super interesting!</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128518;" title="&#128518;" src="https://twemoji.maxcdn.com/2/72x72/1f606.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="784084185035964468" id="message-784084185035964468">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I was watching Shokugeki no Sama</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/720650721468612779/2cb5ebeedc258f0a7cc067a9a8c162e2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Aleksa (RS) Head of Jury#3819" data-user-id="720650721468612779" style="color: rgb(52,152,219)">Aleksa (RS) Head of Jury</span>
+
+
+        <span class="chatlog__timestamp">04-Dec-20 04:55 AM</span>
+
+            <div class="chatlog__message " data-message-id="784160967562100759" id="message-784160967562100759">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Anyone read/watched Tower of God?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">04-Dec-20 06:03 AM</span>
+
+            <div class="chatlog__message " data-message-id="784178067210895370" id="message-784178067210895370">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Aleksa (RS) Head of Jury#3819">@Aleksa (RS) Head of Jury</span> That&#39;s one of my top favourite series. I&#39;ve read the whole webtoon. Eagerly waiting for the hiatus to end.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="784178352050143243" id="message-784178352050143243">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I would one day like to go back and deeply analyze and write about certain arcs it had. It just has so much depth and deep symbolism.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/720650721468612779/2cb5ebeedc258f0a7cc067a9a8c162e2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Aleksa (RS) Head of Jury#3819" data-user-id="720650721468612779" style="color: rgb(52,152,219)">Aleksa (RS) Head of Jury</span>
+
+
+        <span class="chatlog__timestamp">04-Dec-20 06:07 AM</span>
+
+            <div class="chatlog__message " data-message-id="784179076336320562" id="message-784179076336320562">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">SAME! The hiatus is supposed to end quite soon, and I CANNOT wait for it! And that seems like a really cool idea! I might do it as well</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="❤️" title="❤️" src="https://twemoji.maxcdn.com/2/72x72/2764.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">04-Dec-20 06:09 AM</span>
+
+            <div class="chatlog__message " data-message-id="784179457455292456" id="message-784179457455292456">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Aleksa (RS) Head of Jury#3819">@Aleksa (RS) Head of Jury</span> You should also read the webtoon Gamer if you haven&#39;t done so yet. Also I hope you&#39;ve seen Sword Art Online?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/293414423966515200/f4efdaccd0b2c1626ba0bf1c312c7b69.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Leon_King#5758" data-user-id="293414423966515200" style="color: rgb(52,152,219)">Leon_King</span>
+
+
+        <span class="chatlog__timestamp">04-Dec-20 03:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="784314244379705344" id="message-784314244379705344">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Anyone following SAO Abridged youtube series?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/413326345721085953/4396e9d1d3413387087fdb516d7dba89.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="karatekid#4466" data-user-id="413326345721085953" style="color: rgb(46,204,113)">karatekid</span>
+
+
+        <span class="chatlog__timestamp">06-Dec-20 01:25 AM</span>
+
+            <div class="chatlog__message " data-message-id="784832948875690014" id="message-784832948875690014">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Aleksa (RS) Head of Jury#3819">@Aleksa (RS) Head of Jury</span> <span class="mention" title="Xzester#4520">@Xzester</span> i enjoyed the anime of tower of god. also count me in if you ever want to go over it discuss.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="784833168502423562" id="message-784833168502423562">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I currently started reading some mangas too. unfortunately it&#39;s really hard to gather them in İstanbul, where I&#39;m from..</span>
+
+                                <span class="chatlog__edited-timestamp" title="06-Dec-20 01:28 AM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="784833501115056129" id="message-784833501115056129">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I like stories that make me think, like tower of god. Would you say SAO fits into that category?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/674394675905560627/8ef8688dd244fc272c2f00bf643ff69c.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cookie Monster#3978" data-user-id="674394675905560627" style="color: rgb(230,126,34)">Cookie Monster</span>
+
+
+        <span class="chatlog__timestamp">07-Dec-20 01:05 AM</span>
+
+            <div class="chatlog__message " data-message-id="785190216721104896" id="message-785190216721104896">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Attack on titans season 4 comes out tomorrow</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="785190329527697428" id="message-785190329527697428">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">cant wait <img class="emoji " alt="🙃" title="🙃" src="https://twemoji.maxcdn.com/2/72x72/1f643.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/413326345721085953/4396e9d1d3413387087fdb516d7dba89.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="karatekid#4466" data-user-id="413326345721085953" style="color: rgb(46,204,113)">karatekid</span>
+
+
+        <span class="chatlog__timestamp">07-Dec-20 01:16 AM</span>
+
+            <div class="chatlog__message " data-message-id="785193016805163029" id="message-785193016805163029">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">if they dont give me all the answers i want</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="785193035717148682" id="message-785193035717148682">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">im gonna be mad</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/674394675905560627/8ef8688dd244fc272c2f00bf643ff69c.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cookie Monster#3978" data-user-id="674394675905560627" style="color: rgb(230,126,34)">Cookie Monster</span>
+
+
+        <span class="chatlog__timestamp">07-Dec-20 01:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="785195644616441917" id="message-785195644616441917">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">i hope they release dub alongside sub</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/413326345721085953/4396e9d1d3413387087fdb516d7dba89.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="karatekid#4466" data-user-id="413326345721085953" style="color: rgb(46,204,113)">karatekid</span>
+
+
+        <span class="chatlog__timestamp">07-Dec-20 01:28 AM</span>
+
+            <div class="chatlog__message " data-message-id="785195999441453058" id="message-785195999441453058">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">i can&#39;t watch dub.. the weirdly overexcited reactions of japanese voice actors are one of the main reasons i love anime <img class="emoji " alt="😄" title="😄" src="https://twemoji.maxcdn.com/2/72x72/1f604.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128514;" title="&#128514;" src="https://twemoji.maxcdn.com/2/72x72/1f602.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="❤️" title="❤️" src="https://twemoji.maxcdn.com/2/72x72/2764.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="sidak007#4294" data-user-id="466335472432447509" style="color: rgb(233,30,99)">sidak007</span>
+
+
+        <span class="chatlog__timestamp">28-Dec-20 01:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="792994866309103636" id="message-792994866309103636">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">same</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -947,7 +1623,7 @@ Anyone interested in running for President of this society? Pm me if that’s th
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 19 message(s)</div>
+    <div class="postamble__entry">Exported 45 message(s)</div>
 </div>
 
 </body>

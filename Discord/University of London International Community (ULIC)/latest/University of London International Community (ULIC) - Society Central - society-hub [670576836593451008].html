@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -620,10 +629,13 @@ a {
         <span class="chatlog__timestamp">25-Jan-20 08:23 PM</span>
 
             <div class="chatlog__message chatlog__message--pinned" data-message-id="670604637262577695" id="message-670604637262577695">
-                <div class="chatlog__content">
-                    <div class="markdown">Hi Everyone! 
-This Society Central category houses all the different society channels for those of you interested in joining and participating in any of the activities mentioned below. For you to become a member of any society please message an admin or moderator to relay your interest and you will be added to that society role giving you full access to that societies activities. These society channels were created with the hopes of allowing people to find a place to collaborate and expand on their creative interests in manners that may have not been accessible otherwise. Please respect all the rules mentioned in the welcome channel and have a nice time. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi Everyone! 
+This Society Central category houses all the different society channels for those of you interested in joining and participating in any of the activities mentioned below. For you to become a member of any society please message an admin or moderator to relay your interest and you will be added to that society role giving you full access to that societies activities. These society channels were created with the hopes of allowing people to find a place to collaborate and expand on their creative interests in manners that may have not been accessible otherwise. Please respect all the rules mentioned in the welcome channel and have a nice time.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -643,8 +655,9 @@ This Society Central category houses all the different society channels for thos
         <span class="chatlog__timestamp">09-Feb-20 09:58 PM</span>
 
             <div class="chatlog__message chatlog__message--pinned" data-message-id="676064260119330846" id="message-676064260119330846">
-                <div class="chatlog__content">
-                    <div class="markdown">Hey <span class="mention">@everyone</span>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey <span class="mention">@everyone</span>
 
 We&#39;re officially launching our societies feature for the server. The societies currently on offer include:
 
@@ -662,8 +675,10 @@ The Writing Society
 The Entrepreneurs Society
 The Sports Society
 
-If you&#39;re interested in joining any society or becoming the President of any particular one, please feel free to post your interest in the Society Applications Channel and <span class="mention" style="color: rgb(248, 7, 7); background-color: rgba(248, 7, 7, 0.1);">@Moderator</span> in your message so that we can add you to the respective society. If you have any questions please forward them to any Admin or Moderator, That is anyone with the color red or orange in their username within the servers member list. We hope that everyone finds something of interest in this optional feature and can utilize in the best way possible. </div>
-                </div>
+If you&#39;re interested in joining any society or becoming the President of any particular one, please feel free to post your interest in the Society Applications Channel and <span class="mention" style="color: rgb(168, 67, 0); background-color: rgba(168, 67, 0, 0.1);">@Moderator 1</span> in your message so that we can add you to the respective society. If you have any questions please forward them to any Admin or Moderator, That is anyone with the color red or orange in their username within the servers member list. We hope that everyone finds something of interest in this optional feature and can utilize in the best way possible.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -674,43 +689,55 @@ If you&#39;re interested in joining any society or becoming the President of any
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/717ef3bb87df74fb535edbe17291e2d1.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="color: rgb(248,7,7)">Xzester</span>
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
 
 
         <span class="chatlog__timestamp">10-Feb-20 09:35 AM</span>
 
             <div class="chatlog__message " data-message-id="676239900970057740" id="message-676239900970057740">
-                <div class="chatlog__content">
-                    <div class="markdown">I would join about half of the societies, great :)  
-I would suggest we make a general &#39;Creative Arts channel&#39; too for domain-free discussions on creative pursuits. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I would join about half of the societies, great :)  
+I would suggest we make a general &#39;Creative Arts channel&#39; too for domain-free discussions on creative pursuits.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="676240210903957535" id="message-676240210903957535">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span> Also, I would suggest &quot;The Psychonaut society&quot; if that isn&#39;t too wild. I like that you have included Travel society, very important. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span> Also, I would suggest &quot;The Psychonaut society&quot; if that isn&#39;t too wild. I like that you have included Travel society, very important.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="676240563523289090" id="message-676240563523289090">
-                <div class="chatlog__content">
-                    <div class="markdown">How about we distinguish societies as &#39;public&#39; or &#39;private&#39;? Public societies won&#39;t need any approval and would be visible all the time. Travel society can be of that way. We could also have society leaders later on. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">How about we distinguish societies as &#39;public&#39; or &#39;private&#39;? Public societies won&#39;t need any approval and would be visible all the time. Travel society can be of that way. We could also have society leaders later on.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="676240790967681034" id="message-676240790967681034">
-                <div class="chatlog__content">
-                    <div class="markdown">I&#39;d suggest music society to also be in public domain. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;d suggest music society to also be in public domain.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -721,18 +748,21 @@ I would suggest we make a general &#39;Creative Arts channel&#39; too for domain
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">10-Feb-20 12:23 PM</span>
 
             <div class="chatlog__message " data-message-id="676281953695039508" id="message-676281953695039508">
-                <div class="chatlog__content">
-                    <div class="markdown">We will be appointing society Presidents <span class="mention" title="Xzester#4520">@Xzester</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">We will be appointing society Presidents <span class="mention" title="Xzester#4520">@Xzester</span></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -743,18 +773,21 @@ I would suggest we make a general &#39;Creative Arts channel&#39; too for domain
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/717ef3bb87df74fb535edbe17291e2d1.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="color: rgb(248,7,7)">Xzester</span>
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
 
 
         <span class="chatlog__timestamp">10-Feb-20 12:27 PM</span>
 
             <div class="chatlog__message " data-message-id="676283158802726913" id="message-676283158802726913">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="ilsatariq#4796">@ilsatariq</span> multiple incharges of same rank would be better. 1-3 incharges. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ilsatariq#4796">@Ilsa Tariq</span> multiple incharges of same rank would be better. 1-3 incharges.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -765,18 +798,21 @@ I would suggest we make a general &#39;Creative Arts channel&#39; too for domain
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">10-Feb-20 12:33 PM</span>
 
             <div class="chatlog__message " data-message-id="676284613928157207" id="message-676284613928157207">
-                <div class="chatlog__content">
-                    <div class="markdown">Yep. There shall be 2 for each </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yep. There shall be 2 for each</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -790,15 +826,18 @@ I would suggest we make a general &#39;Creative Arts channel&#39; too for domain
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="rochaksobti#7882" data-user-id="670908614462013472" style="color: rgb(250,2,220)">rochaksobti</span>
+        <span class="chatlog__author-name" title="rochaksobti#7882" data-user-id="670908614462013472" style="color: rgb(230,126,34)">rochaksobti</span>
 
 
         <span class="chatlog__timestamp">12-Apr-20 04:09 AM</span>
 
             <div class="chatlog__message " data-message-id="698625779126501467" id="message-698625779126501467">
-                <div class="chatlog__content">
-                    <div class="markdown">Hey guys! I’ve started a new Equestrian podcast. Do check it out and let me know what you think. Link - www.linktr.ee/rochaksobti </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey guys! I’ve started a new Equestrian podcast. Do check it out and let me know what you think. Link - www.linktr.ee/rochaksobti</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -812,15 +851,451 @@ I would suggest we make a general &#39;Creative Arts channel&#39; too for domain
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/333481253225627649/72a86d09866c45c7efc5fbc0ab1e43a5.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="WARHEAD#2414" data-user-id="333481253225627649" style="color: rgb(0,237,255)">WARHEAD</span>
+        <span class="chatlog__author-name" title="WARHEAD#2414" data-user-id="333481253225627649" style="color: rgb(230,126,34)">WARHEAD</span>
 
 
         <span class="chatlog__timestamp">26-May-20 10:03 PM</span>
 
             <div class="chatlog__message " data-message-id="714841046005186650" id="message-714841046005186650">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" style="color: rgb(248, 7, 7); background-color: rgba(248, 7, 7, 0.1);">@Moderator</span> Can we have a gaming society? <span class="chatlog__edited-timestamp" title="26-May-20 10:06 PM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(168, 67, 0); background-color: rgba(168, 67, 0, 0.1);">@Moderator 1</span> Can we have a gaming society?</span>
+
+                                <span class="chatlog__edited-timestamp" title="26-May-20 10:06 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 03:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="781788258974957608" id="message-781788258974957608">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;d like to request creation of an Economics society / club, which would be a bit different from the study discussion channel. I&#39;d volunteer to be its president</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 04:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="781791689484271626" id="message-781791689484271626">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ilsatariq#4796">@Ilsa Tariq</span> let me know?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 04:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="781799345498488853" id="message-781799345498488853">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yes! I think that’s a great idea.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781799358810554378" id="message-781799358810554378">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Xzester#4520">@Xzester</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 05:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="782542635239604264" id="message-782542635239604264">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I propose Anime society should be merged with Cinema society <span class="mention" title="ilsatariq#4796">@Ilsa Tariq</span> because anime is ultimately a form of cinema. Maybe we should ask its members if that&#39;s okay. It&#39;s not active</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 05:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="782545195417468938" id="message-782545195417468938">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I also think that we&#39;ll eventually need to expand the space given to each society. Right now each society has one channel, but in future they might need more.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 06:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="782555777520631838" id="message-782555777520631838">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">We have a President application for anime society. They will be added to the Presidential Panel soon. 
+Also, many societies overlap and that makes for excellent collaborations. For e.g. Writing &amp; Art; just like Anime and Cinema.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782555859288850472" id="message-782555859288850472">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">That’s correct.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 02:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="783212954450919466" id="message-783212954450919466">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">The wait is finally over! Come join us for the First Meet of The Writing Society, to be held on Thursday, 3rd of December at 1pm GMT+0. Tasks will be delegated, vision shall be shared and tea will be spilled.
+
+SO confirm your presence by filling this form
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSdQKoc5R-oGm-J4oFp32UEiXJKQNQX3GaK_jFfSFxlJVg7zxw/viewform">https://docs.google.com/forms/d/e/1FAIpQLSdQKoc5R-oGm-J4oFp32UEiXJKQNQX3GaK_jFfSFxlJVg7zxw/viewform</a></span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="783212997538611220" id="message-783212997538611220">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention">@everyone</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783214727987855360" id="message-783214727987855360">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">All non-members can text me personally if they wish to attend the first meet</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/670721634109489155/50f3e563d18d23c82badcf36a2beee52.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="harismazhar3#0270" data-user-id="670721634109489155" style="color: rgb(2,15,85)">harismazhar3</span>
+
+
+        <span class="chatlog__timestamp">10-Dec-20 06:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="786356896457031700" id="message-786356896457031700">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey <span class="mention">@everyone</span>, I would like to invite you to the first General meeting of the Music Society! <img class="emoji " alt="🔊" title="🔊" src="https://twemoji.maxcdn.com/2/72x72/1f50a.png">  We&#39;ll discuss what the Music Society is all about and hopefully answer any questions you may have.
+In the meeting we&#39;ll introduce you to the official ULIC Music Society Youtube Channel, Radio VC concept and how you can put in your suggestions and collaborate with us! Think of it like an ongoing collaboration for everyone on the ULIC server to enjoy! We&#39;ll discuss future activities planned for all of us to take part in! It&#39;ll also serve as a Q&amp;A session. Come hang on the <span class="mention">#music-society</span> channel! 
+
+Youtube Channel: <a href="https://www.youtube.com/channel/UC1rF-AoIZMZ5yohdIQ9xOmQ">https://www.youtube.com/channel/UC1rF-AoIZMZ5yohdIQ9xOmQ</a>
+
+Time: 3Pm GMT+0 ⏰ 10th Dec.
+
+How? : Video Chat, so we can all get acquainted! <img class="emoji " alt="😄" title="😄" src="https://twemoji.maxcdn.com/2/72x72/1f604.png"> 
+<a href="https://discord.gg/eysvRVaU">https://discord.gg/eysvRVaU</a></span>
+
+                                <span class="chatlog__edited-timestamp" title="10-Dec-20 09:18 AM">(edited)</span>
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.youtube.com/channel/UC1rF-AoIZMZ5yohdIQ9xOmQ">
+                                                    <div class="markdown preserve-whitespace">ULIC Music Society</div>
+                                                </a>
+                                        </div>
+
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://yt3.ggpht.com/ytc/AAUvwniSZUiEfgHp_SxDDSBfOkYRveDYCAy3hG1Du4dF=s900-c-k-c0x00ffffff-no-rj">
+                                            <img class="chatlog__embed-thumbnail" src="https://yt3.ggpht.com/ytc/AAUvwniSZUiEfgHp_SxDDSBfOkYRveDYCAy3hG1Du4dF=s900-c-k-c0x00ffffff-no-rj" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">11-Dec-20 11:20 AM</span>
+
+            <div class="chatlog__message " data-message-id="786794583798448168" id="message-786794583798448168">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Research x Entrepreneurial society fusion project suggestion - Entrepreneurial Research. There are people whose sole source of earning is seeding startup projects and then selling them later off for a profit. I think this deserves to be talked about more often. <span class="mention" style="color: rgb(2, 15, 85); background-color: rgba(2, 15, 85, 0.1);">@President of Research Society</span> <span class="mention" style="color: rgb(2, 15, 85); background-color: rgba(2, 15, 85, 0.1);">@President of Entrepreneurship  Society</span> 
+Here from seeding I am not exclusively talking about financial funding but rather funding of intelligence too. I can imagine syndicates with dedicated think tanks whose sole purpose is to seed and sell start-up projects.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="786794703399157818" id="message-786794703399157818">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This idea is likely too advanced for most to tackle right now but please do look into it eventually. Thank you</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">16-Dec-20 12:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="788624385212678165" id="message-788624385212678165">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Please fill out the following form to join the Environmental Society</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788624406557098006" id="message-788624406557098006">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://forms.gle/ynCUE8FJzGLKynuQ7">https://forms.gle/ynCUE8FJzGLKynuQ7</a></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788624455768473601" id="message-788624455768473601">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention">@everyone</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/563826925697499170/0283772e02f4526c07860ff7347c75e1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Maxim#9095" data-user-id="563826925697499170" style="color: rgb(233,30,99)">Maxim</span>
+
+
+        <span class="chatlog__timestamp">19-Dec-20 02:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="789561114215448606" id="message-789561114215448606">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey guys! Would you like to learn how to prepare for a job interview, or are you thinking of starting your own business and need some tips? Then Entrepreneurship society is a place for you! My name is Maksim and I am the VP of entrepreneurship society 
+✨✨✨
+We are actively looking for new members and have many interesting activities planned (discussions, projects, networking) and it will look great on your CV! Hop into the <span class="mention">#entrepreneurship-society</span> if this sounds interesting to you! ✨✨</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">5</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">19-Dec-20 02:44 AM</span>
+
+            <div class="chatlog__message " data-message-id="789563715024322580" id="message-789563715024322580">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I have an interview for an internship tomorrow, I can use some advice.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -831,7 +1306,7 @@ I would suggest we make a general &#39;Creative Arts channel&#39; too for domain
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 11 message(s)</div>
+    <div class="postamble__entry">Exported 30 message(s)</div>
 </div>
 
 </body>

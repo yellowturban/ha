@@ -1,0 +1,2165 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>University of London International Community (ULIC) - entrepreneurship-society</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
+.spoiler {
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image * {
+    filter: blur(44px);
+}
+
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/666980917436481555/1ef178605e8ea345733ec9ebc1bf64da.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">University of London International Community (ULIC)</div>
+        <div class="preamble__entry">Society Central / entrepreneurship-society</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">23-Feb-20 01:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="680821622545973295" id="message-680821622545973295">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi guys! So what prompted you to join the entrepreneurs society? Any visions you’d like to share?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">23-Feb-20 01:09 AM</span>
+
+            <div class="chatlog__message " data-message-id="680823429703925780" id="message-680823429703925780">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Entrepreneurs Society Member</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/694524632061181972/6adc429f717884f339d2a9c7b49686d1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Oscar &#127477;&#127466;#0402" data-user-id="694524632061181972" style="color: rgb(230,126,34)">Oscar &#127477;&#127466;</span>
+
+
+        <span class="chatlog__timestamp">22-Apr-20 08:51 AM</span>
+
+            <div class="chatlog__message " data-message-id="702320655684599818" id="message-702320655684599818">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi, so im currently working with a friend to launch a nutrition and logistics startup</span>
+
+                                <span class="chatlog__edited-timestamp" title="22-Apr-20 08:51 AM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">22-Apr-20 07:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="702483064357388328" id="message-702483064357388328">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">That’s interesting! Tell us more about it <span class="mention" title="Oscar &#127477;&#127466;#0402">@Oscar &#127477;&#127466;</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/694524632061181972/6adc429f717884f339d2a9c7b49686d1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Oscar &#127477;&#127466;#0402" data-user-id="694524632061181972" style="color: rgb(230,126,34)">Oscar &#127477;&#127466;</span>
+
+
+        <span class="chatlog__timestamp">22-Apr-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="702484591742812301" id="message-702484591742812301">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Given the crisis, in my country theres are some shortages on Supermarkets and others. Moreover, going out shopping is a risk for social distancing. So we are trying to design an smart ecommerce system based on the weekly nutrional intake for people and mathematically optimize the weekly shops, diet and logistics.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/308831731967066112/df198d231478fc4547819615bc85407e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="9thstreetdreamer#2097" data-user-id="308831731967066112" style="">9thstreetdreamer</span>
+
+
+        <span class="chatlog__timestamp">22-Apr-20 08:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="702490756518117478" id="message-702490756518117478">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">You mean in terms of the stock necessary based on the metrics of demand and supply constraints that may pile up or a system by which distribution can be optimized to descrease risks of further virus related issues?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="702490997426225152" id="message-702490997426225152">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I feel like something like HelloFresh is a pretty good model to reference when it comes to that.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/689353651772588033/14b7e3f48c57a1ee6937881b30fffe9e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Yukta#2684" data-user-id="689353651772588033" style="">Yukta</span>
+
+
+        <span class="chatlog__timestamp">24-Apr-20 04:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="703164899504816143" id="message-703164899504816143">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi everyone, need some advice if you know anything about it - what can you do if someone copies a business/initiative concept that you did first? I know this is a bit vague, but let&#39;s say you started a digital platform with a unique idea, and then some people you know plagiarize it (with some amendments) and promote it as their own. How do you report this? Or at least, how do you deal with it? <img class="emoji " alt="😀" title="😀" src="https://twemoji.maxcdn.com/2/72x72/1f600.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/308831731967066112/df198d231478fc4547819615bc85407e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="9thstreetdreamer#2097" data-user-id="308831731967066112" style="">9thstreetdreamer</span>
+
+
+        <span class="chatlog__timestamp">24-Apr-20 08:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="703224592113729616" id="message-703224592113729616">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Well from a legality stand point I would start by doing some research on the copy right and patent laws within your country and general region. See how well they are enforced and what the technical points are as pre requisites for you taking any kind of action. If you had a registered trademark or patent or some form of copy right protection on this idea or business concept then you can check to see how it can be enforced. Maybe speak to a legal advisor or look up law forums online asking about your issue and what the best way forward would be regarding it.</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/689353651772588033/14b7e3f48c57a1ee6937881b30fffe9e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Yukta#2684" data-user-id="689353651772588033" style="">Yukta</span>
+
+
+        <span class="chatlog__timestamp">25-Apr-20 02:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="703496249235603526" id="message-703496249235603526">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Thank you so much <span class="mention" title="9thstreetdreamer#2097">@9thstreetdreamer</span> - this really helps to clarify what I can do about it, especially those copyright laws which I&#39;m going to look into after this</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">06-Oct-20 12:47 AM</span>
+
+            <div class="chatlog__message " data-message-id="762717649553063956" id="message-762717649553063956">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi guys,
+My name is khushwant Singh, the president of Entrepreneurship society of UOL. I m looking forward to networking meetings and events soon. Lets make the family bigger and better by having entrepreneurs and aspiring entrepreneurs on board. Please ask your friends who are entrepreneurs or aspirants to join the discord group.
+Cheers to the amazing year,
+Thanks singh</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MichaelR#9353" data-user-id="765599940814569504" style="color: rgb(230,126,34)">MichaelR</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 02:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="766003942433488947" id="message-766003942433488947">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Looking forward to being here and contributing to the group</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">15-Oct-20 05:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="766231365443911691" id="message-766231365443911691">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Just saw that a lot of people joined this society haha</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/701171294766628958/3c95dffee23eddfe1e034a84de96dd1a.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Diego Lima de Carvalho#7584" data-user-id="701171294766628958" style="color: rgb(230,126,34)">Diego Lima de Carvalho</span>
+
+
+        <span class="chatlog__timestamp">03-Nov-20 01:16 AM</span>
+
+            <div class="chatlog__message " data-message-id="772871733413412865" id="message-772871733413412865">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hello. I am interested on creating new business opportunities in UK. Anyone wants to start a new group to think on new ideas of entrepreneurship?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">26-Nov-20 02:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="781227663292891146" id="message-781227663292891146">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Heyy! Great to know about the opportunity. We are having a cohort of founders in December. That is an initiative by the Entrepreneurship society! :) I hope, you find your co-founder in the cohort.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">26-Nov-20 04:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="781433695780601887" id="message-781433695780601887">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey guyssss! We are organising a video meeting for better interaction. This event will help you all know each others better and form a cohort. It would be really great if you guys could assist/advise relating to your time preference and how do you want to the rvent to happen and other convenience. Lets together make it a perfect day- finding founders to knowing the global culture. I assure that it would be really worth attending as we have members from various walks of life. Please let me know here or PC me, so that we can make the most out of the event. We plan to keep it in the first week of December.</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">26-Nov-20 04:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="781435590813941760" id="message-781435590813941760">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Entrepreneurs Society Member</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 02:20 AM</span>
+
+            <div class="chatlog__message " data-message-id="781585122344042518" id="message-781585122344042518">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This society is the most exciting society with innovative and creative thinkers. We cant grow unless we are together. Society is in the interest of its members. And, 21st century is about collaboration. We need to welcome the very first step to collaboration! Yes, yes we need to network. Tell us about you and why are you here? <span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Entrepreneurs Society Member</span></span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/694524632061181972/6adc429f717884f339d2a9c7b49686d1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Oscar &#127477;&#127466;#0402" data-user-id="694524632061181972" style="color: rgb(230,126,34)">Oscar &#127477;&#127466;</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 04:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="781610809783746570" id="message-781610809783746570">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="khushwant#8841">@khushwant</span>  go <img class="emoji " alt="👏" title="👏" src="https://twemoji.maxcdn.com/2/72x72/1f44f.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692353525488943124/a602021ca21ac26bf05cd5550b981811.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Eesh#9940" data-user-id="692353525488943124" style="color: rgb(230,126,34)">Eesh</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 09:19 AM</span>
+
+            <div class="chatlog__message " data-message-id="781690572875628568" id="message-781690572875628568">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="khushwant#8841">@khushwant</span> well I’ve always been intrigued of creating or innovating something but I realised entrepreneurs are more than that. They focus on so many different areas and overlook the business process. I want to learn from you guys more on entrepreneurship and build more confidence in my ideas</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">27-Nov-20 01:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="781757995531894824" id="message-781757995531894824">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I assure you! You are at the right place with abound opportunities. <span class="mention" title="Eesh#9940">@Eesh</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 06:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="782554254287831070" id="message-782554254287831070">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey guys, I&#39;m looking at registering a company in India and hoping for se advice about how to go about it. Some background, I consult with 2 companies on their marketing and communications and would like to establish a more formal payment process so I can file taxes and also grow my client base.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="shreyasbhutra#5630" data-user-id="556904893244506133" style="color: rgb(230,126,34)">shreyasbhutra</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 07:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="782576123204075541" id="message-782576123204075541">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I have some experience in this</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782576193207402506" id="message-782576193207402506">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Its much easier and faster when you register through an agent</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782576230188318741" id="message-782576230188318741">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Or else its too much hassle</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 08:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="782577730700705792" id="message-782577730700705792">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yeah getting a good agency is a great idea for most people</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 08:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="782579350599106572" id="message-782579350599106572">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Do you also know the regulations around having international clients and how taxes for those are calculated etc? 
+
+Specifically from USA and Canada</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782579439463825448" id="message-782579439463825448">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I know the GST rules internally, but a bit lost about how to bill these new clients.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="shreyasbhutra#5630" data-user-id="556904893244506133" style="color: rgb(230,126,34)">shreyasbhutra</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 01:04 AM</span>
+
+            <div class="chatlog__message " data-message-id="782653278261477436" id="message-782653278261477436">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It depends on how the payment is recieved</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782653381344624670" id="message-782653381344624670">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I used to own a dropshipping company</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782653513988964442" id="message-782653513988964442">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">You have no gst until 20lacs if the payment is paid in foriegn currency</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 01:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="783023334202933300" id="message-783023334202933300">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">What business are you into? It all depends on the business you do!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783024892718612511" id="message-783024892718612511">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">There are slabs to bill and that depends upon the commodity. Also, tax liability differs under the size of the business. India has progressive tax rate. 
+Talking about international client, if it is a internet company- it is easy. If not, you are bound to have higher regulations. And, if you import or export goods to and from india while registering your company in india and being the host outside india- not just tax but you need to match up standards and need many certificates in order to custom clear the goods. :)</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783025682568839209" id="message-783025682568839209">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Its not easy to set up in india but its possible. So, you have a great chance to make profits out of opportunities but it wont be as you think! It is competitive and regulations support domestic firms! Please research well before getting in the market. Or else, you are likely to suffer losses.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783025976841207809" id="message-783025976841207809">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Let me know, i may be of your help. :))</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783026423450435614" id="message-783026423450435614">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">More than happy to assist you! <span class="mention" title="aiygen_0101#4570">@aiygen_0101</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 04:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="783066790539821086" id="message-783066790539821086">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;ll DM you so maybe we can chat. Loads of things went over my head.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783067179335286805" id="message-783067179335286805">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I have Indian clients, but international too. So it would need some kind of special regulation on different clients? It&#39;s an internet business but my clients are not internet companies.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">01-Dec-20 03:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="783237362855575552" id="message-783237362855575552">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Ohh alright. Let me know. No worries.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">07-Dec-20 09:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="785504313249628210" id="message-785504313249628210">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey <span class="mention">@everyone</span>! We are actively looking for members  to fill positions available for the management of this channel!
+The available positions are as follows:
+
+1. Vice president (Team building)
+
+2. Vice president (Event Manager)
+
+Feel free to get in touch with me over personal chat. These positions are subject to small interview as we tend to begin the procedure in becoming official as a part of  University of London. These positions are on rolling basis. 
+
+Perks:
+1. Society is in talks to become official- recognition.
+2. Certificate of appreciation by ULIC discord on successful completion.
+3. Leadership role on the CV- this will help you in numerous ways. 
+4. Apart from everything, you will learn about yourself and the diverse group of the community around the globe.</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128525;" title="&#128525;" src="https://twemoji.maxcdn.com/2/72x72/1f60d.png">
+                                <span class="chatlog__reaction-count">6</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="785504503956635658" id="message-785504503956635658">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Entrepreneurs Society Member</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="anishan#1644" data-user-id="718386079832604722" style="color: rgb(230,126,34)">anishan</span>
+
+
+        <span class="chatlog__timestamp">07-Dec-20 10:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="785511388654338088" id="message-785511388654338088">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="khushwant#8841">@khushwant</span> can tell me about those two roles</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">07-Dec-20 10:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="785516241628561429" id="message-785516241628561429">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Vice president (Event management) will be responsible to carry out events like &quot;cause for good&quot; which will help the society through an innovative way promoting welfare and development. This will be an brainstorming activity by the members of the society. 
+The manager will have to prepare a plan of action and adhere to the same. Discuss ideas, planning and implementation. Also, coordinating with the members of discord and getting feedback for improvement. 
+
+They will have the opportunity to learn a lot about Entrepreneurship and get connected to the entrepreneurs of uol.
+This position has commitment but it is worth the experience it brings to the OC.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="785517901854670898" id="message-785517901854670898">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Vice president (Team building) will be responsible for PR and Marketing of the event. They will have to get in touch with entrepreneurs and make sure the members are active and are learning. They will advice the Vice President (Event Management). This position requires a customer service skill. :)
+
+These are positions need justice and honesty it is easy to get in for these since the society is growing at the moment. Once, we accelerate the growth- These positions will truly be recognized among the communities. 
+
+If you dont have skills and want to really learn. You are likely to be considered. Honestly, i dont look for perfection but dedication and hard work.</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="785518036337688597" id="message-785518036337688597">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Entrepreneurs Society Member</span> 
+@Everyone 
+@anishan</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 12:47 AM</span>
+
+            <div class="chatlog__message " data-message-id="785910324179370036" id="message-785910324179370036">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention">@everyone</span>, these are valuable positions which would speak volumes on your CV too!</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128175;" title="&#128175;" src="https://twemoji.maxcdn.com/2/72x72/1f4af.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 01:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="785918919549779978" id="message-785918919549779978">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="khushwant#8841">@khushwant</span> I have a question. When you mention entrepreneurship does it mean only corporate stuff?
+
+I am heavy into art / music and the way I see it an artist of any type who enters the public vision is ultimately a merchant. Most of them if not every single one. 
+
+A merchant of ideas, not just products at the very least.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 01:29 AM</span>
+
+            <div class="chatlog__message " data-message-id="785921055398035536" id="message-785921055398035536">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yes <span class="mention" title="Xzester#4520">@Xzester</span> We support all business artists</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 01:36 AM</span>
+
+            <div class="chatlog__message " data-message-id="785922844386918410" id="message-785922844386918410">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Business artists?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 01:37 AM</span>
+
+            <div class="chatlog__message " data-message-id="785923029250998353" id="message-785923029250998353">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Who want to commercialize their art work</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 01:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="785923531762171955" id="message-785923531762171955">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">That&#39;s a deal. However what I meant was that the creation of art itself is entrepreneurship. 
+
+An artist is automatically an entrepreneur, always.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">09-Dec-20 01:41 AM</span>
+
+            <div class="chatlog__message " data-message-id="785923905402437633" id="message-785923905402437633">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Its a skill of an Entrepreneur! Lets keep it this way :))</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">17-Dec-20 03:44 AM</span>
+
+            <div class="chatlog__message " data-message-id="788854144177012807" id="message-788854144177012807">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Anyone planning to do this course btw? I think this is a great option if you want to go deep into this: <a href="https://london.ac.uk/courses/startup-financing-without-vc">https://london.ac.uk/courses/startup-financing-without-vc</a></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/563826925697499170/0283772e02f4526c07860ff7347c75e1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Maxim#9095" data-user-id="563826925697499170" style="color: rgb(233,30,99)">Maxim</span>
+
+
+        <span class="chatlog__timestamp">18-Dec-20 02:44 AM</span>
+
+            <div class="chatlog__message " data-message-id="789201386511400970" id="message-789201386511400970">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention">@everyone</span>  Hey guys! My name is Maksim, and I am the VP of entrepreneurship society. We will soon be ready to begin with our meetings and activities, woo hoo ✨
+We have a lot of activities and discussions prepared and cant wait to meet you all 
+As of right now we have a lot of members from many different countries  so we are just trying to figure out the easiest platform and time  to have our FIRST OFFICIAL MEETING 
+Please fill out this super short form that will help us figure everything  out and update you when everything is ready! 
+
+<a href="https://forms.gle/cnNbVFvi3SBYPCeb6">https://forms.gle/cnNbVFvi3SBYPCeb6</a></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://forms.gle/cnNbVFvi3SBYPCeb6">
+                                                    <div class="markdown preserve-whitespace">First official meeting of entrepreneurship society</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">Hello! Since you are seeing this, that means you are interested in attending the first meeting of entrepreneurship society, yay! However, because we are a large group of people from all over the world, we need to figure out the time that works for everybody first. Please fill out this form to make our lives easier. Thanks!</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://lh3.googleusercontent.com/qtDmSN1HdXWSV6_nkDPTCoq-px7UBehUi-gL5FjpdV8M-CN86WkH-UTFh0NM9Ka-3eNOPXQ=w1200-h630-p">
+                                            <img class="chatlog__embed-thumbnail" src="https://lh3.googleusercontent.com/qtDmSN1HdXWSV6_nkDPTCoq-px7UBehUi-gL5FjpdV8M-CN86WkH-UTFh0NM9Ka-3eNOPXQ=w1200-h630-p" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">6</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="✨" title="✨" src="https://twemoji.maxcdn.com/2/72x72/2728.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">18-Dec-20 02:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="789378310639190056" id="message-789378310639190056">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="khushwant#8841">@khushwant</span> Hi, I&#39;m sorry we haven&#39;t had a moment to chat. I&#39;m kind of restructuring my idea and wanted to be better prepared for our call. I think I would like to wait out till society activities begin and then I&#39;ll be better positioned to discuss the company set up.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="789378336153010176" id="message-789378336153010176">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Looking forward to it</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="✨" title="✨" src="https://twemoji.maxcdn.com/2/72x72/2728.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">18-Dec-20 05:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="789420324973838346" id="message-789420324973838346">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">No worries. We all can work it out together! :))</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">19-Dec-20 02:46 AM</span>
+
+            <div class="chatlog__message " data-message-id="789564273658691614" id="message-789564273658691614">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Looking forward to this.</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="✨" title="✨" src="https://twemoji.maxcdn.com/2/72x72/2728.png">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HARSHA VARDHAN#8292" data-user-id="762918194234392618" style="color: rgb(233,30,99)">HARSHA VARDHAN</span>
+
+
+        <span class="chatlog__timestamp">26-Dec-20 12:04 AM</span>
+
+            <div class="chatlog__message " data-message-id="792060250915471370" id="message-792060250915471370">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hello everyone I have got a great news for the tech lovers based in India. EY is organising tech competition for college students across any discipline. I am providing the link down below. Happy Christmas. <a href="https://www.ey.com/en_in/techathon">https://www.ey.com/en_in/techathon</a></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://www.ey.com/en_in/techathon">
+                                                    <div class="markdown preserve-whitespace">Join EY Techathon 2021: #iSolve4aBillion Challenge</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">Take part in the EY Techathon 2021: #ISolve4aBillion challenge showcase your tech skills at the Techathon of solving one of the biggest challenges India faces today. Register now!</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://assets.ey.com/content/dam/ey-sites/ey-com/en_in/topics/techathon/ey-techathon-solve4abillion.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://assets.ey.com/content/dam/ey-sites/ey-com/en_in/topics/techathon/ey-techathon-solve4abillion.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rudhraksh#5024" data-user-id="175788863174737920" style="color: rgb(230,126,34)">Rudhraksh</span>
+
+
+        <span class="chatlog__timestamp">28-Dec-20 07:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="793085001851731988" id="message-793085001851731988">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">If I remember correctly, in India you need to get yourself an import export code for export of services. You probably also need to get a GST registration, are you a freelancer? or do you have a firm?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="khushwant#8841" data-user-id="670679375443656716" style="color: rgb(2,15,85)">khushwant</span>
+
+
+        <span class="chatlog__timestamp">29-Dec-20 01:32 AM</span>
+
+            <div class="chatlog__message " data-message-id="793169482985242724" id="message-793169482985242724">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi Rudhraksh!
+I am the president of the society. 
+Yes, thats right- you need AD Code, Gst registration is a must and a bank guarantee for your goods. Also, a few more KYC details for the custom. Do let me know, if you are an importer/exporters to/from india or anywhere round the globe and about your services. I hope the society could do good to you and your business :))</span>
+
+                                <span class="chatlog__edited-timestamp" title="29-Dec-20 01:36 AM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="793169724074491934" id="message-793169724074491934">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Also, do sign up the form. We will be glad to connect with you to know more about you. :))</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="793169841132929064" id="message-793169841132929064">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://forms.gle/cnNbVFvi3SBYPCeb6">https://forms.gle/cnNbVFvi3SBYPCeb6</a></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://forms.gle/cnNbVFvi3SBYPCeb6">
+                                                    <div class="markdown preserve-whitespace">First official meeting of entrepreneurship society</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">Hello! Since you are seeing this, that means you are interested in attending the first meeting of entrepreneurship society, yay! However, because we are a large group of people from all over the world, we need to figure out the time that works for everybody first. Please fill out this form to make our lives easier. Thanks!</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://lh3.googleusercontent.com/qtDmSN1HdXWSV6_nkDPTCoq-px7UBehUi-gL5FjpdV8M-CN86WkH-UTFh0NM9Ka-3eNOPXQ=w1200-h630-p">
+                                            <img class="chatlog__embed-thumbnail" src="https://lh3.googleusercontent.com/qtDmSN1HdXWSV6_nkDPTCoq-px7UBehUi-gL5FjpdV8M-CN86WkH-UTFh0NM9Ka-3eNOPXQ=w1200-h630-p" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128077;" title="&#128077;" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 63 message(s)</div>
+</div>
+
+</body>
+</html>

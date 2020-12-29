@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -611,19 +620,658 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/0f986ee50ffb2a26627c9ec790c7e745.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/666976475483996198/cc05ac340cd384ca791357c02dc44ce1.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(241,196,15)">ilsatariq</span>
+        <span class="chatlog__author-name" title="ilsatariq#4796" data-user-id="666976475483996198" style="color: rgb(248,7,7)">Ilsa Tariq</span>
 
 
         <span class="chatlog__timestamp">16-Oct-20 12:28 AM</span>
 
             <div class="chatlog__message " data-message-id="766336607166529546" id="message-766336607166529546">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" style="color: rgb(162, 98, 98); background-color: rgba(162, 98, 98, 0.1);">@Environmental Society Member</span> 
-Anyone interested in running for President of this society? Pm me if that’s the case. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Environmental Society Member</span> 
+Anyone interested in running for President of this society? Pm me if that’s the case.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 04:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="782340345270108181" id="message-782340345270108181">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hii everyone, I’m Rhea</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782340394230349876" id="message-782340394230349876">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">The President of Environmental Society</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782340552003551264" id="message-782340552003551264">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I’ll be updating this page by tomorrow but anyone who’s interested in taking on responsibility, please let me know</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 05:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="782532194270838795" id="message-782532194270838795">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Glad to be a member! <img class="emoji " alt="🥰" title="🥰" src="https://twemoji.maxcdn.com/2/72x72/1f970.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 06:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="782551793829150750" id="message-782551793829150750">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I work with many environmental groups and we can take part in their campaigns. I think the biggest goal for environmental societies is building awareness and activism</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782552459561140274" id="message-782552459561140274">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">But unsure about how this can be done in an international scale. Usually need to lobby with local NGO that do ground work for impact</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782552534744563712" id="message-782552534744563712">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Eager to hear the direction of this from <span class="mention" title="Rhea#0293">@Rhea</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 06:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="782553521115234334" id="message-782553521115234334">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I will be holding an informal meeting soon where i share my vision and all members share their ideas</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782553677968834601" id="message-782553677968834601">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">The Board Recruitment for Environmental Society starts today:-</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782553926243319838" id="message-782553926243319838">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">the positions available are 1. Vice President and 2.  Head of Communications (2)</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782554112880803902" id="message-782554112880803902">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">anyone interested can contact me for further information or mail me their resume at rs492@student.london.ac.uk</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 06:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="782554540846481408" id="message-782554540846481408">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">What would these positions entail wrt time commitment and responsibilities?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 06:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="782556553554952202" id="message-782556553554952202">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">the head of communications will essentially be speaking to existing and potential members and after the ul/ulic thing has been solved, speaking to colleges</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782556790419226624" id="message-782556790419226624">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">vice president would be helping me execute the ideas, i already have a proposal for the society but adding onto it</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="782556935211843594" id="message-782556935211843594">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">communications will be tasked with social media as well but that is going to be a group effort of the entire board</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="782572234056400906" id="message-782572234056400906">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Really looking forward to this</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 07:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="782576285381033993" id="message-782576285381033993">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Me as well</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/692835175037665280/e8a2b009d190b348a9f93de1ff2078af.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aiygen_0101#4570" data-user-id="692835175037665280" style="color: rgb(17,128,106)">aiygen_0101</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 08:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="782579041944862740" id="message-782579041944862740">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I can be involved in an advisory board member capacity, if that can be incorporated. Since I can&#39;t get involved in execution and operations</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">29-Nov-20 08:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="782590407078313994" id="message-782590407078313994">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I will get back to you about this</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="anishan#1644" data-user-id="718386079832604722" style="color: rgb(230,126,34)">anishan</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 09:51 AM</span>
+
+            <div class="chatlog__message " data-message-id="783872934271516682" id="message-783872934271516682">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I think communications should be okay</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 06:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="783997582548533260" id="message-783997582548533260">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Do you want to apply?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="anishan#1644" data-user-id="718386079832604722" style="color: rgb(230,126,34)">anishan</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 06:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="784011015485653014" id="message-784011015485653014">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Just to confirm what are we supposed to do as communication.And there should be full commitment right @rhea</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 08:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="784026279195181066" id="message-784026279195181066">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I’m going to text you personally about this</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="anishan#1644" data-user-id="718386079832604722" style="color: rgb(230,126,34)">anishan</span>
+
+
+        <span class="chatlog__timestamp">04-Dec-20 09:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="784414794458726441" id="message-784414794458726441">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Rhea#0293">@Rhea</span> ok</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Mal#5586" data-user-id="787258854286163999" style="color: rgb(230,126,34)">Mal</span>
+
+
+        <span class="chatlog__timestamp">12-Dec-20 06:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="787260409157255168" id="message-787260409157255168">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Rhea#0293">@Rhea</span> hey I would like to join this society. Is there any specific application or something? Please guide me</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">12-Dec-20 09:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="787314739285065738" id="message-787314739285065738">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hii, i’ll be sending the google form soon</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Rhea#0293" data-user-id="765999188496220231" style="color: rgb(2,15,85)">Rhea</span>
+
+
+        <span class="chatlog__timestamp">16-Dec-20 12:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="788623261965352980" id="message-788623261965352980">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">hello everyone, sorry for the delay!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788623356315697153" id="message-788623356315697153">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">everyone interested in joining the environmental society can fill out the following form</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="788623374150533120" id="message-788623374150533120">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://forms.gle/ynCUE8FJzGLKynuQ7">https://forms.gle/ynCUE8FJzGLKynuQ7</a></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://forms.gle/ynCUE8FJzGLKynuQ7">
+                                                    <div class="markdown preserve-whitespace">ENVIRONMENTAL SOCIETY MEMBERSHIP 2020-21</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">To confirm Environmental Society Membership, please fill out the following information.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://lh4.googleusercontent.com/5rY35XypYwieO5H0iDmeDKPc8Pf9wbaQHOxbV0wkI7_NTnbHJIMzyJzGhbq4JGVqRK-4Jow=w1200-h630-p">
+                                            <img class="chatlog__embed-thumbnail" src="https://lh4.googleusercontent.com/5rY35XypYwieO5H0iDmeDKPc8Pf9wbaQHOxbV0wkI7_NTnbHJIMzyJzGhbq4JGVqRK-4Jow=w1200-h630-p" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="788624224134627339" id="message-788624224134627339">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Environmental Society Member</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/528231434331226128/f946921ae992b85ecd4cacf1d50f1b75.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Xzester#4520" data-user-id="528231434331226128" style="">Xzester</span>
+
+
+        <span class="chatlog__timestamp">19-Dec-20 02:47 AM</span>
+
+            <div class="chatlog__message " data-message-id="789564496859496489" id="message-789564496859496489">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Looking forward to what we do</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -634,7 +1282,7 @@ Anyone interested in running for President of this society? Pm me if that’s th
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 1 message(s)</div>
+    <div class="postamble__entry">Exported 32 message(s)</div>
 </div>
 
 </body>

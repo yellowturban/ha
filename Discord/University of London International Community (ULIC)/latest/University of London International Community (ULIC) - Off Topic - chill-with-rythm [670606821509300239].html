@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -621,9 +630,12 @@ a {
         <span class="chatlog__timestamp">25-Jan-20 08:36 PM</span>
 
             <div class="chatlog__message " data-message-id="670607941367365642" id="message-670607941367365642">
-                <div class="chatlog__content">
-                    <div class="markdown">!play <a href="https://www.youtube.com/watch?v=aNO6yd66PpA">https://www.youtube.com/watch?v=aNO6yd66PpA</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">!play <a href="https://www.youtube.com/watch?v=aNO6yd66PpA">https://www.youtube.com/watch?v=aNO6yd66PpA</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -641,7 +653,7 @@ a {
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=aNO6yd66PpA">
-                                                    <div class="markdown">Iris - The Goo Goo Dolls (lyrics)</div>
+                                                    <div class="markdown preserve-whitespace">Iris - The Goo Goo Dolls (lyrics)</div>
                                                 </a>
                                         </div>
 
@@ -669,24 +681,30 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">25-Jan-20 08:36 PM</span>
 
             <div class="chatlog__message " data-message-id="670607942139117569" id="message-670607942139117569">
-                <div class="chatlog__content">
-                    <div class="markdown"><img class="emoji " alt="youtube" title="youtube" src="https://cdn.discordapp.com/emojis/335112740957978625.png"> <strong>Searching</strong> <img class="emoji " alt="🔎" title="🔎" src="https://twemoji.maxcdn.com/2/72x72/1f50e.png"> <span class="pre pre--inline">https://www.youtube.com/watch?v=aNO6yd66PpA</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img class="emoji " alt="youtube" title="youtube" src="https://cdn.discordapp.com/emojis/335112740957978625.png"> <strong>Searching</strong> <img class="emoji " alt="🔎" title="🔎" src="https://twemoji.maxcdn.com/2/72x72/1f50e.png"> <span class="pre pre--inline">https://www.youtube.com/watch?v=aNO6yd66PpA</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="670607944408104970" id="message-670607944408104970">
-                <div class="chatlog__content">
-                    <div class="markdown"><strong>Playing</strong> <img class="emoji " alt="🎶" title="🎶" src="https://twemoji.maxcdn.com/2/72x72/1f3b6.png"> <span class="pre pre--inline">Iris - The Goo Goo Dolls (lyrics)</span> - Now! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><strong>Playing</strong> <img class="emoji " alt="🎶" title="🎶" src="https://twemoji.maxcdn.com/2/72x72/1f3b6.png"> <span class="pre pre--inline">Iris - The Goo Goo Dolls (lyrics)</span> - Now!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -706,9 +724,12 @@ a {
         <span class="chatlog__timestamp">25-Jan-20 08:37 PM</span>
 
             <div class="chatlog__message " data-message-id="670608141813284877" id="message-670608141813284877">
-                <div class="chatlog__content">
-                    <div class="markdown">!stop </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">!stop</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -722,16 +743,19 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">25-Jan-20 08:37 PM</span>
 
             <div class="chatlog__message " data-message-id="670608142580711458" id="message-670608142580711458">
-                <div class="chatlog__content">
-                    <div class="markdown"><strong>Paused</strong> ⏸ </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><strong>Paused</strong> ⏸</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -751,9 +775,12 @@ a {
         <span class="chatlog__timestamp">25-Jan-20 08:38 PM</span>
 
             <div class="chatlog__message " data-message-id="670608544248234023" id="message-670608544248234023">
-                <div class="chatlog__content">
-                    <div class="markdown">!clear </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">!clear</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -767,16 +794,19 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">25-Jan-20 08:38 PM</span>
 
             <div class="chatlog__message " data-message-id="670608545192083485" id="message-670608545192083485">
-                <div class="chatlog__content">
-                    <div class="markdown"><img class="emoji " alt="💥" title="💥" src="https://twemoji.maxcdn.com/2/72x72/1f4a5.png"> <em><strong>Cleared...</strong></em> ⏹ </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img class="emoji " alt="💥" title="💥" src="https://twemoji.maxcdn.com/2/72x72/1f4a5.png"> <em><strong>Cleared...</strong></em> ⏹</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -790,15 +820,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(248,7,7)">DreamBoat&#127477;&#127472;</span>
+        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(168,67,0)">DreamBoat&#127477;&#127472;</span>
 
 
         <span class="chatlog__timestamp">25-Jan-20 09:05 PM</span>
 
             <div class="chatlog__message " data-message-id="670615323061518337" id="message-670615323061518337">
-                <div class="chatlog__content">
-                    <div class="markdown">!play <a href="https://youtu.be/KtqQYPUJk8E">https://youtu.be/KtqQYPUJk8E</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">!play <a href="https://youtu.be/KtqQYPUJk8E">https://youtu.be/KtqQYPUJk8E</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -816,12 +849,12 @@ a {
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=KtqQYPUJk8E">
-                                                    <div class="markdown">Calvin Harris - Feel So Close (Audio)</div>
+                                                    <div class="markdown preserve-whitespace">Calvin Harris - Feel So Close (Audio)</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">This audio was taken from 18 Months (2012) by Calvin Harris.</div>
+                                            <div class="markdown preserve-whitespace">This audio was taken from 18 Months (2012) by Calvin Harris.</div>
                                         </div>
 
                                 </div>
@@ -847,24 +880,24 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">25-Jan-20 09:05 PM</span>
 
             <div class="chatlog__message " data-message-id="670615323304787978" id="message-670615323304787978">
-                <div class="chatlog__content">
-                    <div class="markdown"><img class="emoji " alt="youtube" title="youtube" src="https://cdn.discordapp.com/emojis/335112740957978625.png"> <strong>Searching</strong> <img class="emoji " alt="🔎" title="🔎" src="https://twemoji.maxcdn.com/2/72x72/1f50e.png"> <span class="pre pre--inline">https://youtu.be/KtqQYPUJk8E</span> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img class="emoji " alt="youtube" title="youtube" src="https://cdn.discordapp.com/emojis/335112740957978625.png"> <strong>Searching</strong> <img class="emoji " alt="🔎" title="🔎" src="https://twemoji.maxcdn.com/2/72x72/1f50e.png"> <span class="pre pre--inline">https://youtu.be/KtqQYPUJk8E</span></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="670615326198726657" id="message-670615326198726657">
-                <div class="chatlog__content">
-                    <div class="markdown"> </div>
-                </div>
 
 
                     <div class="chatlog__embed">
@@ -882,44 +915,44 @@ a {
 
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown"><strong><a href="https://www.youtube.com/watch?v=KtqQYPUJk8E">Calvin Harris - Feel So Close (Audio)</a></strong></div>
+                                            <div class="markdown preserve-whitespace"><strong><a href="https://www.youtube.com/watch?v=KtqQYPUJk8E">Calvin Harris - Feel So Close (Audio)</a></strong></div>
                                         </div>
 
                                         <div class="chatlog__embed-fields">
                                                 <div class="chatlog__embed-field chatlog__embed-field--inline">
                                                         <div class="chatlog__embed-field-name">
-                                                            <div class="markdown">Channel</div>
+                                                            <div class="markdown preserve-whitespace">Channel</div>
                                                         </div>
 
                                                         <div class="chatlog__embed-field-value">
-                                                            <div class="markdown">Alejandro Villabona</div>
+                                                            <div class="markdown preserve-whitespace">Alejandro Villabona</div>
                                                         </div>
                                                 </div>
                                                 <div class="chatlog__embed-field chatlog__embed-field--inline">
                                                         <div class="chatlog__embed-field-name">
-                                                            <div class="markdown">Song Duration</div>
+                                                            <div class="markdown preserve-whitespace">Song Duration</div>
                                                         </div>
 
                                                         <div class="chatlog__embed-field-value">
-                                                            <div class="markdown">03:23</div>
+                                                            <div class="markdown preserve-whitespace">03:23</div>
                                                         </div>
                                                 </div>
                                                 <div class="chatlog__embed-field chatlog__embed-field--inline">
                                                         <div class="chatlog__embed-field-name">
-                                                            <div class="markdown">Estimated time until playing</div>
+                                                            <div class="markdown preserve-whitespace">Estimated time until playing</div>
                                                         </div>
 
                                                         <div class="chatlog__embed-field-value">
-                                                            <div class="markdown">04:02</div>
+                                                            <div class="markdown preserve-whitespace">04:02</div>
                                                         </div>
                                                 </div>
                                                 <div class="chatlog__embed-field chatlog__embed-field--inline">
                                                         <div class="chatlog__embed-field-name">
-                                                            <div class="markdown">Position in queue</div>
+                                                            <div class="markdown preserve-whitespace">Position in queue</div>
                                                         </div>
 
                                                         <div class="chatlog__embed-field-value">
-                                                            <div class="markdown">1</div>
+                                                            <div class="markdown preserve-whitespace">1</div>
                                                         </div>
                                                 </div>
                                         </div>
@@ -946,15 +979,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(248,7,7)">DreamBoat&#127477;&#127472;</span>
+        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(168,67,0)">DreamBoat&#127477;&#127472;</span>
 
 
         <span class="chatlog__timestamp">25-Jan-20 09:06 PM</span>
 
             <div class="chatlog__message " data-message-id="670615471544074270" id="message-670615471544074270">
-                <div class="chatlog__content">
-                    <div class="markdown">!stop </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">!stop</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -968,16 +1004,19 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">25-Jan-20 09:06 PM</span>
 
             <div class="chatlog__message " data-message-id="670615471959179275" id="message-670615471959179275">
-                <div class="chatlog__content">
-                    <div class="markdown">❌ <strong>The player is already paused</strong> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">❌ <strong>The player is already paused</strong></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -991,15 +1030,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(248,7,7)">DreamBoat&#127477;&#127472;</span>
+        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(168,67,0)">DreamBoat&#127477;&#127472;</span>
 
 
         <span class="chatlog__timestamp">25-Jan-20 09:06 PM</span>
 
             <div class="chatlog__message " data-message-id="670615603295289375" id="message-670615603295289375">
-                <div class="chatlog__content">
-                    <div class="markdown">!play </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">!play</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1013,16 +1055,19 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">25-Jan-20 09:06 PM</span>
 
             <div class="chatlog__message " data-message-id="670615604415299624" id="message-670615604415299624">
-                <div class="chatlog__content">
-                    <div class="markdown">⏯ <strong>Resuming</strong> <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">⏯ <strong>Resuming</strong> <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1036,15 +1081,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(248,7,7)">DreamBoat&#127477;&#127472;</span>
+        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(168,67,0)">DreamBoat&#127477;&#127472;</span>
 
 
         <span class="chatlog__timestamp">25-Jan-20 09:07 PM</span>
 
             <div class="chatlog__message " data-message-id="670615630042365962" id="message-670615630042365962">
-                <div class="chatlog__content">
-                    <div class="markdown">!skip </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">!skip</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1058,16 +1106,19 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">25-Jan-20 09:07 PM</span>
 
             <div class="chatlog__message " data-message-id="670615630474641413" id="message-670615630474641413">
-                <div class="chatlog__content">
-                    <div class="markdown">⏩ <em><strong>Skipped</strong></em> <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">⏩ <em><strong>Skipped</strong></em> <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1081,15 +1132,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(248,7,7)">DreamBoat&#127477;&#127472;</span>
+        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(168,67,0)">DreamBoat&#127477;&#127472;</span>
 
 
         <span class="chatlog__timestamp">25-Jan-20 09:07 PM</span>
 
             <div class="chatlog__message " data-message-id="670615724112478210" id="message-670615724112478210">
-                <div class="chatlog__content">
-                    <div class="markdown">!skip </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">!skip</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1103,16 +1157,19 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">25-Jan-20 09:07 PM</span>
 
             <div class="chatlog__message " data-message-id="670615724892618772" id="message-670615724892618772">
-                <div class="chatlog__content">
-                    <div class="markdown">⏩ <em><strong>Skipped</strong></em> <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">⏩ <em><strong>Skipped</strong></em> <img class="emoji " alt="👍" title="👍" src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1126,15 +1183,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(248,7,7)">DreamBoat&#127477;&#127472;</span>
+        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(168,67,0)">DreamBoat&#127477;&#127472;</span>
 
 
         <span class="chatlog__timestamp">25-Jan-20 09:07 PM</span>
 
             <div class="chatlog__message " data-message-id="670615750821806090" id="message-670615750821806090">
-                <div class="chatlog__content">
-                    <div class="markdown">!clear </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">!clear</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1148,16 +1208,19 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">25-Jan-20 09:07 PM</span>
 
             <div class="chatlog__message " data-message-id="670615751438237706" id="message-670615751438237706">
-                <div class="chatlog__content">
-                    <div class="markdown"><img class="emoji " alt="💥" title="💥" src="https://twemoji.maxcdn.com/2/72x72/1f4a5.png"> <em><strong>Cleared...</strong></em> ⏹ </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img class="emoji " alt="💥" title="💥" src="https://twemoji.maxcdn.com/2/72x72/1f4a5.png"> <em><strong>Cleared...</strong></em> ⏹</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1171,15 +1234,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(248,7,7)">DreamBoat&#127477;&#127472;</span>
+        <span class="chatlog__author-name" title="Unromanticmoon#3488" data-user-id="594992716837027841" style="color: rgb(168,67,0)">DreamBoat&#127477;&#127472;</span>
 
 
         <span class="chatlog__timestamp">25-Jan-20 09:07 PM</span>
 
             <div class="chatlog__message " data-message-id="670615820094799892" id="message-670615820094799892">
-                <div class="chatlog__content">
-                    <div class="markdown">!disconnect </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">!disconnect</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1193,16 +1259,19 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">25-Jan-20 09:07 PM</span>
 
             <div class="chatlog__message " data-message-id="670615820912558111" id="message-670615820912558111">
-                <div class="chatlog__content">
-                    <div class="markdown"><img class="emoji " alt="📭" title="📭" src="https://twemoji.maxcdn.com/2/72x72/1f4ed.png"> <strong>Successfully disconnected</strong> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img class="emoji " alt="📭" title="📭" src="https://twemoji.maxcdn.com/2/72x72/1f4ed.png"> <strong>Successfully disconnected</strong></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1216,16 +1285,20 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="needed88#7717" data-user-id="750267933317529600" style="color: rgb(250,2,220)">needed88</span>
+        <span class="chatlog__author-name" title="needed88#7717" data-user-id="750267933317529600" style="color: rgb(230,126,34)">needed88</span>
 
 
         <span class="chatlog__timestamp">21-Sep-20 10:04 PM</span>
 
             <div class="chatlog__message " data-message-id="757603068983640105" id="message-757603068983640105">
-                <div class="chatlog__content">
-                    <div class="markdown">Tell me your opinion about this mix, I f***ing love it!
-<a href="https://youtu.be/WddpRmmAYkg">https://youtu.be/WddpRmmAYkg</a> <span class="chatlog__edited-timestamp" title="21-Sep-20 10:05 PM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Tell me your opinion about this mix, I f***ing love it!
+<a href="https://youtu.be/WddpRmmAYkg">https://youtu.be/WddpRmmAYkg</a></span>
+
+                                <span class="chatlog__edited-timestamp" title="21-Sep-20 10:05 PM">(edited)</span>
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -1243,12 +1316,12 @@ a {
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=WddpRmmAYkg">
-                                                    <div class="markdown">Boris Brejcha Style @ Art of Minimal Techno Tripping - The Mad Doct...</div>
+                                                    <div class="markdown preserve-whitespace">Boris Brejcha Style @ Art of Minimal Techno Tripping - The Mad Doct...</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">Best Music Mix in High Quality - Art of Minimal Techno, Melodic Techno &amp; House etc.
+                                            <div class="markdown preserve-whitespace">Best Music Mix in High Quality - Art of Minimal Techno, Melodic Techno &amp; House etc.
 <img class="emoji " alt="🎧" title="🎧" src="https://twemoji.maxcdn.com/2/72x72/1f3a7.png"> Best Spotify playlist: <a href="http://bit.ly/trippymusicplaylist">http://bit.ly/trippymusicplaylist</a>
 Subscribe our channel for more videos: <a href="http://bit.ly/artminimal">http://bit.ly/artminimal</a>
 
@@ -1279,16 +1352,19 @@ Music f...</div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/235088799074484224/16c197c4c3f0eb808f9bceb6e1075e71.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(248,77,77)">Rythm</span>
+        <span class="chatlog__author-name" title="Rythm#3722" data-user-id="235088799074484224" style="color: rgb(31,139,76)">Rythm</span>
 
             <span class="chatlog__bot-tag">BOT</span>
 
         <span class="chatlog__timestamp">21-Sep-20 10:05 PM</span>
 
             <div class="chatlog__message " data-message-id="757603339658723462" id="message-757603339658723462">
-                <div class="chatlog__content">
-                    <div class="markdown">❌ <strong>You have to be in a voice channel to use this command.</strong> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">❌ <strong>You have to be in a voice channel to use this command.</strong></span>
+
+                        </div>
+                    </div>
 
 
 

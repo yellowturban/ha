@@ -60,13 +60,18 @@ img {
 
 .markdown {
     max-width: 100%;
-    white-space: pre-wrap;
     line-height: 1.3;
     overflow-wrap: break-word;
 }
 
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
 .spoiler {
-    width: fit-content;
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
 }
 
 .spoiler--hidden {
@@ -95,24 +100,28 @@ img {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.spoiler--hidden .spoiler-image img {
+.spoiler--hidden .spoiler-image * {
     filter: blur(44px);
 }
 
-.spoiler--hidden .spoiler-image:after {
-    content: "SPOILER";
-    color: #dcddde;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 600;
-    padding: 0.5em 0.7em;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    font-size: 0.9em;
-}
+    .spoiler--hidden .spoiler-image:after {
+        content: "SPOILER";
+        color: #dcddde;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        /* padding: 0.5em 0.7em; */
+        padding: 100%;
+        /* This ruins those beutifully rounded buttons, but it's needed to prevent a FireFox bug with video and audio elemnts. */
+        /* The bug is that you can click trough the spoiler layer and play the video or audio, I could not identify the cause. */
+        /* I leave this here, in case someone is brave enough to venture in to madness that is undocumented browser behaviour. */
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+    }
 
 .spoiler--hidden:hover .spoiler-image:after {
     color: #fff;
@@ -620,30 +629,37 @@ a {
         <span class="chatlog__timestamp">20-Apr-20 03:24 PM</span>
 
             <div class="chatlog__message " data-message-id="701694797202587760" id="message-701694797202587760">
-                <div class="chatlog__content">
-                    <div class="markdown">Hi <span class="mention">@everyone</span>! Thanks Ilsa for creating this channel. I would like to get the forum started with this question I couldn&#39;t solve yesterday. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi <span class="mention">@everyone</span>! Thanks Ilsa for creating this channel. I would like to get the forum started with this question I couldn&#39;t solve yesterday.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="701694831956721665" id="message-701694831956721665">
-                <div class="chatlog__content">
-                    <div class="markdown"> </div>
-                </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/701344806361890846/701694831730229268/Capture7.PNG">
-                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/701694831730229268/Capture7.PNG" alt="Attachment">
-                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/701344806361890846/701694831730229268/Capture7.PNG">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/701694831730229268/Capture7.PNG" alt="Image attachment" title="Image: Capture7.PNG (61.41 KB)">
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
             </div>
             <div class="chatlog__message " data-message-id="701695610956415027" id="message-701695610956415027">
-                <div class="chatlog__content">
-                    <div class="markdown">So they said &#39;find the maximum likelihood estimator&#39; - I tried and couldn&#39;t solve it. And I don&#39;t get what the mean by the MLE of O being the smallest value for which Xi is in the interval. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">So they said &#39;find the maximum likelihood estimator&#39; - I tried and couldn&#39;t solve it. And I don&#39;t get what the mean by the MLE of O being the smallest value for which Xi is in the interval.</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -654,7 +670,7 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/185640968270118912/a_b63330e00fb74c1b72864f025da6d844.gif" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/185640968270118912/2c0c242f34aedff91d1f4bf7b1e1a906.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
         <span class="chatlog__author-name" title="jonny boi#0465" data-user-id="185640968270118912" style="color: rgb(52,152,219)">jonny boi</span>
@@ -663,9 +679,12 @@ a {
         <span class="chatlog__timestamp">20-Apr-20 04:26 PM</span>
 
             <div class="chatlog__message " data-message-id="701710350558691350" id="message-701710350558691350">
-                <div class="chatlog__content">
-                    <div class="markdown">im taking stats 2 and i dont know how to approach this question either. what is b asking for? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">im taking stats 2 and i dont know how to approach this question either. what is b asking for?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -679,36 +698,43 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">20-Apr-20 08:53 PM</span>
 
             <div class="chatlog__message " data-message-id="701777557254701067" id="message-701777557254701067">
-                <div class="chatlog__content">
-                    <div class="markdown">Hey, I tried to write it out so that it makes some sense. An important assumption here is the one given in the exercise, which is that the density function takes on a value zero for values of x outside of the interval. Then, the joint pdf will only be non-zero when all X_i&#39;s lie in the interval [0, theta]. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey, I tried to write it out so that it makes some sense. An important assumption here is the one given in the exercise, which is that the density function takes on a value zero for values of x outside of the interval. Then, the joint pdf will only be non-zero when all X_i&#39;s lie in the interval [0, theta].</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="701777577324314676" id="message-701777577324314676">
-                <div class="chatlog__content">
-                    <div class="markdown"> </div>
-                </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/701344806361890846/701777577316057118/94318153_3074171945979887_932091479000612864_n.png">
-                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/701777577316057118/94318153_3074171945979887_932091479000612864_n.png" alt="Attachment">
-                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/701344806361890846/701777577316057118/94318153_3074171945979887_932091479000612864_n.png">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/701777577316057118/94318153_3074171945979887_932091479000612864_n.png" alt="Image attachment" title="Image: 94318153_3074171945979887_932091479000612864_n.png (512.55 KB)">
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
             </div>
             <div class="chatlog__message " data-message-id="701777759868813322" id="message-701777759868813322">
-                <div class="chatlog__content">
-                    <div class="markdown">I hope this is legible. Also, this is almost the same as example 7.12 in the study guide (page 244). </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I hope this is legible. Also, this is almost the same as example 7.12 in the study guide (page 244).</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -728,17 +754,23 @@ a {
         <span class="chatlog__timestamp">21-Apr-20 02:41 PM</span>
 
             <div class="chatlog__message " data-message-id="702046280532230214" id="message-702046280532230214">
-                <div class="chatlog__content">
-                    <div class="markdown">Hi <span class="mention" title="Alek#7085">@Alek</span> - thank you for the explanation, it&#39;s really clearly presented. So let me get this straight: If we want to maximize L(theta), we need to find the smallest value of theta. But since X_i &lt;= theta, the smallest value it can take is the largest value of X_i. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi <span class="mention" title="Alek#7085">@Alek</span> - thank you for the explanation, it&#39;s really clearly presented. So let me get this straight: If we want to maximize L(theta), we need to find the smallest value of theta. But since X_i &lt;= theta, the smallest value it can take is the largest value of X_i.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702046462170759178" id="message-702046462170759178">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="jonny boi#0465">@jonny boi</span> b is asking us to find the maximum likelihood estimator, and explain why is it decreasing in theta </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="jonny boi#0465">@jonny boi</span> b is asking us to find the maximum likelihood estimator, and explain why is it decreasing in theta</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -752,23 +784,29 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">21-Apr-20 02:42 PM</span>
 
             <div class="chatlog__message " data-message-id="702046678219227187" id="message-702046678219227187">
-                <div class="chatlog__content">
-                    <div class="markdown">that&#39;s right I think, if any X_i is greater than theta, L(theta) instantly becomes zero, and hence won&#39;t be maximized </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">that&#39;s right I think, if any X_i is greater than theta, L(theta) instantly becomes zero, and hence won&#39;t be maximized</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702046756761763870" id="message-702046756761763870">
-                <div class="chatlog__content">
-                    <div class="markdown">Then, the smallest theta we can think of is the largest X_i </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Then, the smallest theta we can think of is the largest X_i</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -788,9 +826,12 @@ a {
         <span class="chatlog__timestamp">21-Apr-20 02:43 PM</span>
 
             <div class="chatlog__message " data-message-id="702046794351247381" id="message-702046794351247381">
-                <div class="chatlog__content">
-                    <div class="markdown">Ah I see </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Ah I see</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -804,15 +845,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">21-Apr-20 02:43 PM</span>
 
             <div class="chatlog__message " data-message-id="702046874735083560" id="message-702046874735083560">
-                <div class="chatlog__content">
-                    <div class="markdown">Note that this also assumes all X_i are greater than zero </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Note that this also assumes all X_i are greater than zero</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -832,9 +876,12 @@ a {
         <span class="chatlog__timestamp">21-Apr-20 02:43 PM</span>
 
             <div class="chatlog__message " data-message-id="702046930368200736" id="message-702046930368200736">
-                <div class="chatlog__content">
-                    <div class="markdown">Oh yes of course </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Oh yes of course</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -848,15 +895,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">21-Apr-20 02:43 PM</span>
 
             <div class="chatlog__message " data-message-id="702046938048102440" id="message-702046938048102440">
-                <div class="chatlog__content">
-                    <div class="markdown">but this is true because the PDF has 0 probability for X_i less than zero </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">but this is true because the PDF has 0 probability for X_i less than zero</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -876,9 +926,12 @@ a {
         <span class="chatlog__timestamp">21-Apr-20 02:43 PM</span>
 
             <div class="chatlog__message " data-message-id="702046960164536360" id="message-702046960164536360">
-                <div class="chatlog__content">
-                    <div class="markdown">Since theta &gt; 0 </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Since theta &gt; 0</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -892,15 +945,18 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">21-Apr-20 02:44 PM</span>
 
             <div class="chatlog__message " data-message-id="702046993027039322" id="message-702046993027039322">
-                <div class="chatlog__content">
-                    <div class="markdown">yes indeed </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">yes indeed</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -920,9 +976,12 @@ a {
         <span class="chatlog__timestamp">21-Apr-20 02:44 PM</span>
 
             <div class="chatlog__message " data-message-id="702047070269341728" id="message-702047070269341728">
-                <div class="chatlog__content">
-                    <div class="markdown">But I suppose we can&#39;t solve this using the normal log likelihood method </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">But I suppose we can&#39;t solve this using the normal log likelihood method</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -936,31 +995,40 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">21-Apr-20 02:44 PM</span>
 
             <div class="chatlog__message " data-message-id="702047119225389097" id="message-702047119225389097">
-                <div class="chatlog__content">
-                    <div class="markdown">No sadly, because this is the case where the </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">No sadly, because this is the case where the</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702047156495974462" id="message-702047156495974462">
-                <div class="chatlog__content">
-                    <div class="markdown">likelihood function isn&#39;t continuous at the maximum </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">likelihood function isn&#39;t continuous at the maximum</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702047176427307025" id="message-702047176427307025">
-                <div class="chatlog__content">
-                    <div class="markdown">hence it&#39;s not differentiable </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">hence it&#39;s not differentiable</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -980,9 +1048,12 @@ a {
         <span class="chatlog__timestamp">21-Apr-20 02:44 PM</span>
 
             <div class="chatlog__message " data-message-id="702047185906434119" id="message-702047185906434119">
-                <div class="chatlog__content">
-                    <div class="markdown">I attempted that first, but now I see that there may be more than 1 way to solve it </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I attempted that first, but now I see that there may be more than 1 way to solve it</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -996,39 +1067,51 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">21-Apr-20 02:45 PM</span>
 
             <div class="chatlog__message " data-message-id="702047263131697203" id="message-702047263131697203">
-                <div class="chatlog__content">
-                    <div class="markdown">on page 245 of the study guide there is a </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">on page 245 of the study guide there is a</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702047304621752421" id="message-702047304621752421">
-                <div class="chatlog__content">
-                    <div class="markdown">nice explanation why it isn&#39;t possible to solve this using the </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">nice explanation why it isn&#39;t possible to solve this using the</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702047323370422303" id="message-702047323370422303">
-                <div class="chatlog__content">
-                    <div class="markdown">normal likelihood method </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">normal likelihood method</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702047356459417630" id="message-702047356459417630">
-                <div class="chatlog__content">
-                    <div class="markdown">(i.e. by taking derivatives) </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(i.e. by taking derivatives)</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1048,9 +1131,12 @@ a {
         <span class="chatlog__timestamp">21-Apr-20 02:46 PM</span>
 
             <div class="chatlog__message " data-message-id="702047484050014240" id="message-702047484050014240">
-                <div class="chatlog__content">
-                    <div class="markdown">Going to find my study guide now <img class="emoji " alt="😄" title="😄" src="https://twemoji.maxcdn.com/2/72x72/1f604.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Going to find my study guide now <img class="emoji " alt="😄" title="😄" src="https://twemoji.maxcdn.com/2/72x72/1f604.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1064,44 +1150,54 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">21-Apr-20 02:46 PM</span>
 
             <div class="chatlog__message " data-message-id="702047543709925426" id="message-702047543709925426">
-                <div class="chatlog__content">
-                    <div class="markdown">also the explanation for why the estimator of theta is max(X_i) might be more clear there than my notes </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">also the explanation for why the estimator of theta is max(X_i) might be more clear there than my notes</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702047645669261322" id="message-702047645669261322">
-                <div class="chatlog__content">
-                    <div class="markdown">sure, feel free to ping me if you find any inconsistencies in what I wrote </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">sure, feel free to ping me if you find any inconsistencies in what I wrote</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702048120216879194" id="message-702048120216879194">
-                <div class="chatlog__content">
-                    <div class="markdown">This chart made the most sense to me I think </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This chart made the most sense to me I think</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702048124687876136" id="message-702048124687876136">
-                <div class="chatlog__content">
-                    <div class="markdown"> </div>
-                </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/701344806361890846/702048124570697768/unknown.png">
-                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/702048124570697768/unknown.png" alt="Attachment">
-                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/701344806361890846/702048124570697768/unknown.png">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/702048124570697768/unknown.png" alt="Image attachment" title="Image: unknown.png (17.1 KB)">
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -1121,17 +1217,24 @@ a {
         <span class="chatlog__timestamp">21-Apr-20 02:50 PM</span>
 
             <div class="chatlog__message " data-message-id="702048535066968114" id="message-702048535066968114">
-                <div class="chatlog__content">
-                    <div class="markdown">Ah yes I&#39;m on that same page right now...and it makes total sense </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Ah yes I&#39;m on that same page right now...and it makes total sense</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702048725865988096" id="message-702048725865988096">
-                <div class="chatlog__content">
-                    <div class="markdown">This is what happens when you refuse to use the updated 2019 study guide...the exercises in the updated version can be quite helpful in explaining unique problems <img class="emoji " alt="😅" title="😅" src="https://twemoji.maxcdn.com/2/72x72/1f605.png"> <span class="chatlog__edited-timestamp" title="21-Apr-20 02:51 PM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This is what happens when you refuse to use the updated 2019 study guide...the exercises in the updated version can be quite helpful in explaining unique problems <img class="emoji " alt="😅" title="😅" src="https://twemoji.maxcdn.com/2/72x72/1f605.png"></span>
+
+                                <span class="chatlog__edited-timestamp" title="21-Apr-20 02:51 PM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
@@ -1145,31 +1248,40 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">21-Apr-20 02:51 PM</span>
 
             <div class="chatlog__message " data-message-id="702048850528960543" id="message-702048850528960543">
-                <div class="chatlog__content">
-                    <div class="markdown">Ohh yes sorry I forgot to mention it&#39;s the new study guide </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Ohh yes sorry I forgot to mention it&#39;s the new study guide</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702048878282801192" id="message-702048878282801192">
-                <div class="chatlog__content">
-                    <div class="markdown">I haven&#39;t used the printed version </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I haven&#39;t used the printed version</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="702048918820618301" id="message-702048918820618301">
-                <div class="chatlog__content">
-                    <div class="markdown">either way I&#39;m glad it makes sense! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">either way I&#39;m glad it makes sense!</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1195,22 +1307,32 @@ a {
         <span class="chatlog__timestamp">14-May-20 03:12 PM</span>
 
             <div class="chatlog__message " data-message-id="710389013638414438" id="message-710389013638414438">
-                <div class="chatlog__content">
-                    <div class="markdown">Hi everyone! I have another question, which is again about Maximum Likelihood Estimators. Does anyone know why is it explicitly wrong to say: E(1/(sample mean)) is the same as (1/E(sample mean))? The latter would, in effect, be equal to (1/pop mean) </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi everyone! I have another question, which is again about Maximum Likelihood Estimators. Does anyone know why is it explicitly wrong to say: E(1/(sample mean)) is the same as (1/E(sample mean))? The latter would, in effect, be equal to (1/pop mean)</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="710389182417207406" id="message-710389182417207406">
-                <div class="chatlog__content">
-                    <div class="markdown">It&#39;s stated as so in the question below: </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It&#39;s stated as so in the question below:</span>
+
+                        </div>
+                    </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/701344806361890846/710389182157160498/Capture14.PNG">
-                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/710389182157160498/Capture14.PNG" alt="Attachment">
-                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/701344806361890846/710389182157160498/Capture14.PNG">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/710389182157160498/Capture14.PNG" alt="Image attachment" title="Image: Capture14.PNG (89.4 KB)">
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -1221,7 +1343,7 @@ a {
 
 <div class="chatlog__message-group">
     <div class="chatlog__author-avatar-container">
-        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/588538936989843456/7de55a07e2be91073d375254d087a4e7.png" alt="Avatar">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/588538936989843456/9d06520dc47416ed3e65e7ff22e7a9f3.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
         <span class="chatlog__author-name" title="yugi345#4783" data-user-id="588538936989843456" style="color: rgb(0,237,255)">jj345</span>
@@ -1230,17 +1352,23 @@ a {
         <span class="chatlog__timestamp">14-May-20 05:27 PM</span>
 
             <div class="chatlog__message " data-message-id="710422925077119006" id="message-710422925077119006">
-                <div class="chatlog__content">
-                    <div class="markdown">E(1/Y) does not equal to E(1)/E(Y), you can&#39;t split up the expectation when it comes to that </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">E(1/Y) does not equal to E(1)/E(Y), you can&#39;t split up the expectation when it comes to that</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="710423119952609280" id="message-710423119952609280">
-                <div class="chatlog__content">
-                    <div class="markdown">Since E(1/Y) is the expectation of 1/Y or Y^-1 </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Since E(1/Y) is the expectation of 1/Y or Y^-1</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1260,17 +1388,23 @@ a {
         <span class="chatlog__timestamp">15-May-20 03:02 PM</span>
 
             <div class="chatlog__message " data-message-id="710749040727294002" id="message-710749040727294002">
-                <div class="chatlog__content">
-                    <div class="markdown">Oh I see - but does that apply to 1/(sample mean) too? Just logically speaking, Ȳ is a predetermined number, and a variable that has got a fixed value already. And the expectation of fixed numbers is the just the fixed number itself again. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Oh I see - but does that apply to 1/(sample mean) too? Just logically speaking, Ȳ is a predetermined number, and a variable that has got a fixed value already. And the expectation of fixed numbers is the just the fixed number itself again.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="710749411214491648" id="message-710749411214491648">
-                <div class="chatlog__content">
-                    <div class="markdown">If it had been 1/Y, then yes, we can&#39;t manipulate the expectation. But is it the same for 1/Ȳ? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">If it had been 1/Y, then yes, we can&#39;t manipulate the expectation. But is it the same for 1/Ȳ?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1284,57 +1418,74 @@ a {
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">15-May-20 03:38 PM</span>
 
             <div class="chatlog__message " data-message-id="710757981058236437" id="message-710757981058236437">
-                <div class="chatlog__content">
-                    <div class="markdown">I think you confuse y_bar with Y_bar, i.e. a small y_bar is a sample mean (and hence, as you said, a predetermined number) but capital Y_bar is an <em>estimator</em> of the population  mean, (and its expectation is the population mean). I attached a photo of the expectation of an estimator of the population mean below from my notes. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I think you confuse y_bar with Y_bar, i.e. a small y_bar is a sample mean (and hence, as you said, a predetermined number) but capital Y_bar is an <em>estimator</em> of the population  mean, (and its expectation is the population mean). I attached a photo of the expectation of an estimator of the population mean below from my notes.</span>
+
+                        </div>
+                    </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/701344806361890846/710757980756508672/unknown.png">
-                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/710757980756508672/unknown.png" alt="Attachment">
-                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/701344806361890846/710757980756508672/unknown.png">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/710757980756508672/unknown.png" alt="Image attachment" title="Image: unknown.png (81.81 KB)">
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
             </div>
             <div class="chatlog__message " data-message-id="710758132690714645" id="message-710758132690714645">
-                <div class="chatlog__content">
-                    <div class="markdown">also, if you try to expand E(1/X_bar) you get something like: </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">also, if you try to expand E(1/X_bar) you get something like:</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="710758455874420827" id="message-710758455874420827">
-                <div class="chatlog__content">
-                    <div class="markdown"> </div>
-                </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/701344806361890846/710758455660642365/unknown.png">
-                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/710758455660642365/unknown.png" alt="Attachment">
-                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/701344806361890846/710758455660642365/unknown.png">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/710758455660642365/unknown.png" alt="Image attachment" title="Image: unknown.png (123.02 KB)">
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
             </div>
             <div class="chatlog__message " data-message-id="710758686838095905" id="message-710758686838095905">
-                <div class="chatlog__content">
-                    <div class="markdown">which im not entirely sure if we can expand further, but it doesnt seem equal to 1/E(X_bar), as the below discussion on stackexchange confirms </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">which im not entirely sure if we can expand further, but it doesnt seem equal to 1/E(X_bar), as the below discussion on stackexchange confirms</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="710758721554219021" id="message-710758721554219021">
-                <div class="chatlog__content">
-                    <div class="markdown"><a href="https://stats.stackexchange.com/questions/80874/expectation-of-reciprocal-of-a-variable">https://stats.stackexchange.com/questions/80874/expectation-of-reciprocal-of-a-variable</a> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://stats.stackexchange.com/questions/80874/expectation-of-reciprocal-of-a-variable">https://stats.stackexchange.com/questions/80874/expectation-of-reciprocal-of-a-variable</a></span>
+
+                        </div>
+                    </div>
 
 
                     <div class="chatlog__embed">
@@ -1346,12 +1497,12 @@ a {
 
                                         <div class="chatlog__embed-title">
                                                 <a class="chatlog__embed-title-link" href="https://stats.stackexchange.com/questions/80874/expectation-of-reciprocal-of-a-variable">
-                                                    <div class="markdown">Expectation of reciprocal of a variable</div>
+                                                    <div class="markdown preserve-whitespace">Expectation of reciprocal of a variable</div>
                                                 </a>
                                         </div>
 
                                         <div class="chatlog__embed-description">
-                                            <div class="markdown">I am confused in applying expectation in denominator. 
+                                            <div class="markdown preserve-whitespace">I am confused in applying expectation in denominator. 
 
 $E(1/X)=,?$
 
@@ -1387,33 +1538,45 @@ can it be $1/E(X),$?</div>
         <span class="chatlog__timestamp">15-May-20 05:22 PM</span>
 
             <div class="chatlog__message " data-message-id="710784110255144990" id="message-710784110255144990">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Alek#7085">@Alek</span> Thank youuu for this! I cannot believe I have been looking at Y_bar as  y_bar all this while. </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Alek#7085">@Alek</span> Thank youuu for this! I cannot believe I have been looking at Y_bar as  y_bar all this while.</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="710784599474831371" id="message-710784599474831371">
-                <div class="chatlog__content">
-                    <div class="markdown">So that explains it, why we can&#39;t assume E(1/Y) as 1/E(Y). <img class="emoji " alt="😀" title="😀" src="https://twemoji.maxcdn.com/2/72x72/1f600.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">So that explains it, why we can&#39;t assume E(1/Y) as 1/E(Y). <img class="emoji " alt="😀" title="😀" src="https://twemoji.maxcdn.com/2/72x72/1f600.png"></span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="710785535211339916" id="message-710785535211339916">
-                <div class="chatlog__content">
-                    <div class="markdown">Any chance you get what they mean by &quot;..if we reparameterise and define u = 1/lambda, then under the invariance principle of MLEs, then Y_bar is an unbiased estimator of u...&quot; too? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Any chance you get what they mean by &quot;..if we reparameterise and define u = 1/lambda, then under the invariance principle of MLEs, then Y_bar is an unbiased estimator of u...&quot; too?</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="710785970039029780" id="message-710785970039029780">
-                <div class="chatlog__content">
-                    <div class="markdown">What does Y_bar being a good estimator of u have to do with the invariance principle? </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">What does Y_bar being a good estimator of u have to do with the invariance principle?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1427,15 +1590,18 @@ can it be $1/E(X),$?</div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">15-May-20 05:45 PM</span>
 
             <div class="chatlog__message " data-message-id="710789958729990224" id="message-710789958729990224">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Yukta#2684">@Yukta</span> Could you tell me which paper this exercise is from? I&#39;m not entirely sure what they mean by that either, since they don&#39;t define any function of Y_bar (and 1/lambda isnt a function of u), but I&#39;d need to take a look at the entire exercise </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Yukta#2684">@Yukta</span> Could you tell me which paper this exercise is from? I&#39;m not entirely sure what they mean by that either, since they don&#39;t define any function of Y_bar (and 1/lambda isnt a function of u), but I&#39;d need to take a look at the entire exercise</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1455,25 +1621,36 @@ can it be $1/E(X),$?</div>
         <span class="chatlog__timestamp">16-May-20 05:22 PM</span>
 
             <div class="chatlog__message " data-message-id="711146632569421864" id="message-711146632569421864">
-                <div class="chatlog__content">
-                    <div class="markdown">Sure <span class="mention" title="Alek#7085">@Alek</span> <span class="chatlog__edited-timestamp" title="17-May-20 11:49 AM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Sure <span class="mention" title="Alek#7085">@Alek</span></span>
+
+                                <span class="chatlog__edited-timestamp" title="17-May-20 11:49 AM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="711147245973798932" id="message-711147245973798932">
-                <div class="chatlog__content">
-                    <div class="markdown">It&#39;s the sample exam paper at the end of the study guide for Stats 2 <span class="chatlog__edited-timestamp" title="16-May-20 05:27 PM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">It&#39;s the sample exam paper at the end of the study guide for Stats 2</span>
+
+                                <span class="chatlog__edited-timestamp" title="16-May-20 05:27 PM">(edited)</span>
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="711147767979835462" id="message-711147767979835462">
-                <div class="chatlog__content">
-                    <div class="markdown">Exactly, they lost me at redefining u as 1/lambda...<img class="emoji " alt="😆" title="😆" src="https://twemoji.maxcdn.com/2/72x72/1f606.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Exactly, they lost me at redefining u as 1/lambda...<img class="emoji " alt="😆" title="😆" src="https://twemoji.maxcdn.com/2/72x72/1f606.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1487,20 +1664,28 @@ can it be $1/E(X),$?</div>
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">17-May-20 04:01 PM</span>
 
             <div class="chatlog__message " data-message-id="711488525312327692" id="message-711488525312327692">
-                <div class="chatlog__content">
-                    <div class="markdown">Hey, about that last comment, what makes sense to me now is redefining  <em>u</em> as a function of <em>lambda</em> (which I called <em>g(lambda)</em> in the below photo), since then, under the invariance principle, we can define the MLE of <em>u</em> as that same function of the MLE of <em>lambda</em>. What I still don&#39;t understand is why &#39;&#39;only one parametrisation can be unbiased&#39;&#39;. <span class="mention" title="Yukta#2684">@Yukta</span> <span class="chatlog__edited-timestamp" title="17-May-20 04:03 PM">(edited)</span></div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hey, about that last comment, what makes sense to me now is redefining  <em>u</em> as a function of <em>lambda</em> (which I called <em>g(lambda)</em> in the below photo), since then, under the invariance principle, we can define the MLE of <em>u</em> as that same function of the MLE of <em>lambda</em>. What I still don&#39;t understand is why &#39;&#39;only one parametrisation can be unbiased&#39;&#39;. <span class="mention" title="Yukta#2684">@Yukta</span></span>
+
+                                <span class="chatlog__edited-timestamp" title="17-May-20 04:03 PM">(edited)</span>
+                        </div>
+                    </div>
 
                     <div class="chatlog__attachment">
-                            <a href="https://cdn.discordapp.com/attachments/701344806361890846/711488525261865039/unknown.png">
-                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/711488525261865039/unknown.png" alt="Attachment">
-                            </a>
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/701344806361890846/711488525261865039/unknown.png">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/701344806361890846/711488525261865039/unknown.png" alt="Image attachment" title="Image: unknown.png (109.54 KB)">
+                                    </a>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -1520,17 +1705,23 @@ can it be $1/E(X),$?</div>
         <span class="chatlog__timestamp">17-May-20 05:20 PM</span>
 
             <div class="chatlog__message " data-message-id="711508387040591893" id="message-711508387040591893">
-                <div class="chatlog__content">
-                    <div class="markdown"><span class="mention" title="Alek#7085">@Alek</span> I totally get it now. 1/Ȳ is an estimator for lambda, and g(lambda) is an estimator for u (under the principle). So effectively, Ȳ is an estimator for u. You&#39;re a genius! </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Alek#7085">@Alek</span> I totally get it now. 1/Ȳ is an estimator for lambda, and g(lambda) is an estimator for u (under the principle). So effectively, Ȳ is an estimator for u. You&#39;re a genius!</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="711508744235647048" id="message-711508744235647048">
-                <div class="chatlog__content">
-                    <div class="markdown">Haha, I don&#39;t know what it means, but I think it has something to do with parameterising only one component at a time (if that makes sense) <img class="emoji " alt="😆" title="😆" src="https://twemoji.maxcdn.com/2/72x72/1f606.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Haha, I don&#39;t know what it means, but I think it has something to do with parameterising only one component at a time (if that makes sense) <img class="emoji " alt="😆" title="😆" src="https://twemoji.maxcdn.com/2/72x72/1f606.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1550,9 +1741,12 @@ can it be $1/E(X),$?</div>
         <span class="chatlog__timestamp">31-Aug-20 06:54 PM</span>
 
             <div class="chatlog__message " data-message-id="749945096568438955" id="message-749945096568438955">
-                <div class="chatlog__content">
-                    <div class="markdown">Hello guys, I am going to start studying &#39;Statistics 2&#39;, however, before starting it, I would like to go through &#39;Statistics 1&#39; once more. Does anyone want to join me? <img class="emoji " alt="😊" title="😊" src="https://twemoji.maxcdn.com/2/72x72/1f60a.png"> </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hello guys, I am going to start studying &#39;Statistics 2&#39;, however, before starting it, I would like to go through &#39;Statistics 1&#39; once more. Does anyone want to join me? <img class="emoji " alt="😊" title="😊" src="https://twemoji.maxcdn.com/2/72x72/1f60a.png"></span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1572,12 +1766,15 @@ can it be $1/E(X),$?</div>
         <span class="chatlog__timestamp">19-Oct-20 02:24 PM</span>
 
             <div class="chatlog__message " data-message-id="767634315441471518" id="message-767634315441471518">
-                <div class="chatlog__content">
-                    <div class="markdown">ST104B 
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ST104B 
 Could someone explain what Y = min{ i : Bi = 1}  represents? 
 
-Also, in the answer, &quot; it follows that&quot;  is not intuitive to me. How do you get the answer after you have the distribution ? </div>
-                </div>
+Also, in the answer, &quot; it follows that&quot;  is not intuitive to me. How do you get the answer after you have the distribution ?</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1591,23 +1788,29 @@ Also, in the answer, &quot; it follows that&quot;  is not intuitive to me. How d
         <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/132880482277916673/06ce23278c9d87f37b4fd94e1c4b3731.png" alt="Avatar">
     </div>
     <div class="chatlog__messages">
-        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(52,152,219)">Alek</span>
+        <span class="chatlog__author-name" title="Alek#7085" data-user-id="132880482277916673" style="color: rgb(230,126,34)">Alek</span>
 
 
         <span class="chatlog__timestamp">19-Oct-20 08:50 PM</span>
 
             <div class="chatlog__message " data-message-id="767731451160428604" id="message-767731451160428604">
-                <div class="chatlog__content">
-                    <div class="markdown">min{i: Bi = 1} means &quot;the minimum value of <span class="pre pre--inline">i</span>, such that <span class="pre pre--inline">Bi = 1</span>&quot; </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">min{i: Bi = 1} means &quot;the minimum value of <span class="pre pre--inline">i</span>, such that <span class="pre pre--inline">Bi = 1</span>&quot;</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="767731512324915230" id="message-767731512324915230">
-                <div class="chatlog__content">
-                    <div class="markdown">as to the second question u&#39;ll need to provite the activity number if we are to help you </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">as to the second question u&#39;ll need to provite the activity number if we are to help you</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1627,17 +1830,123 @@ Also, in the answer, &quot; it follows that&quot;  is not intuitive to me. How d
         <span class="chatlog__timestamp">20-Oct-20 05:12 PM</span>
 
             <div class="chatlog__message " data-message-id="768038827461705728" id="message-768038827461705728">
-                <div class="chatlog__content">
-                    <div class="markdown">thanks Alek for the explanation </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">thanks Alek for the explanation</span>
+
+                        </div>
+                    </div>
 
 
 
             </div>
             <div class="chatlog__message " data-message-id="768038937826164736" id="message-768038937826164736">
-                <div class="chatlog__content">
-                    <div class="markdown">I understood the answer now </div>
-                </div>
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I understood the answer now</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="nuha#5701" data-user-id="687357689755598969" style="color: rgb(52,152,219)">nuha</span>
+
+
+        <span class="chatlog__timestamp">03-Dec-20 10:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="783880613123326033" id="message-783880613123326033">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yep. I woulddd</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Akshay&#128526;#0779" data-user-id="587608627788120064" style="color: rgb(52,152,219)">Akshay&#128526;</span>
+
+
+        <span class="chatlog__timestamp">06-Dec-20 10:22 AM</span>
+
+            <div class="chatlog__message " data-message-id="784968041879568384" id="message-784968041879568384">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hi guys,  does anyone have a pdf full of probability questions ?If so please send it<img class="emoji " alt="🙃" title="🙃" src="https://twemoji.maxcdn.com/2/72x72/1f643.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="vanshi#5722" data-user-id="783316747834228776" style="color: rgb(230,126,34)">vanshi</span>
+
+
+        <span class="chatlog__timestamp">07-Dec-20 04:43 AM</span>
+
+            <div class="chatlog__message " data-message-id="785245101215186964" id="message-785245101215186964">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Please let me know as well!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="vanshi#5722" data-user-id="783316747834228776" style="color: rgb(230,126,34)">vanshi</span>
+
+
+        <span class="chatlog__timestamp">16-Dec-20 03:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="788675770230767647" id="message-788675770230767647">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hello, is anyone taking Econometrics online? If yes, I&#39;d really like if you could answer some of my questions</span>
+
+                        </div>
+                    </div>
 
 
 
@@ -1648,7 +1957,7 @@ Also, in the answer, &quot; it follows that&quot;  is not intuitive to me. How d
 </div>
 
 <div class="postamble">
-    <div class="postamble__entry">Exported 64 message(s)</div>
+    <div class="postamble__entry">Exported 68 message(s)</div>
 </div>
 
 </body>
